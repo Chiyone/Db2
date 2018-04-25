@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-configuration>
+<session-factory>
+<property name="connection.driver_class">
+com.mysql.jdbc.Driver
+</property>
+<property name="connection.url">
+jdbc:mysql://localhost/farmacia?createDatabaseIfNotExist=true
+</property>
+<property name="connection.username">root</property>
+<property name="connection.password">root</property>
+<property name="connection.pool_size">1</property>
+<property me="dialect">org.hibernate.dialect.MySQLDialect</property>
+<property name="show_sql">false</property>
+<!-- valores posibles: create create-drop validate update -->
+<property name="hibernate.hbm2ddl.auto">create-drop</property>
+<!--Mapeo Entidades -->
+...
+
+
+
+</session-factory>
+
+
+</hibernate-configuration>
