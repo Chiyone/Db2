@@ -6,12 +6,14 @@ public class ItemVenta {
 	private int cantidad;
 	private double precioTotal;
 	private double precioUnitario;
-	public ItemVenta(Producto producto, int cantidad, double precioTotal, double precioUnitario) {
+	private Venta venta;
+	public ItemVenta(Producto producto, int cantidad, double precioTotal, double precioUnitario,Venta venta) {
 		super();
 		this.producto = producto;
 		this.cantidad = cantidad;
 		this.precioTotal = precioTotal;
 		this.precioUnitario = precioUnitario;
+		this.venta=venta;
 	}
 	public ItemVenta() {
 		super();
@@ -46,10 +48,25 @@ public class ItemVenta {
 	public void setPrecioUnitario(double precioUnitario) {
 		this.precioUnitario = precioUnitario;
 	}
+	/**
+	 * @return the venta
+	 */
+	public Venta getVenta() {
+		return venta;
+	}
+	/**
+	 * @param venta the venta to set
+	 */
+	public void setVenta(Venta venta) {
+		this.venta = venta;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "ItemVenta [idItemVenta=" + idItemVenta + ", producto=" + producto + ", cantidad=" + cantidad
-				+ ", precioTotal=" + precioTotal + ", precioUnitario=" + precioUnitario + "]";
+				+ ", precioTotal=" + precioTotal + ", precioUnitario=" + precioUnitario + ", venta=" + venta + "]";
 	}
 	
 
