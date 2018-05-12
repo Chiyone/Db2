@@ -5,7 +5,8 @@ import java.util.Set;
 
 public class Sucursal {
 
-	private long idSucursal;
+	protected long idSucursal;
+	private String sucursal;
 	private Domicilio domicilio;
 	private Empleado encargado;
 	private Set<Empleado> lstEmpleados;
@@ -16,14 +17,14 @@ public class Sucursal {
 		super();
 	}
 	/**
-	 * @param idSucursal
+	 * @param sucursal
 	 * @param domicilio
 	 * @param encargado
 	 * @param lstEmpleados
 	 */
-	public Sucursal(long idSucursal, Domicilio domicilio, Empleado encargado, Set<Empleado> lstEmpleados) {
+	public Sucursal(String sucursal, Domicilio domicilio, Empleado encargado, Set<Empleado> lstEmpleados) {
 		super();
-		this.idSucursal = idSucursal;
+		this.sucursal = sucursal;
 		this.domicilio = domicilio;
 		this.encargado = encargado;
 		this.lstEmpleados = lstEmpleados;
@@ -39,6 +40,18 @@ public class Sucursal {
 	 */
 	public void setIdSucursal(long idSucursal) {
 		this.idSucursal = idSucursal;
+	}
+	/**
+	 * @return the sucursal
+	 */
+	public String getSucursal() {
+		return sucursal;
+	}
+	/**
+	 * @param sucursal the sucursal to set
+	 */
+	public void setSucursal(String sucursal) {
+		this.sucursal = sucursal;
 	}
 	/**
 	 * @return the domicilio
@@ -81,8 +94,9 @@ public class Sucursal {
 	 */
 	@Override
 	public String toString() {
-		return "Sucursal [idSucursal=" + idSucursal + ", domicilio=" + domicilio + ", encargado=" + encargado
+		return "Sucursal [sucursal=" + sucursal + ", domicilio=" + domicilio + ", encargado=" + encargado
 				+ ", lstEmpleados=" + lstEmpleados + "]";
 	}
+	
 	
 }
