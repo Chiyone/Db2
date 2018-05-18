@@ -1,6 +1,7 @@
 package datos;
 
 public class Persona {
+	protected long idPersona;
 	private long dni;
 	private String nombre;
 	private String apellido;
@@ -22,6 +23,14 @@ public class Persona {
 		this.apellido = apellido;
 		this.domicilio = domicilio;
 	}
+	public long getIdPersona() {
+		return idPersona;
+	}
+	
+	public void setIdPersona(long idPersona) {
+		this.idPersona = idPersona;
+	}
+	
 	/**
 	 * @return the dni
 	 */

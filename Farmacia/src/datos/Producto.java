@@ -1,7 +1,7 @@
 package datos;
 
 public class Producto {
-
+	protected long idProducto;
 	private long codNum;
 	private String descripcion;
 	private String tipo ;
@@ -21,6 +21,14 @@ public class Producto {
 		super();
 	}
 
+	public long getIdProducto() {
+		return idProducto;
+	}
+	
+	public void setIdProducto(long idProducto) {
+		this.idProducto = idProducto;
+	}
+	
 	public long getCodNum() {
 		return codNum;
 	}

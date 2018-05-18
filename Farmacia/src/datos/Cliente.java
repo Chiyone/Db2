@@ -1,7 +1,7 @@
 package datos;
 
 public class Cliente extends Persona  {
-
+	private long idCliente;
 	private long numAfiliado;
 	private ObraSocial obraSoc;
 	/**
@@ -29,6 +29,17 @@ public class Cliente extends Persona  {
 		super(dni, nombre, apellido, domicilio);
 		this.numAfiliado = numAfiliado;
 		this.obraSoc = obraSoc;
+	}
+
+	
+
+	public long getIdCliente() {
+		return idCliente;
+	}
+
+
+	public void setIdCliente(long idCliente) {
+		this.idCliente = idCliente;
 	}
 
 
