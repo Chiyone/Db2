@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name = "datos.Persona" table = "Persona">
+<id column = "idPersona" name = "idPersona" >
+<generator class = "identity" />
+</id >
+<property column = "dni" name = "dni" type = "long" />
+<property column = "nombre" name = "nombre" type = "String" />
+<property column = "apellido" name ="apellido" type = "String" />
+
+
+ 
+<joined-subclass name="datos.Cliente" table="cliente">
+	<key column="idCliente"/>
+<property column = "numAfiliado" name ="numAfiliado" type = "long" />
+</joined-subclass>
+
+<joined-subclass name="datos.Empleado" table="empleado">
+	<key column="idEmpleado"/>
+<property column = "cuil" name ="cuil" type = "long" />
+<property column = "numAfiliado" name ="numAfiliado" type = "long" />
+</joined-subclass>
+
+</class >
+
+</hibernate-mapping>

@@ -8,6 +8,7 @@ package datos;
  *
  */
 public class Empleado extends Persona {
+	private long idEmpleado;
 	private long cuil;
 	private long numAfiliado;
 	private ObraSocial obraSoc;
@@ -43,6 +44,16 @@ public class Empleado extends Persona {
 
 	
 	
+	public long getIdEmpleado() {
+		return idEmpleado;
+	}
+
+
+	public void setIdEmpleado(long idEmpleado) {
+		this.idEmpleado = idEmpleado;
+	}
+
+
 	/**
 	 * @return the cuil
 	 */

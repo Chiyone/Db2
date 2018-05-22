@@ -3,6 +3,7 @@ import java.util.GregorianCalendar;
 import java.util.Set;
 
 public class Venta {
+	protected long idVenta;
 	private String numTicket;
 	private double totalVenta ;
 	private GregorianCalendar fecha ;
@@ -38,6 +39,14 @@ public class Venta {
 	 */
 	public Venta() {
 		super();
+	}
+	
+	public long getIdVenta() {
+		return idVenta;
+	}
+	
+	public void setIdVenta(long idVenta) {
+		this.idVenta = idVenta;
 	}
 	/**
 	 * @return the numTicket
