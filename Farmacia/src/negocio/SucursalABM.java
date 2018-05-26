@@ -14,7 +14,7 @@ public class SucursalABM {
 
 	public Sucursal traerSucursal(long idSucursal) throws Exception {
 		Sucursal c = dao.traerSucursal(idSucursal);
-			if(dao.traerSucursal(idSucursal)==null)
+			if(c==null)
 				throw new Exception ("Id incorrecto: la Sucursal no existe");
 		return c;
 	}

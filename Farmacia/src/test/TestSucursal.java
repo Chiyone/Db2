@@ -12,7 +12,7 @@ import datos.Sucursal;
 
 public class TestSucursal {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
 		Domicilio domicilio=null;
@@ -20,7 +20,7 @@ public class TestSucursal {
 		Set<Empleado> lstEmpleados=null;
 		SucursalABM suc=new SucursalABM();
 		suc.agregar("baradero", domicilio, encargado, lstEmpleados);
-		
+		suc.traerSucursal(1);
 		
 		
 		

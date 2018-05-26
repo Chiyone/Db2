@@ -72,7 +72,7 @@ public class SucursalDao {
 			}
 		}
 		
-		public Sucursal traerSucursal( long idSucursal) throws HibernateException {
+	/*	public Sucursal traerSucursal( long idSucursal) throws HibernateException {
 			Sucursal objeto = null ;
 			try {
 				iniciaOperacion();
@@ -82,6 +82,17 @@ public class SucursalDao {
 				session.close();
 				}
 				return objeto;
+		}*/
+		public Sucursal traerSucursal(long idSucursal) throws HibernateException {
+			Sucursal objeto = null ;
+			try {
+				iniciaOperacion();
+				objeto = (Sucursal) session.createQuery( "from Sucursal s where s.idSucursal="+idSucursal).uniqueResult();
+			} 
+			finally {
+				session.close();
+			}
+			return objeto;
 		}
 		
 		

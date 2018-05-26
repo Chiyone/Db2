@@ -14,7 +14,10 @@ public class Cliente extends Persona  {
 		super(dni, nombre, apellido, domicilio);
 		// TODO Auto-generated constructor stub
 	}
-	
+	public Cliente() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	/**
 	 * @param dni
@@ -80,7 +83,7 @@ public class Cliente extends Persona  {
 	 */
 	@Override
 	public String toString() {
-		return "Cliente [numAfiliado=" + numAfiliado + ", obraSoc=" + obraSoc + "]";
+		return "Cliente [numAfiliado=" + numAfiliado + " Persona= "+this.getApellido()+", obraSoc=" + obraSoc + "]";
 	}
 	
 	

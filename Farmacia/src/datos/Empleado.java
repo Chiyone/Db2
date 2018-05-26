@@ -27,19 +27,29 @@ public class Empleado extends Persona {
 	 * @param obraSoc
 	 * @param sucursal
 	 */
-	public Empleado(long dni, String nombre, String apellido, Domicilio domicilio, long cuil, long numAfiliado,
+/*	public Empleado(long dni, String nombre, String apellido, Domicilio domicilio, long cuil, long numAfiliado,
 			ObraSocial obraSoc, Sucursal sucursal) {
 		super(dni, nombre, apellido, domicilio);
 		this.cuil = cuil;
 		this.numAfiliado = numAfiliado;
 		this.obraSoc = obraSoc;
 		this.sucursal = sucursal;
+	}*/
+	public Empleado(long dni, String nombre, String apellido, long cuil, long numAfiliado
+			) {
+		super(dni, nombre, apellido,null);
+		this.cuil = cuil;
+		this.numAfiliado = numAfiliado;
+		
 	}
 
 	
 	public Empleado(long dni, String nombre, String apellido, Domicilio domicilio) {
 		super(dni, nombre, apellido, domicilio);
 		// TODO Auto-generated constructor stub
+	}
+	public Empleado() {
+		
 	}
 
 	
@@ -115,7 +125,7 @@ public class Empleado extends Persona {
 	 */
 	@Override
 	public String toString() {
-		return "Empleado [cuil=" + cuil + ", numAfiliado=" + numAfiliado + ", obraSoc=" + obraSoc + ", sucursal="
+		return "Empleado [cuil=" + cuil + " persona="+this.getApellido()+", numAfiliado=" + numAfiliado + ", obraSoc=" + obraSoc + ", sucursal="
 				+ sucursal + "]";
 	}
 	

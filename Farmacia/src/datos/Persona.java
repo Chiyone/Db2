@@ -17,11 +17,21 @@ public class Persona {
 	 * @param apellido
 	 * @param domicilio
 	 */
+	/*
 	public Persona(long dni, String nombre, String apellido, Domicilio domicilio) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.domicilio = domicilio;
+	}*/
+	public Persona() {
+	}
+	
+	public Persona(long dni, String nombre, String apellido, Domicilio domicilio) {
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		
 	}
 	public long getIdPersona() {
 		return idPersona;

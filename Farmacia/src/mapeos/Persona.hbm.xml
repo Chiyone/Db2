@@ -7,8 +7,8 @@
 <generator class = "identity" />
 </id >
 <property column = "dni" name = "dni" type = "long" />
-<property column = "nombre" name = "nombre" type = "String" />
-<property column = "apellido" name ="apellido" type = "String" />
+<property column = "nombre" name = "nombre" type = "string" />
+<property column = "apellido" name ="apellido" type = "string" />
 
 
  
