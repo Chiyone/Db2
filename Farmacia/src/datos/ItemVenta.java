@@ -2,11 +2,22 @@ package datos;
 
 public class ItemVenta {
 	private long idItemVenta;
-	private Producto producto;
+	
 	private int cantidad;
 	private double precioTotal;
 	private double precioUnitario;
+	
+	private Producto producto;
 	private Venta venta;
+	
+	/*public ItemVenta(int cantidad, double precioTotal, double precioUnitario) {
+		super();
+		
+		this.cantidad = cantidad;
+		this.precioTotal = precioTotal;
+		this.precioUnitario = precioUnitario;
+		
+	}*/
 	public ItemVenta(Producto producto, int cantidad, double precioTotal, double precioUnitario,Venta venta) {
 		super();
 		this.producto = producto;
@@ -16,7 +27,7 @@ public class ItemVenta {
 		this.venta=venta;
 	}
 	public ItemVenta() {
-		super();
+		
 	}
 	public long getIdItemVenta() {
 		return idItemVenta;

@@ -7,9 +7,9 @@ public class ObraSocial {
 	public ObraSocial() {
 		super();
 	}
-	public ObraSocial(long idObraSoc, String nombre) {
+	public ObraSocial(String nombre) {
 		super();
-		this.idObraSoc = idObraSoc;
+		
 		this.nombre = nombre;
 	}
 	

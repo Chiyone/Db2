@@ -24,7 +24,7 @@ public class ItemVentaDao {
 			int id = 0;
 			try {
 				iniciaOperacion();
-				id = Integer.parseInt ( session.save(objeto).toString());
+				id =Integer.parseInt(session.save(objeto).toString());
 				tx.commit();
 				
 			} 

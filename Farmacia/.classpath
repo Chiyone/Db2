@@ -2,14 +2,14 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/claud/Desktop/Db2-Lucio/Farmacia/Librerias/antlr-2.7.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/claud/Desktop/Db2-Lucio/Farmacia/Librerias/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/claud/Desktop/Db2-Lucio/Farmacia/Librerias/hibernate-commons-annotations-4.0.1.Final.jar"/>
-	<classpathentry kind="lib" path="C:/Users/claud/Desktop/Db2-Lucio/Farmacia/Librerias/hibernate-core-4.1.9.Final.jar"/>
-	<classpathentry kind="lib" path="C:/Users/claud/Desktop/Db2-Lucio/Farmacia/Librerias/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
-	<classpathentry kind="lib" path="C:/Users/claud/Desktop/Db2-Lucio/Farmacia/Librerias/javassist-3.17.1-GA.jar"/>
-	<classpathentry kind="lib" path="C:/Users/claud/Desktop/Db2-Lucio/Farmacia/Librerias/jboss-logging-3.1.0.GA.jar"/>
-	<classpathentry kind="lib" path="C:/Users/claud/Desktop/Db2-Lucio/Farmacia/Librerias/jboss-transaction-api_1.1_spec-1.0.0.Final.jar"/>
-	<classpathentry kind="lib" path="C:/Users/claud/Desktop/Db2-Lucio/Farmacia/Librerias/mysql-connector-java-5.1.18.jar"/>
+	<classpathentry kind="lib" path="C:/Users/juan9/OneDrive/Escritorio/Db2/Farmacia/Librerias/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/juan9/OneDrive/Escritorio/Db2/Farmacia/Librerias/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/juan9/OneDrive/Escritorio/Db2/Farmacia/Librerias/hibernate-commons-annotations-4.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/juan9/OneDrive/Escritorio/Db2/Farmacia/Librerias/hibernate-core-4.1.9.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/juan9/OneDrive/Escritorio/Db2/Farmacia/Librerias/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/juan9/OneDrive/Escritorio/Db2/Farmacia/Librerias/javassist-3.17.1-GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/juan9/OneDrive/Escritorio/Db2/Farmacia/Librerias/jboss-logging-3.1.0.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/juan9/OneDrive/Escritorio/Db2/Farmacia/Librerias/jboss-transaction-api_1.1_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/juan9/OneDrive/Escritorio/Db2/Farmacia/Librerias/mysql-connector-java-5.1.18.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -4,18 +4,24 @@
 <hibernate-configuration>
  <session-factory>
  <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
- <property name="connection.url">jdbc:mysql://localhost/farmacia?createDatabaseIfNotExist=true</property>
+ <property name="connection.url">jdbc:mysql://localhost/farmacia?createDatabaseIfNotExist=True</property>
  <property name="connection.username">root</property>
  <property name="connection.password">root</property>
  <property name="connection.pool_size">1</property>
  <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
- 
+ <!-- <property name ="hibernate.hbm2ddl.auto">create</property> -drop?createTableIfNotExist=True-->
  <property name="show_sql">true</property> <!-- en true muestra hql en consola-->
  
- <property name ="hibernate.hbm2ddl.auto">create-drop </property>
+
  <!--Mapeo Entidades -->
-	 <mapping resource="mapeos/Sucursal.hbm.xml"/>
-	 <!-- <mapping resource="mapeos/Persona.hbm.xml"/> -->
+	<mapping resource="mapeos/Sucursal.hbm.xml"/>
+	<mapping resource="mapeos/Persona.hbm.xml"/> 
+	<mapping resource="mapeos/ObraSocial.hbm.xml"/>
+	<mapping resource="mapeos/Domicilio.hbm.xml"/>
+	<mapping resource="mapeos/Producto.hbm.xml"/>
+	<mapping resource="mapeos/ItemVenta.hbm.xml"/>
+	<mapping resource="mapeos/Venta.hbm.xml"/>
+	
 	
  </session-factory>
 </hibernate-configuration>

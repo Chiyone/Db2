@@ -72,11 +72,11 @@ public class ProductoDao {
 			}
 		}
 		
-		public Producto traerProducto( long codNum) throws HibernateException {
+		public Producto traerProducto( int idProducto) throws HibernateException {
 			Producto objeto = null ;
 			try {
 				iniciaOperacion();
-				objeto = (Producto) session.get(Producto.class , codNum);
+				objeto = (Producto) session.get(Producto.class , idProducto);
 			} 
 			finally {
 				session.close();

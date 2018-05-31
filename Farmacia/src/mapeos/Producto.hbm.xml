@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name = "datos.Producto" table = "Producto">
+<id column = "idProducto" name = "idProducto" >
+<generator class = "identity" />
+</id >
+<property column = "codNum" name = "codNum" type = "long" />
+<property column = "descripcion" name = "descripcion" type = "string" />
+<property column = "tipo" name = "tipo" type = "string" />
+<property column = "precio" name = "precio" type = "float" />
+<property column = "laboratorio" name = "laboratorio" type = "string" />
+</class >
+
+</hibernate-mapping>

@@ -1,14 +1,14 @@
 package datos;
 
 public class Producto {
-	protected long idProducto;
+	protected int idProducto;
 	private long codNum;
 	private String descripcion;
 	private String tipo ;
-	private double precio;
+	private float precio;
 	private String laboratorio;
 	
-	public Producto(long codNum, String descripcion, String tipo, double precio, String laboratorio) {
+	public Producto(long codNum, String descripcion, String tipo, float precio, String laboratorio) {
 		super();
 		this.codNum = codNum;
 		this.descripcion = descripcion;
@@ -21,11 +21,11 @@ public class Producto {
 		super();
 	}
 
-	public long getIdProducto() {
+	public int getIdProducto() {
 		return idProducto;
 	}
 	
-	public void setIdProducto(long idProducto) {
+	public void setIdProducto(int idProducto) {
 		this.idProducto = idProducto;
 	}
 	
@@ -53,11 +53,11 @@ public class Producto {
 		this.tipo = tipo;
 	}
 
-	public double getPrecio() {
+	public float getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(double precio) {
+	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
 
