@@ -9,15 +9,15 @@
  <property name="connection.password">root</property>
  <property name="connection.pool_size">1</property>
  <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-<property name ="hibernate.hbm2ddl.auto">create-drop</property>
+ <property name ="hibernate.hbm2ddl.auto">create-drop</property>
  <property name="show_sql">true</property> <!-- en true muestra hql en consola-->
  
 
  <!--Mapeo Entidades -->
+ 	<mapping resource="mapeos/Domicilio.hbm.xml"/>
 	<mapping resource="mapeos/Sucursal.hbm.xml"/>
 	<mapping resource="mapeos/Persona.hbm.xml"/> 
 	<mapping resource="mapeos/ObraSocial.hbm.xml"/>
-	<mapping resource="mapeos/Domicilio.hbm.xml"/>
 	<mapping resource="mapeos/Producto.hbm.xml"/>
 	<mapping resource="mapeos/ItemVenta.hbm.xml"/>
 	<mapping resource="mapeos/Venta.hbm.xml"/>

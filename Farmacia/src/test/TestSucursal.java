@@ -1,4 +1,5 @@
 package test;
+import negocio.DomicilioABM;
 import negocio.SucursalABM;
 
 import java.util.List;
@@ -15,15 +16,14 @@ public class TestSucursal {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
-		Domicilio domicilio=null;
+	
 		Empleado encargado=null; 
 		Set<Empleado> lstEmpleados=null;
 		SucursalABM suc=new SucursalABM();
-		suc.agregar("baradero", domicilio, encargado, lstEmpleados);
-		suc.traerSucursal(1);
-		
-		
-		
+		DomicilioABM abm = new DomicilioABM();
+		abm.agregar("Azara", 2069, "Buenos Aires", "Banfield");
+		suc.agregar("baradero", abm.traerDomicilio(1), encargado, lstEmpleados);
+		suc.traerSucursal(1);	
 	}
 
 }

@@ -2,15 +2,25 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-<class name = "datos.Domicilio" table = "Domicilio">
-<id column = "idDomicilio" name = "idDomicilio" >
-<generator class = "identity" />
-</id >
-<property column = "calle" name = "calle" type = "string" />
-<property column = "numero" name = "numero" type = "int" />
-<property column = "provincia" name = "provincia" type = "string" />
-<property column = "localidad" name = "localidad" type = "string" />
-
-</class >
+	<class name="datos.Domicilio" table="Domicilio">
+		<id column="idDomicilio" name="idDomicilio">
+			<generator class="identity" />
+		</id>
+		<property column="calle" name="calle" type="string" />
+		<property column="numero" name="numero" type="int" />
+		<property column="provincia" name="provincia" type="string" />
+		<property column="localidad" name="localidad" type="string" />
+		<set name="lstSucursal" table="Sucursal" order-by="idSucursal asc"
+			inverse="true" lazy="true" fetch="select">
+			<key column="idDomicilio" not-null="false" />
+			<one-to-many class="datos.Sucursal" />
+		</set>		
+		<set name="lstPersona" table="Persona" order-by="dni asc"
+			inverse="true" lazy="true" fetch="select">
+			<key column="idDomicilio" not-null="false" />
+			<one-to-many class="datos.Persona" />
+		</set>
+		
+	</class>
 
 </hibernate-mapping>

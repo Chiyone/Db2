@@ -2,12 +2,14 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-<class name = "datos.Sucursal" table = "Sucursal">
-<id column = "idSucursal" name = "idSucursal" >
-<generator class = "identity" />
-</id >
-<property column = "sucursal" name = "sucursal" type = "string" />
-
-</class >
+	<class name="datos.Sucursal" table="Sucursal">
+		<id column="idSucursal" name="idSucursal">
+			<generator class="identity" />
+		</id>
+		<property column="sucursal" name="sucursal" type="string" />
+		
+		<many-to-one name="Domicilio" class="datos.Domicilio"
+			column="idDomicilio" not-null="true" />
+	</class>
 
 </hibernate-mapping>

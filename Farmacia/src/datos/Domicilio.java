@@ -1,11 +1,16 @@
 package datos;
 
+import java.util.Set;
+
 public class Domicilio {
 	private long idDomicilio;
 	private String calle;
 	private int numero;
 	private String provincia;
 	private String localidad;
+	private Set<Sucursal> lstSucursal;
+	private Set<Persona> lstPersona;
+	
 	public Domicilio() {
 		super();
 	}
@@ -46,6 +51,23 @@ public class Domicilio {
 	}
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
+	}
+	
+	
+	public Set<Sucursal> getLstSucursal() {
+		return lstSucursal;
+	}
+	public void setLstSucursal(Set<Sucursal> lstSucursal) {
+		this.lstSucursal = lstSucursal;
+	}
+	
+	
+	
+	public Set<Persona> getLstPersona() {
+		return lstPersona;
+	}
+	public void setLstPersona(Set<Persona> lstPersona) {
+		this.lstPersona = lstPersona;
 	}
 	@Override
 	public String toString() {
