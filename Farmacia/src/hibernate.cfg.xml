@@ -9,7 +9,7 @@
  <property name="connection.password">root</property>
  <property name="connection.pool_size">1</property>
  <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
- <!-- <property name ="hibernate.hbm2ddl.auto">create</property> -drop?createTableIfNotExist=True-->
+ <!--<property name ="hibernate.hbm2ddl.auto">create</property>  -drop?createTableIfNotExist=True-->
  <property name="show_sql">true</property> <!-- en true muestra hql en consola-->
  
 
@@ -21,7 +21,7 @@
 	<mapping resource="mapeos/Producto.hbm.xml"/>
 	<mapping resource="mapeos/ItemVenta.hbm.xml"/>
 	<mapping resource="mapeos/Venta.hbm.xml"/>
-	
+	<mapping resource="mapeos/Pago.hbm.xml"/>
 	
  </session-factory>
 </hibernate-configuration>

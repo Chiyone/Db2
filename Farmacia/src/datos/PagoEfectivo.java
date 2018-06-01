@@ -1,7 +1,7 @@
 package datos;
 
 public class PagoEfectivo extends Pago{
-	
+	private long idPagoEfectivo;
 	private double vuelto;
 
 	/**
@@ -22,12 +22,35 @@ public class PagoEfectivo extends Pago{
 		super(monto, cliente, tpoPago);
 		this.vuelto = vuelto;
 	}
+	
+	
 
 	/**
 	 * @return the vuelto
 	 */
+	
+	
+	
+	
+	
 	public double getVuelto() {
 		return vuelto;
+	}
+
+	public long getIdPagoEfectivo() {
+		return idPagoEfectivo;
+	}
+
+	public void setIdPagoEfectivo(long idPagoEfectivo) {
+		this.idPagoEfectivo = idPagoEfectivo;
+	}
+
+	public long getIdPagoCheque() {
+		return idPagoEfectivo;
+	}
+
+	public void setIdPagoCheque(long idPagoCheque) {
+		this.idPagoEfectivo = idPagoCheque;
 	}
 
 	/**

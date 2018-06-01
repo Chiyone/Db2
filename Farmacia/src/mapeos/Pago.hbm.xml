@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name = "datos.Pago" table = "Pago">
+<id column = "idPago" name = "idPago" >
+<generator class = "identity" />
+</id >
+<property column = "monto" name = "monto" type = "double" />
+<property column = "tpoPago" name ="tpoPago" type = "string" />
+
+
+<joined-subclass name="datos.PagoCheque" table="PagoCheque">
+	<key column="idPagoCheque"/>
+<property column = "numCuenta" name ="numCuenta" type = "long" />
+<property column = "banco" name ="banco" type = "string" />
+</joined-subclass>
+
+<joined-subclass name="datos.PagoEfectivo" table="PagoEfectivo">
+	<key column="idPagoEfectivo"/>
+<property column = "vuelto" name ="vuelto" type = "double" />
+
+</joined-subclass>
+ 
+<joined-subclass name="datos.PagoTarjeta" table="PagoTarjeta">
+	<key column="idPagoTarjeta"/>
+<property column = "tarjeta" name ="tarjeta" type = "long" />
+<property column = "precioCuota" name ="precioCuota" type = "double" />
+<property column = "cantCuotas" name ="cantCuotas" type = "int" />
+</joined-subclass>
+ 
+</class >
+
+</hibernate-mapping>

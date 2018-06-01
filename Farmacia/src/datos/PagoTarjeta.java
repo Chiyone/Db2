@@ -1,6 +1,7 @@
 package datos;
 
 public class PagoTarjeta extends Pago{
+	private long idPagoTarjeta;
 	private long tarjeta;
 	private int cantCuotas;
 	private double precioCuota;
@@ -34,8 +35,20 @@ public class PagoTarjeta extends Pago{
 	/**
 	 * @return the tarjeta
 	 */
+	
+	
 	public long getTarjeta() {
 		return tarjeta;
+	}
+
+
+	public long getIdPagoTarjeta() {
+		return idPagoTarjeta;
+	}
+
+
+	public void setIdPagoTarjeta(long idPagoTarjeta) {
+		this.idPagoTarjeta = idPagoTarjeta;
 	}
 
 

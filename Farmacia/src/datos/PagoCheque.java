@@ -1,6 +1,7 @@
 package datos;
 
 public class PagoCheque extends Pago{
+	private long idPagoCheque;
 	
 	private long numCuenta;
 	private String banco;
@@ -26,6 +27,17 @@ public class PagoCheque extends Pago{
 		super(monto, cliente, tpoPago);
 		this.numCuenta = numCuenta;
 		this.banco = banco;
+	}
+
+	
+
+	public long getIdPagoCheque() {
+		return idPagoCheque;
+	}
+
+
+	public void setIdPagoCheque(long idPagoCheque) {
+		this.idPagoCheque = idPagoCheque;
 	}
 
 
