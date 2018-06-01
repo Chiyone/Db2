@@ -2,14 +2,14 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-<class name = "datos.ItemVenta" table = "ItemVenta">
-<id column = "idItemVenta" name = "idItemVenta" >
-<generator class = "identity" />
-</id >
-<property column = "cantidad" name = "cantidad" type = "int" />
-<property column = "precioTotal" name = "precioTotal" type = "double" />
-<property column = "precioUnitario" name = "precioUnitario" type = "double" />
-
-</class >
-
+	<class name="datos.ItemVenta" table="ItemVenta">
+		<id column="idItemVenta" name="idItemVenta">
+			<generator class="identity" />
+		</id>
+		<property column="cantidad" name="cantidad" type="int" />
+		<property column="precioTotal" name="precioTotal" type="double" />
+		<property column="precioUnitario" name="precioUnitario" type="double" />
+		<many-to-one name="Producto" class="datos.Producto" column="idProducto"
+			not-null="true" />
+	</class>
 </hibernate-mapping>

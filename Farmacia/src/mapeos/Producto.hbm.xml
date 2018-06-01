@@ -2,15 +2,20 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-<class name = "datos.Producto" table = "Producto">
-<id column = "idProducto" name = "idProducto" >
-<generator class = "identity" />
-</id >
-<property column = "codNum" name = "codNum" type = "long" />
-<property column = "descripcion" name = "descripcion" type = "string" />
-<property column = "tipo" name = "tipo" type = "string" />
-<property column = "precio" name = "precio" type = "float" />
-<property column = "laboratorio" name = "laboratorio" type = "string" />
-</class >
+	<class name="datos.Producto" table="Producto">
+		<id column="idProducto" name="idProducto">
+			<generator class="identity" />
+		</id>
+		<property column="codNum" name="codNum" type="long" />
+		<property column="descripcion" name="descripcion" type="string" />
+		<property column="tipo" name="tipo" type="string" />
+		<property column="precio" name="precio" type="float" />
+		<property column="laboratorio" name="laboratorio" type="string" />
+		<set name="lstItemVenta" table="ItemVenta" order-by="idItemVenta asc"
+			inverse="true" lazy="true" fetch="select">
+			<key column="idProducto" not-null="true" />
+			<one-to-many class="datos.ItemVenta" />
+		</set>
+	</class>
 
 </hibernate-mapping>

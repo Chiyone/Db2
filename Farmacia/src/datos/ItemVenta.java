@@ -2,7 +2,7 @@ package datos;
 
 public class ItemVenta {
 	private long idItemVenta;
-	
+
 	private int cantidad;
 	private double precioTotal;
 	private double precioUnitario;

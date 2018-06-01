@@ -1,5 +1,7 @@
 package datos;
 
+import java.util.Set;
+
 public class Producto {
 	protected int idProducto;
 	private long codNum;
@@ -7,6 +9,7 @@ public class Producto {
 	private String tipo ;
 	private float precio;
 	private String laboratorio;
+	private Set<ItemVenta> lstItemVenta;
 	
 	public Producto(long codNum, String descripcion, String tipo, float precio, String laboratorio) {
 		super();
@@ -67,6 +70,16 @@ public class Producto {
 
 	public void setLaboratorio(String laboratorio) {
 		this.laboratorio = laboratorio;
+	}
+
+	
+	
+	public Set<ItemVenta> getLstItemVenta() {
+		return lstItemVenta;
+	}
+
+	public void setLstItemVenta(Set<ItemVenta> lstItemVenta) {
+		this.lstItemVenta = lstItemVenta;
 	}
 
 	@Override

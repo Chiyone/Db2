@@ -11,11 +11,11 @@ public class TestPago {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
-		/*
+		
 		PagoABM.getInstance().agregar(55, null, "qti");
 		PagoChequeABM.getInstance().agregar(33, null, "cheque", 111111, "cabal");
 		PagoEfectivoABM.getInstance().agregar(44, null, "efectivo", 4);
-		PagoTarjetaABM.getInstance().agregar(80, null, "tarjeta", 444433333, 4, 20);*/
+		PagoTarjetaABM.getInstance().agregar(80, null, "tarjeta", 444433333, 4, 20);
 		System.out.println("traer1=\n");
 		System.out.println(PagoABM.getInstance().traer(1));
 		
