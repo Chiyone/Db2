@@ -31,6 +31,7 @@ public class Persona {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.domicilio=domicilio;
 		
 	}
 	public long getIdPersona() {
@@ -94,8 +95,7 @@ public class Persona {
 	 */
 	@Override
 	public String toString() {
-		return "Persona [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" + domicilio
-				+ "]";
+		return "Persona [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" +domicilio.getCalle()+" "+domicilio.getNumero()+ "]";
 	}
 	
 }

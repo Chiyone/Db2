@@ -30,7 +30,9 @@ public class PersonaDao {
 		Persona objeto = null ;
 		try {
 			iniciaOperacion();
-			objeto = (Persona) session .createQuery( "from Persona c where c.idPersona =" + idPersona ).uniqueResult();
+			objeto = (Persona) session .createQuery( "from Persona p join "+
+													"fetch p.Domicilio "+
+													"where p.idPersona =" + idPersona ).uniqueResult();
 		} finally {
 			session .close();
 		}

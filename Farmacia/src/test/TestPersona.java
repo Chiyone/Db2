@@ -20,12 +20,16 @@ public class TestPersona {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		DomicilioABM abm = new DomicilioABM();
+		abm.agregar("San ignacio", 2069, "Buenos Aires", "Banfield");
 		abm.agregar("Azara", 2069, "Buenos Aires", "Banfield");
-		Domicilio dom = abm.traerDomicilio(1);
-		PersonaABM.getInstance().agregar(39666566, "juju", "yoyo", null);
-		ClienteABM.getInstance().agregar(3333333, "lulu", "hh", null, 222222, null);
-		EmpleadoABM.getInstance().agregar(4444, "eee", "San", null, 1111111, 222111, null, null);
-	/*	System.out.println("traer1=\n");
+		abm.agregar("Alsina", 2069, "Buenos Aires", "Banfield");
+		Domicilio dom1 = abm.traerDomicilio(2);
+		Domicilio dom2 = abm.traerDomicilio(1);
+		Domicilio dom3 = abm.traerDomicilio(3);
+		PersonaABM.getInstance().agregar(39666566, "juju", "yoyo", dom1);
+		ClienteABM.getInstance().agregar(3333333, "lulu", "hh", dom2, 222222, null);
+		EmpleadoABM.getInstance().agregar(4444, "eee", "San", dom3, 1111111, 222111, null, null);
+		System.out.println("traer1=\n");
 		System.out.println(PersonaABM.getInstance().traer(1));
 		System.out.println("traer2=\n");
 		System.out.println(PersonaABM.getInstance().traer(2));
@@ -40,7 +44,7 @@ public class TestPersona {
 		System.out.println("traer all clientes=\n");
 		System.out.println(ClienteABM.getInstance().traerClientes());
 		System.out.println("traer all empleados=\n");
-		System.out.println(EmpleadoABM.getInstance().traerEmpleados());*/
+		System.out.println(EmpleadoABM.getInstance().traerEmpleados());
 
 		
 		
