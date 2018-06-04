@@ -76,7 +76,7 @@ public class ItemVentaDao {
 			ItemVenta objeto = null ;
 			try {
 				iniciaOperacion();
-				objeto = (ItemVenta) session.get(ItemVenta.class , idItemVenta);
+				objeto = (ItemVenta) session.createQuery( "from ItemVenta i join fetch i.Producto join fetch i.Venta where i.idItemVenta="+(idItemVenta)).uniqueResult();
 			} 
 			finally {
 				session.close();

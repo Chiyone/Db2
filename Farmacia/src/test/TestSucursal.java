@@ -24,6 +24,7 @@ public class TestSucursal {
 		abm.agregar("Azara", 2069, "Buenos Aires", "Banfield");
 		suc.agregar("baradero", abm.traerDomicilio(1), encargado, lstEmpleados);
 		suc.traerSucursal(1);	
+		System.out.println(suc.traerSucursal(1));
 	}
 
 }

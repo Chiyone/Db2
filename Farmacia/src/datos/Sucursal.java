@@ -10,6 +10,7 @@ public class Sucursal {
 	private Domicilio domicilio;
 	private Empleado encargado;
 	private Set<Empleado> lstEmpleados;
+	private Set<Venta> ventasSuc;
 	/**
 	 * 
 	 */
@@ -88,6 +89,14 @@ public class Sucursal {
 	 */
 	public void setLstEmpleados(Set<Empleado> lstEmpleados) {
 		this.lstEmpleados = lstEmpleados;
+	}
+	
+	
+	public Set<Venta> getVentasSuc() {
+		return ventasSuc;
+	}
+	public void setVentasSuc(Set<Venta> ventasSuc) {
+		this.ventasSuc = ventasSuc;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

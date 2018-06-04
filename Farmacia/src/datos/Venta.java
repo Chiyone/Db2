@@ -23,7 +23,7 @@ public class Venta {
 	 * @param pago
 	 */
 	public Venta(String numTicket, double totalVenta, GregorianCalendar fecha, Empleado eAtendio, Empleado eCobro,
-			Sucursal sucursal, Set<ItemVenta> itemsVenta, Pago pago) {
+			Sucursal sucursal, Pago pago) {
 		super();
 		this.numTicket = numTicket;
 		this.totalVenta = totalVenta;
@@ -31,7 +31,7 @@ public class Venta {
 		this.eAtendio = eAtendio;
 		this.eCobro = eCobro;
 		this.sucursal = sucursal;
-		this.itemsVenta = itemsVenta;
+
 		this.pago = pago;
 	}
 	/**
@@ -150,7 +150,7 @@ public class Venta {
 	@Override
 	public String toString() {
 		return "Venta [numTicket=" + numTicket + ", totalVenta=" + totalVenta + ", fecha=" + fecha + ", eAtendio="
-				+ eAtendio + ", eCobro=" + eCobro + ", sucursal=" + sucursal + ", itemsVenta=" + itemsVenta + "]";
+				+ eAtendio + ", eCobro=" + eCobro + ", sucursal=" + sucursal + "]";
 	}
 	
 	

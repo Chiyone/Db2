@@ -25,8 +25,8 @@ public class VentaABM {
 	
 	
 	public int agregar(String numTicket, double totalVenta, GregorianCalendar fecha, Empleado eAtendio, Empleado eCobro,
-			Sucursal sucursal, Set<ItemVenta> itemsVenta, Pago pago) {
-		Venta s=new Venta( numTicket, totalVenta, fecha,eAtendio, eCobro,sucursal,itemsVenta,pago);
+			Sucursal sucursal, Pago pago) {
+		Venta s=new Venta( numTicket, totalVenta, fecha,eAtendio, eCobro,sucursal,pago);
 		return dao.agregar(s);
 		
 	}

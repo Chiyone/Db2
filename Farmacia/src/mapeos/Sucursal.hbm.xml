@@ -10,6 +10,12 @@
 		
 		<many-to-one name="Domicilio" class="datos.Domicilio"
 			column="idDomicilio" not-null="true" />
+			
+		<set name="ventasSuc" table="Venta" order-by="idVenta asc"
+			inverse="true" lazy="true" fetch="select">
+			<key column="idSucursal" not-null="true" />
+			<one-to-many class="datos.Venta" />
+		</set>
 	</class>
 
 </hibernate-mapping>

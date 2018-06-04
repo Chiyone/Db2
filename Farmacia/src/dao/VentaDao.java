@@ -72,11 +72,12 @@ public class VentaDao {
 			}
 		}
 		
-		public Venta traerVenta( long numTicket) throws HibernateException {
+		public Venta traerVenta( long idVenta) throws HibernateException {
 			Venta objeto = null ;
 			try {
 				iniciaOperacion();
-				objeto = (Venta) session.get(Venta.class , numTicket);
+				objeto = (Venta) session.createQuery( "from Venta v join fetch v.Sucursal join fetch v.Sucursal.Domicilio where v.idVenta="+(idVenta)).uniqueResult();
+				
 			} 
 			finally {
 				session.close();

@@ -87,7 +87,7 @@ public class SucursalDao {
 			Sucursal objeto = null ;
 			try {
 				iniciaOperacion();
-				objeto = (Sucursal) session.createQuery( "from Sucursal s where s.idSucursal="+idSucursal).uniqueResult();
+				objeto = (Sucursal) session.createQuery( "from Sucursal s join fetch s.Domicilio where s.idSucursal="+idSucursal).uniqueResult();
 			} 
 			finally {
 				session.close();
@@ -100,7 +100,7 @@ public class SucursalDao {
 			Sucursal objeto = null ;
 			try {
 				iniciaOperacion();
-				objeto = (Sucursal) session.createQuery( "from Sucursal s where s.sucursal="+(sucursal)).uniqueResult();
+				objeto = (Sucursal) session.createQuery( "from Sucursal s join fetch s.Domicilio where s.sucursal="+(sucursal)).uniqueResult();
 			} 
 			finally {
 				session.close();

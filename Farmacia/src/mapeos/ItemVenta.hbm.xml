@@ -11,5 +11,8 @@
 		<property column="precioUnitario" name="precioUnitario" type="double" />
 		<many-to-one name="Producto" class="datos.Producto" column="idProducto"
 			not-null="true" />
+		<many-to-one name="Venta" class="datos.Venta" column="idVenta"
+			not-null="true" />
+			
 	</class>
 </hibernate-mapping>

@@ -95,7 +95,7 @@ public class Persona {
 	 */
 	@Override
 	public String toString() {
-		return "Persona [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" +domicilio.getCalle()+" "+domicilio.getNumero()+ "]";
+		return "Persona [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" +domicilio.getIdDomicilio()+ "]";
 	}
 	
 }

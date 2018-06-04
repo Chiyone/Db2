@@ -32,7 +32,7 @@ public class PersonaDao {
 			iniciaOperacion();
 			objeto = (Persona) session .createQuery( "from Persona p join "+
 													"fetch p.Domicilio "+
-													"where p.idPersona =" + idPersona ).uniqueResult();
+													"where p.idPersona ="+idPersona ).uniqueResult();
 		} finally {
 			session .close();
 		}

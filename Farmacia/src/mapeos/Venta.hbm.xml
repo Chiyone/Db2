@@ -9,6 +9,16 @@
 <property column = "numTicket" name = "numTicket" type = "string" />
 <property column = "totalVenta" name = "totalVenta" type = "double" />
 <property column = "fecha" name = "fecha" type = "date" />
+
+<set name="itemsVenta" table="ItemVenta" order-by="idItemVenta asc"
+			inverse="true" lazy="true" fetch="select">
+			<key column="idVenta" not-null="true" />
+			<one-to-many class="datos.ItemVenta" />
+		</set><!-- order-by="idItemVenta asc" -->
+<many-to-one name="Sucursal" class="datos.Sucursal" column="idSucursal"
+			not-null="true" />
+
+
 </class >
 
 </hibernate-mapping>
