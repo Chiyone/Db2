@@ -150,7 +150,7 @@ public class Venta {
 	@Override
 	public String toString() {
 		return "Venta [numTicket=" + numTicket + ", totalVenta=" + totalVenta + ", fecha=" + fecha + ", eAtendio="
-				+ eAtendio + ", eCobro=" + eCobro + ", sucursal=" + sucursal + "]";
+				+ eAtendio + ", eCobro=" + eCobro + ", sucursal=" + sucursal + ", \nPago=" + pago+"]";
 	}
 	
 	

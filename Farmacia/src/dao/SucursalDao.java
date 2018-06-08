@@ -5,6 +5,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import datos.Empleado;
 import datos.Sucursal;
 public class SucursalDao {
 		private static Session session ;
@@ -87,7 +88,7 @@ public class SucursalDao {
 			Sucursal objeto = null ;
 			try {
 				iniciaOperacion();
-				objeto = (Sucursal) session.createQuery( "from Sucursal s join fetch s.Domicilio where s.idSucursal="+idSucursal).uniqueResult();
+				objeto = (Sucursal) session.createQuery( "from Sucursal s join fetch s.Domicilio  where s.idSucursal="+idSucursal).uniqueResult();
 			} 
 			finally {
 				session.close();
@@ -120,5 +121,7 @@ public class SucursalDao {
 				}
 			return lista;
 		}
+		
+		
 	
 }

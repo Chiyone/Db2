@@ -6,6 +6,7 @@ public class Pago {
 	private  double monto;
 	private Cliente cliente;
 	private String tpoPago;
+	private Venta venta;
 	public Pago() {
 		super();
 	}
@@ -67,6 +68,16 @@ public class Pago {
 	 */
 	public void setTpoPago(String tpoPago) {
 		this.tpoPago = tpoPago;
+	}
+	
+	
+	
+	
+	public Venta getVenta() {
+		return venta;
+	}
+	public void setVenta(Venta venta) {
+		this.venta = venta;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

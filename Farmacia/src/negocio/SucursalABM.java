@@ -12,6 +12,7 @@ public class SucursalABM {
 	
 	SucursalDao dao = new SucursalDao();
 
+
 	public Sucursal traerSucursal(long idSucursal) throws Exception {
 		Sucursal c = dao.traerSucursal(idSucursal);
 			if(c==null)
@@ -20,8 +21,8 @@ public class SucursalABM {
 	}
 	
 	
-	public int agregar(String sucursal, Domicilio domicilio, Empleado encargado, Set<Empleado> lstEmpleados) {
-		Sucursal s=new Sucursal(sucursal, domicilio, encargado,  lstEmpleados);
+	public int agregar(String sucursal, Domicilio domicilio) {
+		Sucursal s=new Sucursal(sucursal, domicilio);
 		return dao.agregar(s);
 		
 	}
@@ -45,6 +46,6 @@ public class SucursalABM {
 		return dao.traerSucursal();
 		}else throw new Exception ("No haySucursales en la base de datos");
 	}
-
+	
 
 }

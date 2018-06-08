@@ -13,7 +13,7 @@ public class Empleado extends Persona {
 	private long numAfiliado;
 	private ObraSocial obraSoc;
 	private Sucursal sucursal;
-	
+	private String tipoEmpleado;
 	
 
 	
@@ -28,12 +28,13 @@ public class Empleado extends Persona {
 	 * @param sucursal
 	 */
 public Empleado(long dni, String nombre, String apellido, Domicilio domicilio, long cuil, long numAfiliado,
-			ObraSocial obraSoc, Sucursal sucursal) {
+			ObraSocial obraSoc, Sucursal sucursal,String tipoEmpleado) {
 		super(dni, nombre, apellido, domicilio);
 		this.cuil = cuil;
 		this.numAfiliado = numAfiliado;
 		this.obraSoc = obraSoc;
 		this.sucursal = sucursal;
+		this.tipoEmpleado=tipoEmpleado;
 	}
 	/*public Empleado(long dni, String nombre, String apellido, long cuil, long numAfiliado
 			) {
@@ -44,16 +45,26 @@ public Empleado(long dni, String nombre, String apellido, Domicilio domicilio, l
 	}*/
 
 	
-	public Empleado(long dni, String nombre, String apellido, Domicilio domicilio) {
+	public Empleado(long dni, String nombre, String apellido, Domicilio domicilio,String tipoEmpleado) {
 		super(dni, nombre, apellido, domicilio);
 		// TODO Auto-generated constructor stub
 	}
 	public Empleado() {
 		
 	}
+	
+	
+	
+	public String getTipoEmpleado() {
+		return tipoEmpleado;
+	}
 
-	
-	
+
+	public void setTipoEmpleado(String tipoEmpleado) {
+		this.tipoEmpleado = tipoEmpleado;
+	}
+
+
 	public long getIdEmpleado() {
 		return idEmpleado;
 	}
@@ -120,13 +131,10 @@ public Empleado(long dni, String nombre, String apellido, Domicilio domicilio, l
 		this.sucursal = sucursal;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
-		return "Empleado [cuil=" + cuil + " persona="+this.getApellido()+", numAfiliado=" + numAfiliado + ", obraSoc=" + obraSoc + ", sucursal="
-				+ sucursal + "]";
+		return "Empleado [cuil=" + cuil + ", numAfiliado=" + numAfiliado + ", obraSoc="
+				+ obraSoc + ", sucursal=" + sucursal.getIdSucursal() + ", tipoEmpleado=" + tipoEmpleado + "]\n";
 	}
 	
 

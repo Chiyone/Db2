@@ -8,7 +8,6 @@ public class Sucursal {
 	protected long idSucursal;
 	private String sucursal;
 	private Domicilio domicilio;
-	private Empleado encargado;
 	private Set<Empleado> lstEmpleados;
 	private Set<Venta> ventasSuc;
 	/**
@@ -22,14 +21,24 @@ public class Sucursal {
 	 * @param domicilio
 	 * @param encargado
 	 * @param lstEmpleados
-	 */
-	public Sucursal(String sucursal, Domicilio domicilio, Empleado encargado, Set<Empleado> lstEmpleados) {
+	 
+	public Sucursal(String sucursal, Domicilio domicilio, Empleado encargado) {
 		super();
 		this.sucursal = sucursal;
 		this.domicilio = domicilio;
 		this.encargado = encargado;
-		this.lstEmpleados = lstEmpleados;
+		
+	}*/
+	
+	public Sucursal(String sucursal, Domicilio domicilio) {
+		super();
+		this.sucursal = sucursal;
+		this.domicilio = domicilio;
+		
+		
 	}
+	
+	
 	/**
 	 * @return the idSucursal
 	 */
@@ -66,18 +75,7 @@ public class Sucursal {
 	public void setDomicilio(Domicilio domicilio) {
 		this.domicilio = domicilio;
 	}
-	/**
-	 * @return the encargado
-	 */
-	public Empleado getEncargado() {
-		return encargado;
-	}
-	/**
-	 * @param encargado the encargado to set
-	 */
-	public void setEncargado(Empleado encargado) {
-		this.encargado = encargado;
-	}
+	
 	/**
 	 * @return the lstEmpleados
 	 */
@@ -103,8 +101,8 @@ public class Sucursal {
 	 */
 	@Override
 	public String toString() {
-		return "Sucursal [sucursal=" + sucursal + ", domicilio=" + domicilio + ", encargado=" + encargado
-				+ ", lstEmpleados=" + lstEmpleados + "]";
+		return "Sucursal [sucursal=" + sucursal + ", domicilio=" + domicilio
+				+ "]";
 	}
 	
 	

@@ -40,6 +40,7 @@ public class TestPago {
 		System.out.println("traer all pagosTarjeta=\n");
 		System.out.println(PagoTarjetaABM.getInstance().traerPagosTarjeta());
 		
+		
 	}
 
 }

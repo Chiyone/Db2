@@ -3,12 +3,18 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 <class name = "datos.Venta" table = "Venta">
-<id column = "idVenta" name = "idVenta" >
+<!-- <id column = "idVenta" name = "idVenta" >
 <generator class = "identity" />
-</id >
+</id > -->
+<id column = "idVenta" name = "idVenta" >
+	<generator class="foreign">
+		<param name="property">Pago</param>
+	</generator>
+</id>
 <property column = "numTicket" name = "numTicket" type = "string" />
 <property column = "totalVenta" name = "totalVenta" type = "double" />
 <property column = "fecha" name = "fecha" type = "date" />
+
 
 <set name="itemsVenta" table="ItemVenta" order-by="idItemVenta asc"
 			inverse="true" lazy="true" fetch="select">
@@ -17,7 +23,7 @@
 		</set><!-- order-by="idItemVenta asc" -->
 <many-to-one name="Sucursal" class="datos.Sucursal" column="idSucursal"
 			not-null="true" />
-
+<one-to-one name="Pago" class="datos.Pago" ></one-to-one>
 
 </class >
 

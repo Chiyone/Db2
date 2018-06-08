@@ -3,13 +3,21 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 <class name = "datos.Pago" table = "Pago">
+<!-- <id column = "idPago" name = "idPago" >
+	<generator class="foreign">
+		<param name="property">Venta</param>
+	</generator>
+</id > -->
+
 <id column = "idPago" name = "idPago" >
 <generator class = "identity" />
 </id >
 <property column = "monto" name = "monto" type = "double" />
 <property column = "tpoPago" name ="tpoPago" type = "string" />
 
-
+ <one-to-one name="Venta" class="datos.Venta" ></one-to-one>
+ 
+ 
 <joined-subclass name="datos.PagoCheque" table="PagoCheque">
 	<key column="idPagoCheque"/>
 <property column = "numCuenta" name ="numCuenta" type = "long" />
@@ -28,6 +36,9 @@
 <property column = "precioCuota" name ="precioCuota" type = "double" />
 <property column = "cantCuotas" name ="cantCuotas" type = "int" />
 </joined-subclass>
+ 
+ 
+
  
 </class >
 

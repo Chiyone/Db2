@@ -21,13 +21,15 @@ public class EmpleadoABM {
 	
 
 	public int agregar(long dni, String nombre, String apellido, Domicilio domicilio, long cuil, long numAfiliado,
-			ObraSocial obraSoc, Sucursal sucursal) {
+			ObraSocial obraSoc, Sucursal sucursal,String tipoEmpleado) {
 		Empleado d=new Empleado( dni, nombre, apellido,  domicilio, cuil, numAfiliado,
-				 obraSoc,  sucursal);
+				 obraSoc,  sucursal,tipoEmpleado);
 		return PersonaDao.getInstance().agregar(d);
 		
 	}
-
+	public Empleado traer( int idEmpleado ){
+		return (Empleado) PersonaDao.getInstance().traerEmpleado(idEmpleado);
+	}
 	public void modificar(Empleado s) throws Exception{
 		if((PersonaDao.getInstance().traer(s.getIdEmpleado()))==null){
 			PersonaDao.getInstance().actualizar(s);
@@ -45,6 +47,11 @@ public class EmpleadoABM {
 	public List<Persona> traerEmpleados() throws Exception{
 		if(PersonaDao.getInstance().traerEmpleados()!=null){
 		return PersonaDao.getInstance().traerEmpleados();
+		}else throw new Exception ("No hay Clientes en la base de datos");
+	}
+	public List<Empleado> traerEmpleadosSucursal(int idSuc)throws Exception{
+		if(PersonaDao.getInstance().traerEmpleadosSucursal(idSuc)!=null){
+		return PersonaDao.getInstance().traerEmpleadosSucursal(idSuc);
 		}else throw new Exception ("No hay Clientes en la base de datos");
 	}
 

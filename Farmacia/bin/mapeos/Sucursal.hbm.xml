@@ -16,6 +16,14 @@
 			<key column="idSucursal" not-null="true" />
 			<one-to-many class="datos.Venta" />
 		</set>
+		<set name="lstEmpleados" table="Empleado"
+			inverse="true" lazy="true" fetch="select">
+			<key column="idSucursal" not-null="false" />
+			<one-to-many class="datos.Empleado" />
+		</set><!--  order-by="idSucursal asc" -->
+		
+		
+			
 	</class>
 
 </hibernate-mapping>

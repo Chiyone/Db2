@@ -38,6 +38,19 @@ public class PersonaDao {
 		}
 		return objeto ;
 	}
+	
+	public Empleado traerEmpleado( long idEmpleado ){
+		Empleado objeto = null ;
+		try {
+			iniciaOperacion();
+			objeto = (Empleado) session .createQuery( "from Empleado p join "+
+													"where p.idEmpleado ="+idEmpleado ).uniqueResult();
+		} finally {
+			session .close();
+		}
+		return objeto ;
+	}
+	
 	@SuppressWarnings ( "unchecked" )
 	public List<Persona> traer() throws HibernateException {
 		List<Persona> lista = null ;
@@ -151,7 +164,17 @@ public class PersonaDao {
 		}
 		return lista ;
 	}
-	
+	@SuppressWarnings("unchecked")
+	public List<Empleado> traerEmpleadosSucursal(int idSuc) throws HibernateException {
+		List<Empleado> lista = null ;
+		try {
+			iniciaOperacion();
+			lista = session .createQuery( "from  Empleado e where  e.Sucursal= "+(idSuc) ).list();
+		} finally {
+			session .close();
+		}
+		return lista ;
+	}	
 	}
 	
 	
