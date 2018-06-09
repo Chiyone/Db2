@@ -23,8 +23,8 @@ public class PagoCheque extends Pago{
 	 * @param numCuenta
 	 * @param banco
 	 */
-	public PagoCheque(double monto, Cliente cliente, String tpoPago, long numCuenta, String banco) {
-		super(monto, cliente, tpoPago);
+	public PagoCheque(double monto, Cliente cliente, String tpoPago,Venta venta, long numCuenta, String banco) {
+		super(monto, cliente, tpoPago,venta);
 		this.numCuenta = numCuenta;
 		this.banco = banco;
 	}

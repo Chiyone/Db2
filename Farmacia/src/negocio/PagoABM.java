@@ -9,6 +9,7 @@ import datos.Cliente;
 import datos.Domicilio;
 import datos.Pago;
 import datos.Persona;
+import datos.Venta;
 
 
 
@@ -28,8 +29,8 @@ public class PagoABM {
 	public List<Pago> traer(){
 		return PagoDao.getInstance().traer();
 	}
-	public int agregar(double monto, Cliente cliente, String tpoPago) {
-		Pago s=new Pago( monto, cliente, tpoPago);
+	public int agregar(double monto, Cliente cliente, String tpoPago,Venta venta) {
+		Pago s=new Pago( monto, cliente, tpoPago,venta);
 		return PagoDao.getInstance().agregar(s);
 		
 	}

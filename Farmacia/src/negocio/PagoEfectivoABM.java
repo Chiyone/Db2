@@ -8,6 +8,7 @@ import datos.Cliente;
 import datos.Pago;
 import datos.PagoCheque;
 import datos.PagoEfectivo;
+import datos.Venta;
 
 
 public class PagoEfectivoABM {
@@ -21,8 +22,8 @@ public class PagoEfectivoABM {
 
 	
 
-	public int agregar(double monto, Cliente cliente, String tpoPago, double vuelto) {
-		PagoEfectivo d=new PagoEfectivo( monto,  cliente, tpoPago, vuelto);
+	public int agregar(double monto, Cliente cliente, String tpoPago,Venta venta, double vuelto) {
+		PagoEfectivo d=new PagoEfectivo( monto,  cliente, tpoPago,venta, vuelto);
 		return PagoDao.getInstance().agregar(d);
 		
 		

@@ -11,14 +11,13 @@ public class TestItemVenta {
 		// TODO Auto-generated method stub
 
 		
-		ItemVentaABM abm=new ItemVentaABM();
-		/*abm.agregar(null, 5, 55, 11,null);*/
+		
 		ItemVentaABM abm2=new ItemVentaABM();
 		ProductoABM prodAbm = new ProductoABM();
 		prodAbm.agregar(10, "asd", "tipo", 53, "cofaloza");
 		
 		VentaABM venAbm=new VentaABM();
-		venAbm.agregar("1233",40, null, null, null, null, null);
+		venAbm.agregar("1233",40, null, null, null, null);
 		
 		System.out.println(prodAbm.traerProducto(1));
 		System.out.println(venAbm.traerVenta(1));

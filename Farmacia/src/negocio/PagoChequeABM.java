@@ -8,6 +8,7 @@ import datos.Cliente;
 import datos.Pago;
 import datos.PagoCheque;
 import datos.Persona;
+import datos.Venta;
 
 public class PagoChequeABM {
 	private static PagoChequeABM instancia = null ; // Patrón Singleton
@@ -20,8 +21,8 @@ public class PagoChequeABM {
 
 	
 
-	public int agregar(double monto, Cliente cliente, String tpoPago, long numCuenta, String banco) {
-		PagoCheque d=new PagoCheque( monto,  cliente, tpoPago,  numCuenta, banco);
+	public int agregar(double monto, Cliente cliente, String tpoPago,Venta venta ,long numCuenta, String banco) {
+		PagoCheque d=new PagoCheque( monto,  cliente, tpoPago,venta,  numCuenta, banco);
 		return PagoDao.getInstance().agregar(d);
 		
 	}

@@ -15,15 +15,17 @@ public class Pago {
 	 * @param cliente
 	 * @param tpoPago
 	 */
-	public Pago(double monto, Cliente cliente, String tpoPago) {
+	public Pago(double monto, Cliente cliente, String tpoPago,Venta venta) {
 		super();
 		this.monto = monto;
 		this.cliente = cliente;
 		this.tpoPago = tpoPago;
+		this.venta=venta;
 	}
 	/**
 	 * @return the idPago
 	 */
+	
 	public long getIdPago() {
 		return idPago;
 	}

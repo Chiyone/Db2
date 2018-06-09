@@ -23,7 +23,7 @@ public class Venta {
 	 * @param pago
 	 */
 	public Venta(String numTicket, double totalVenta, GregorianCalendar fecha, Empleado eAtendio, Empleado eCobro,
-			Sucursal sucursal, Pago pago) {
+			Sucursal sucursal) {
 		super();
 		this.numTicket = numTicket;
 		this.totalVenta = totalVenta;
@@ -32,7 +32,6 @@ public class Venta {
 		this.eCobro = eCobro;
 		this.sucursal = sucursal;
 
-		this.pago = pago;
 	}
 	/**
 	 * 
@@ -150,7 +149,7 @@ public class Venta {
 	@Override
 	public String toString() {
 		return "Venta [numTicket=" + numTicket + ", totalVenta=" + totalVenta + ", fecha=" + fecha + ", eAtendio="
-				+ eAtendio + ", eCobro=" + eCobro + ", sucursal=" + sucursal + ", \nPago=" + pago+"]";
+				+ eAtendio + ", eCobro=" + eCobro + ", sucursal=" + sucursal + "]";
 	}
 	
 	
