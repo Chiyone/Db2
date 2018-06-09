@@ -3,6 +3,8 @@
  */
 package datos;
 
+import java.util.Set;
+
 /**
  * @author Juan
  *
@@ -14,6 +16,7 @@ public class Empleado extends Persona {
 	private ObraSocial obraSoc;
 	private Sucursal sucursal;
 	private String tipoEmpleado;
+	private Set<Venta> cobros;
 	
 
 	
@@ -134,7 +137,7 @@ public Empleado(long dni, String nombre, String apellido, Domicilio domicilio, l
 	@Override
 	public String toString() {
 		return "Empleado [cuil=" + cuil + ", numAfiliado=" + numAfiliado + ", obraSoc="
-				+ obraSoc + ", sucursal=" + sucursal.getIdSucursal() + ", tipoEmpleado=" + tipoEmpleado + "]\n";
+				+ obraSoc + ", sucursal=" + sucursal.getIdSucursal() + ", tipoEmpleado=" + tipoEmpleado + "]";
 	}
 	
 

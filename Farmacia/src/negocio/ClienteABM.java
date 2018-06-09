@@ -5,6 +5,7 @@ import java.util.List;
 import dao.PersonaDao;
 import datos.Cliente;
 import datos.Domicilio;
+import datos.Empleado;
 import datos.ObraSocial;
 import datos.Persona;
 
@@ -49,6 +50,8 @@ public class ClienteABM {
 		return PersonaDao.getInstance().traerClientes();
 		}else throw new Exception ("No hay Clientes en la base de datos");
 	}
-
+	public Cliente traer( int idCliente ){
+		return (Cliente) PersonaDao.getInstance().traerCliente(idCliente);
+	}
 
 	}

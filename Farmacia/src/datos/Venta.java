@@ -8,7 +8,8 @@ public class Venta {
 	private double totalVenta ;
 	private GregorianCalendar fecha ;
 	private Empleado eAtendio;
-	private Empleado eCobro;
+	//private Empleado eCobro;
+	private Persona eCobro;
 	private Sucursal sucursal;
 	private Set<ItemVenta> itemsVenta;
 	private Pago pago;
@@ -21,7 +22,7 @@ public class Venta {
 	 * @param sucursal
 	 * @param itemsVenta
 	 * @param pago
-	 */
+	
 	public Venta(String numTicket, double totalVenta, GregorianCalendar fecha, Empleado eAtendio, Empleado eCobro,
 			Sucursal sucursal) {
 		super();
@@ -36,10 +37,24 @@ public class Venta {
 	/**
 	 * 
 	 */
+	
+	
 	public Venta() {
 		super();
 	}
 	
+	public Venta(String numTicket, double totalVenta, GregorianCalendar fecha, Empleado eAtendio, Persona eCobro,
+			Sucursal sucursal) {
+		super();
+		this.numTicket = numTicket;
+		this.totalVenta = totalVenta;
+		this.fecha = fecha;
+		this.eAtendio = eAtendio;
+		this.eCobro = eCobro;
+		this.sucursal = sucursal;
+		
+	}
+
 	public long getIdVenta() {
 		return idVenta;
 	}
@@ -97,19 +112,19 @@ public class Venta {
 	}
 	/**
 	 * @return the eCobro
-	 */
+	 
 	public Empleado geteCobro() {
 		return eCobro;
 	}
 	/**
 	 * @param eCobro the eCobro to set
-	 */
+	 *
 	public void seteCobro(Empleado eCobro) {
 		this.eCobro = eCobro;
 	}
 	/**
 	 * @return the sucursal
-	 */
+	 
 	public Sucursal getSucursal() {
 		return sucursal;
 	}
@@ -148,8 +163,20 @@ public class Venta {
 	 */
 	@Override
 	public String toString() {
-		return "Venta [numTicket=" + numTicket + ", totalVenta=" + totalVenta + ", fecha=" + fecha + ", eAtendio="
-				+ eAtendio + ", eCobro=" + eCobro + ", sucursal=" + sucursal + "]";
+		return "Venta [\nnumTicket=" + numTicket + "\ntotalVenta=" + totalVenta + "\nfecha=" + fecha + "\neAtendio="
+				+ eAtendio + "\neCobro=" + eCobro + "\nsucursal=" + sucursal + "]";
+	}
+
+	public Persona geteCobro() {
+		return eCobro;
+	}
+
+	public void seteCobro(Persona eCobro) {
+		this.eCobro = eCobro;
+	}
+
+	public Sucursal getSucursal() {
+		return sucursal;
 	}
 	
 	

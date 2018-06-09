@@ -15,6 +15,12 @@
 <property column = "numTicket" name = "numTicket" type = "string" />
 <property column = "totalVenta" name = "totalVenta" type = "double" />
 <property column = "fecha" name = "fecha" type = "date" />
+  
+<many-to-one name="eCobro" class="datos.Persona" column="idPersona"
+			not-null="false" />
+			
+<many-to-one name="eAtendio" class="datos.Empleado" column="idEmpleado"
+			not-null="false" />
 
 
 <set name="itemsVenta" table="ItemVenta" order-by="idItemVenta asc"
@@ -22,9 +28,12 @@
 			<key column="idVenta" not-null="true" />
 			<one-to-many class="datos.ItemVenta" />
 		</set><!-- order-by="idItemVenta asc" -->
+		
 <many-to-one name="Sucursal" class="datos.Sucursal" column="idSucursal"
 			not-null="true" />
+
 <one-to-one name="Pago" class="datos.Pago" ></one-to-one>
+
 
 </class >
 

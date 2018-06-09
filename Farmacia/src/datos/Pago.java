@@ -86,7 +86,7 @@ public class Pago {
 	 */
 	@Override
 	public String toString() {
-		return "Pago [idPago=" + idPago + ", monto=" + monto + ", cliente=" + cliente + ", tpoPago=" + tpoPago + "]";
+		return "Pago [idPago=" + idPago + ", monto=" + monto + ", cliente=" + cliente + ", tpoPago=" + tpoPago + "]\n";
 	}
 	
 	

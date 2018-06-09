@@ -1,11 +1,16 @@
 package datos;
 
+
+//import org.hibernate.mapping.Set;
+import java.util.Set;
+
 public class Persona {
 	protected long idPersona;
 	private long dni;
 	private String nombre;
 	private String apellido;
 	private Domicilio domicilio;
+	private Set<Venta> cobros;
 	/**
 	 * 
 	 */
@@ -96,6 +101,14 @@ public class Persona {
 	@Override
 	public String toString() {
 		return "Persona [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" +domicilio.getIdDomicilio()+ "]";
+	}
+
+	public Set<Venta> getCobros() {
+		return cobros;
+	}
+
+	public void setCobros(Set<Venta> cobros) {
+		this.cobros = cobros;
 	}
 	
 }

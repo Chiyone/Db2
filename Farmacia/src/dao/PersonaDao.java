@@ -43,11 +43,12 @@ public class PersonaDao {
 		Empleado objeto = null ;
 		try {
 			iniciaOperacion();
-			objeto = (Empleado) session .createQuery( "from Empleado p join "+
-													"where p.idEmpleado ="+idEmpleado ).uniqueResult();
+			objeto = (Empleado) session.createQuery( " from Empleado e "+
+													"where e.idPersona = "+(idEmpleado)).uniqueResult();
 		} finally {
 			session .close();
 		}
+		//objeto1=objeto.
 		return objeto ;
 	}
 	
@@ -174,7 +175,19 @@ public class PersonaDao {
 			session .close();
 		}
 		return lista ;
-	}	
+	}
+	public Cliente traerCliente( long idCliente ){
+		Cliente objeto = null ;
+		try {
+			iniciaOperacion();
+			objeto = (Cliente) session.createQuery( " from Cliente e "+
+													"where e.idPersona = "+(idCliente)).uniqueResult();
+		} finally {
+			session .close();
+		}
+		//objeto1=objeto.
+		return objeto ;
+	}
 	}
 	
 	

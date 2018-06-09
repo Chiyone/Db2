@@ -1,9 +1,12 @@
 package datos;
 
+import java.util.Set;
+
 public class Cliente extends Persona  {
 	private long idCliente;
 	private long numAfiliado;
 	private ObraSocial obraSoc;
+	private Set<Pago> pagos;
 	/**
 	 * @param dni
 	 * @param nombre
@@ -78,6 +81,12 @@ public class Cliente extends Persona  {
 	}
 
 
+	public Set<Pago> getPagos() {
+		return pagos;
+	}
+	public void setPagos(Set<Pago> pagos) {
+		this.pagos = pagos;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

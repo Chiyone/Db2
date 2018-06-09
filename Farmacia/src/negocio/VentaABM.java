@@ -8,6 +8,7 @@ import dao.VentaDao;
 import datos.Empleado;
 import datos.ItemVenta;
 import datos.Pago;
+import datos.Persona;
 import datos.Sucursal;
 import datos.Venta;
 
@@ -23,8 +24,14 @@ public class VentaABM {
 		return c;
 	}
 	
-	
+	/*
 	public int agregar(String numTicket, double totalVenta, GregorianCalendar fecha, Empleado eAtendio, Empleado eCobro,
+			Sucursal sucursal) {
+		Venta s=new Venta( numTicket, totalVenta, fecha,eAtendio, eCobro,sucursal);
+		return dao.agregar(s);
+		
+	}*/
+	public int agregar(String numTicket, double totalVenta, GregorianCalendar fecha, Empleado eAtendio, Persona eCobro,
 			Sucursal sucursal) {
 		Venta s=new Venta( numTicket, totalVenta, fecha,eAtendio, eCobro,sucursal);
 		return dao.agregar(s);
