@@ -5,8 +5,10 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import datos.ItemVenta;
 import datos.Pago;
 import datos.Persona;
+import datos.Venta;
 public class PagoDao {
 	private static Session session ;
 	private Transaction tx ;
@@ -165,6 +167,17 @@ public class PagoDao {
 			try {
 				iniciaOperacion();
 				lista= session.createQuery( "from PagoEfectivo ").list();
+			} 	finally {
+				session.close();
+				}
+			return lista;
+		}
+		public List<ItemVenta> traerItemsVenta(Venta venta) {
+			List<ItemVenta> lista= null ;
+			long id=venta.getIdVenta();
+			try {
+				iniciaOperacion();
+				lista= session.createQuery( " from ItemVenta i join fetch i.Venta v where v.idVenta="+id).list();
 			} 	finally {
 				session.close();
 				}

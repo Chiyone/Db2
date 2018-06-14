@@ -76,7 +76,10 @@ public class ItemVentaDao {
 			ItemVenta objeto = null ;
 			try {
 				iniciaOperacion();
-				objeto = (ItemVenta) session.createQuery( "from ItemVenta i join fetch i.Producto join fetch i.Venta where i.idItemVenta="+(idItemVenta)).uniqueResult();
+				objeto = (ItemVenta) session.createQuery( "from ItemVenta i "
+						+ "join fetch i.Producto"
+						+ " join fetch i.Venta  "
+						+ " where i.idItemVenta="+(idItemVenta)).uniqueResult();
 			} 
 			finally {
 				session.close();

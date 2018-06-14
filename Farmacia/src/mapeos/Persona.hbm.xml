@@ -43,6 +43,8 @@
 			<many-to-one name="Sucursal" class="datos.Sucursal" column="idSucursal"
 			not-null="false" />
 			
+			
+			
 			  <set name="cobros" table="Venta"
 				inverse="true" lazy="false" fetch="select">
 				<key column="idEmpleado" not-null="false" />

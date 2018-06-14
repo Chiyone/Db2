@@ -76,8 +76,8 @@ public class ItemVenta {
 	 */
 	@Override
 	public String toString() {
-		return "ItemVenta [idItemVenta=" + idItemVenta + ", producto=" + producto + ", cantidad=" + cantidad
-				+ ", precioTotal=" + precioTotal + ", precioUnitario=" + precioUnitario + ", venta=" + venta + "]";
+		return "ItemVenta [idItemVenta=" + idItemVenta + ", producto=" + producto.getIdProducto() + ", cantidad=" + cantidad
+				+ ", precioTotal=" + precioTotal + ", precioUnitario=" + precioUnitario + ", venta=" + venta.getIdVenta() + "]";
 	}
 	
 

@@ -24,13 +24,35 @@ public class ItemVentaABM {
 		
 	}*/
 	
-	public int agregar(Producto producto, int cantidad, double precioTotal, double precioUnitario,Venta venta) {
+	public int agregar(Producto producto, int cantidad,Venta venta) {
+		
+		double precioUnitario=calcularPreciounitario(producto);
+		double precioTotal=calcularPrecioTotal(cantidad,precioUnitario);
+		
 		
 		ItemVenta s=new ItemVenta(producto,cantidad, precioTotal,precioUnitario,venta);
 		return dao.agregar(s);
 		
 	}
 	
+	static double calcularPrecioTotal(int cantidad, double precioUnitario) {
+		double precio=0;
+		precio = precioUnitario*cantidad;
+		
+		
+		
+		return precio;
+	}
+	static double calcularPreciounitario(Producto producto ) {
+		// TODO Auto-generated method stub
+		double precio=0;
+		precio = (double) producto.getPrecio();
+		
+		
+		
+		return precio;
+	}
+
 	public void modificar(ItemVenta s) throws Exception{
 		if((dao.traerItemVenta(s.getIdItemVenta()))==null){
 			dao.actualizar(s);

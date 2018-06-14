@@ -1,6 +1,7 @@
 package dao;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -76,15 +77,15 @@ public class VentaDao {
 			Venta objeto = null ;
 			try {
 				iniciaOperacion();
-				objeto = (Venta) session.createQuery( "from Venta v  join fetch v.Sucursal join fetch v.Sucursal.Domicilio join fetch v.eCobro where v.idVenta="+idVenta).uniqueResult();
-				
+				objeto = (Venta) session.createQuery( "from Venta v  join fetch v.Sucursal join fetch v.Sucursal.Domicilio join fetch v.eCobro left join fetch v.itemsVenta i left join fetch i.Producto p where v.idVenta="+idVenta).uniqueResult();
+				//Hibernate.initialize(objeto.getItemsVenta());
 			} 
 			finally {
 				session.close();
 				}
 				return objeto;
 		}
-		
+	
 		
 		public Venta traerVenta( String venta) throws HibernateException {
 			Venta objeto = null ;
@@ -104,7 +105,7 @@ public class VentaDao {
 			List<Venta> lista= null ;
 			try {
 				iniciaOperacion();
-				lista= session.createQuery( "from Venta v order by v.venta asc ").list();
+				lista= session.createQuery( "from Venta v  ").list();
 			} 	finally {
 				session.close();
 				}

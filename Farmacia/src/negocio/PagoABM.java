@@ -7,6 +7,7 @@ import dao.PagoDao;
 import dao.PersonaDao;
 import datos.Cliente;
 import datos.Domicilio;
+import datos.ItemVenta;
 import datos.Pago;
 import datos.Persona;
 import datos.Venta;
@@ -29,12 +30,25 @@ public class PagoABM {
 	public List<Pago> traer(){
 		return PagoDao.getInstance().traer();
 	}
-	public int agregar(double monto, Cliente cliente, String tpoPago,Venta venta) {
+	public int agregar( Cliente cliente, String tpoPago,Venta venta) {
+		double monto=calcularMonto(venta);
+		
 		Pago s=new Pago( monto, cliente, tpoPago,venta);
 		return PagoDao.getInstance().agregar(s);
 		
 	}
 	
+	static double calcularMonto(Venta venta) {
+		double precio=0;
+		List <ItemVenta> ventas=PagoDao.getInstance().traerItemsVenta(venta);
+		for(ItemVenta i:ventas)
+			precio=i.getPrecioTotal()+precio;
+			
+			
+		System.out.println(ventas);
+		
+		return precio;
+	}
 	public void modificar(Pago s) throws Exception{
 		if((PagoDao.getInstance().traer(s.getIdPago()))==null){
 			PagoDao.getInstance().actualizar(s);

@@ -23,7 +23,7 @@ public class VentaABM {
 				throw new Exception ("Id incorrecto: la Venta no existe");
 		return c;
 	}
-	
+
 	/*
 	public int agregar(String numTicket, double totalVenta, GregorianCalendar fecha, Empleado eAtendio, Empleado eCobro,
 			Sucursal sucursal) {
@@ -31,13 +31,31 @@ public class VentaABM {
 		return dao.agregar(s);
 		
 	}*/
-	public int agregar(String numTicket, double totalVenta, GregorianCalendar fecha, Empleado eAtendio, Persona eCobro,
+	public int agregar( double totalVenta, GregorianCalendar fecha, Empleado eAtendio, Persona eCobro,
 			Sucursal sucursal) {
+	
+		
+		String numTicket=agregarNumTicket(sucursal);
+		
+		
 		Venta s=new Venta( numTicket, totalVenta, fecha,eAtendio, eCobro,sucursal);
 		return dao.agregar(s);
 		
 	}
 	
+	public String agregarNumTicket(Sucursal sucursal) {
+		String idVenta =traerIdVenta()+"";
+		String ptoVenta=sucursal.getIdSucursal()+"";
+		ptoVenta=cuatroDigitos(ptoVenta);
+		idVenta=ochoDigitos(idVenta);	
+		
+		String numTicket=""+ptoVenta+"-"+idVenta+"";
+		System.out.println(idVenta);
+		System.out.println("********************************");
+		System.out.println(numTicket);
+		return numTicket;
+	}
+
 	public void modificar(Venta s) throws Exception{
 		if((dao.traerVenta(s.getIdVenta()))==null){
 			dao.actualizar(s);
@@ -57,6 +75,54 @@ public class VentaABM {
 		return dao.traerVenta();
 		}else throw new Exception ("No hay Ventas en la base de datos");
 	}
-
+	public long traerIdVenta() {
+		List <Venta> ventas =dao.traerVenta();
+		System.out.println(ventas.isEmpty());
+		long c=0;
+		if(ventas.isEmpty())
+			c=0;
+		else {
+		for(Venta v :ventas) {
+			System.out.println(v.getIdVenta());
+			if(v.getIdVenta()>=c)
+				c=v.getIdVenta();
+			}
+		}
+		System.out.println(c);
+		return c+1;
+	}
+	static String ochoDigitos(String string) {
+		if (string.length()==1)
+			string="0000000"+string;
+		if (string.length()==2)
+			string="000000"+string;
+		if (string.length()==3)
+			string="00000"+string;
+		if (string.length()==4)
+			string="0000"+string;
+		if (string.length()==5)
+			string="000"+string;
+		if (string.length()==6)
+			string="00"+string;
+		if (string.length()==7)
+			string="0"+string;
+		
+		
+		
+		return string;
+	}
+	static String cuatroDigitos(String string) {
+	
+		if (string.length()==1)
+			string="000"+string;
+		if (string.length()==2)
+			string="00"+string;
+		if (string.length()==3)
+			string="0"+string;
+		
+		
+		
+		return string;
+	}
 
 }

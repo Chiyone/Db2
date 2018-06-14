@@ -164,8 +164,14 @@ public class Venta {
 	@Override
 	public String toString() {
 		return "Venta [\nnumTicket=" + numTicket + "\ntotalVenta=" + totalVenta + "\nfecha=" + fecha + "\neAtendio="
-				+ eAtendio + "\neCobro=" + eCobro + "\nsucursal=" + sucursal + "]";
+				+ eAtendio + "\neCobro=" + eCobro+ "\nsucursal=" + sucursal + "]";
 	}
+	
+	public String toString2() {
+		return "Venta [\nnumTicket=" + numTicket + "\ntotalVenta=" + totalVenta + "\nfecha=" + fecha + "\neAtendio="
+				+ eAtendio.idPersona + "\neCobro=" + eCobro.idPersona+ "\nsucursal=" + sucursal.idSucursal + "]";
+	}
+	
 
 	public Persona geteCobro() {
 		return eCobro;

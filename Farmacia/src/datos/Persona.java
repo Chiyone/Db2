@@ -10,6 +10,8 @@ public class Persona {
 	private String nombre;
 	private String apellido;
 	private Domicilio domicilio;
+//	private ObraSocial obraSocial;
+	
 	private Set<Venta> cobros;
 	/**
 	 * 
@@ -110,5 +112,8 @@ public class Persona {
 	public void setCobros(Set<Venta> cobros) {
 		this.cobros = cobros;
 	}
+
+	
+	
 	
 }
