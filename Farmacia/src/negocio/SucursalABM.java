@@ -21,8 +21,8 @@ public class SucursalABM {
 	}
 	
 	
-	public int agregar(String sucursal, Domicilio domicilio) {
-		Sucursal s=new Sucursal(sucursal, domicilio);
+	public int agregar(Sucursal s) {
+		//Sucursal s=new Sucursal(sucursal, domicilio);
 		return dao.agregar(s);
 		
 	}

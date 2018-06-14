@@ -22,15 +22,15 @@ public class HibernateUtil{
 				ServiceRegistryBuilder registry = new ServiceRegistryBuilder();
 				registry.applySettings(configuration.getProperties());
 				ServiceRegistry serviceRegistry = registry.buildServiceRegistry();
-				sessionFactory = configuration.buildSessionFactory(serviceRegistry);/*
-				Configuration configuration = new Configuration().configure();
+				sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+				/*Configuration configuration = new Configuration().configure();
 				ServiceRegistry serviceRegistry = new
 				ServiceRegistryBuilder().applySettings( configuration.getProperties()).buildServiceRegistry();
 				SchemaExport schemaExport = new SchemaExport(serviceRegistry,configuration );
-				schemaExport.create(org.hibernate.tool.hbm2ddl.Target.EXPORT);
+				schemaExport.create(org.hibernate.tool.hbm2ddl.Target.SCRIPT);
 				
-				sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-				*/
+				sessionFactory = configuration.buildSessionFactory(serviceRegistry);/*/
+				
 			}
 		} catch (HibernateException he) {
 			System.err.println("ERROR en la inicialización de la SessionFactory: " + he);

@@ -50,9 +50,7 @@ public class VentaABM {
 		idVenta=ochoDigitos(idVenta);	
 		
 		String numTicket=""+ptoVenta+"-"+idVenta+"";
-		System.out.println(idVenta);
-		System.out.println("********************************");
-		System.out.println(numTicket);
+		
 		return numTicket;
 	}
 

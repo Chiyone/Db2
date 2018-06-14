@@ -21,7 +21,7 @@ import negocio.VentaABM;
 public class TestPago {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		SucursalABM sucAbm=new SucursalABM();
+		/*SucursalABM sucAbm=new SucursalABM();
 		
 		DomicilioABM abmdom = new DomicilioABM();
 		abmdom.agregar("Azara", 2069, "Buenos Aires", "Banfield");
@@ -70,8 +70,8 @@ public class TestPago {
 		
 		PagoABM.getInstance().agregar( ClienteABM.getInstance().traer(3), "cheque",abm.traerVenta(2));
 		PagoABM.getInstance().agregar( ClienteABM.getInstance().traer(3), "efectivo",abm.traerVenta(3));
-		PagoABM.getInstance().agregar( ClienteABM.getInstance().traer(3), "tarjeta",abm.traerVenta(4));
-		/*System.out.println("traer1=\n");
+		PagoABM.getInstance().agregar( ClienteABM.getInstance().traer(3), "tarjeta",abm.traerVenta(4));*/
+		System.out.println("traer1=\n");
 		System.out.println(PagoABM.getInstance().traer(1));
 		
 		System.out.println("traer2=\n");
@@ -82,11 +82,11 @@ public class TestPago {
 		
 		System.out.println("traer4=\n");
 		System.out.println(PagoABM.getInstance().traer(4));
-		*/
+		
 		System.out.println("traer all pagos=\n");
 		System.out.println(PagoABM.getInstance().traer());
 		
-		/*System.out.println("traer all pagosCheque=\n");
+		System.out.println("traer all pagosCheque=\n");
 		System.out.println(PagoChequeABM.getInstance().traerPagosCheque());
 		
 		System.out.println("traer all pagosEfectivo=\n");
@@ -94,7 +94,7 @@ public class TestPago {
 		
 		System.out.println("traer all pagosTarjeta=\n");
 		System.out.println(PagoTarjetaABM.getInstance().traerPagosTarjeta());
-		*/
+		
 		
 	}
 

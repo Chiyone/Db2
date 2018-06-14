@@ -31,7 +31,7 @@ public class PagoDao {
 		Pago objeto = null ;
 		try {
 			iniciaOperacion();
-			objeto = (Pago) session .createQuery( "from Pago c where c.idPago =" + idPago ).uniqueResult();
+			objeto = (Pago) session .createQuery( "from Pago c  join fetch c.Venta join fetch c.Cliente where c.idPago =" + idPago ).uniqueResult();
 		} finally {
 			session .close();
 		}

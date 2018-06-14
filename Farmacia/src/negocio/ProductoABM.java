@@ -5,6 +5,8 @@ import java.util.Set;
 
 import dao.ProductoDao;
 import datos.Producto;
+import datos.Sucursal;
+import datos.Venta;
 
 
 
@@ -25,7 +27,16 @@ public class ProductoABM {
 		return dao.agregar(p);
 		
 	}
+	public int agregar(Producto p) {
+		//Producto p=new Producto(codNum,descripcion,tipo,precio, laboratorio);
+		long codNum=000000+agregarCodNum();
+		p.setCodNum(codNum);
+		return dao.agregar(p);
+		
+	}
 	
+	
+
 	public void modificar(Producto s) throws Exception{
 		if((dao.traerProducto(s.getIdProducto()))==null){
 			dao.actualizar(s);
@@ -45,6 +56,28 @@ public class ProductoABM {
 		return dao.traerProducto();
 		}else throw new Exception ("No hay Productos en la base de datos");
 	}
+	
+	public long agregarCodNum(){
+		long cod =traerIdProd();
+		
+		
+		return cod;
+	}
+	public long traerIdProd() {
+		List <Producto> productos =dao.traerProducto();
+		
+		long c=0;
+		if(productos.isEmpty())
+			c=0;
+		else {
+		for(Producto p :productos) {
+			
+			if(p.getIdProducto()>=c)
+				c=p.getIdProducto();
+			}
+		}
+		System.out.println(c);
+		return c+1;
 
-
-}
+		}
+	}

@@ -2,6 +2,7 @@ package test;
 
 import java.util.Set;
 
+import datos.Domicilio;
 import negocio.DomicilioABM;
 
 
@@ -12,7 +13,8 @@ public class TestDomicilio {
 
 		
 		DomicilioABM abm=new DomicilioABM();
-		abm.agregar("san ignacio", 390, "Buenos Aires", "Longchamps");
+		Domicilio dom=new Domicilio("san ignacio", 390, "Buenos Aires", "Longchamps");
+		abm.agregar(dom);
 		abm.traerDomicilio(1);
 		
 		

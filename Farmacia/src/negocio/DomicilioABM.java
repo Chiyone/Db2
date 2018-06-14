@@ -17,8 +17,8 @@ public Domicilio traerDomicilio(long idDomicilio) throws Exception {
 }
 
 
-public int agregar(String calle, int numero, String provincia, String localidad) {
-	Domicilio d=new Domicilio( calle, numero, provincia, localidad);
+public int agregar(Domicilio d) {
+	//Domicilio d=new Domicilio( calle, numero, provincia, localidad);
 	return dao.agregar(d);
 	
 }

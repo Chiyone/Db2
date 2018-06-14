@@ -1,5 +1,6 @@
 package datos;
 
+import java.util.List;
 import java.util.Set;
 
 public class Producto {
@@ -11,18 +12,31 @@ public class Producto {
 	private String laboratorio;
 	private Set<ItemVenta> lstItemVenta;
 	
-	public Producto(long codNum, String descripcion, String tipo, float precio, String laboratorio) {
+	public Producto(long codNum,String descripcion, String tipo, float precio, String laboratorio) {
 		super();
-		this.codNum = codNum;
+		this.codNum =codNum;
 		this.descripcion = descripcion;
 		this.tipo = tipo;
 		this.precio = precio;
 		this.laboratorio = laboratorio;
 	}
-
+	public Producto(String descripcion, String tipo, float precio, String laboratorio) {
+		super();
+		
+		this.descripcion = descripcion;
+		this.tipo = tipo;
+		this.precio = precio;
+		this.laboratorio = laboratorio;
+	}
 	public Producto() {
 		super();
+		
 	}
+
+	
+
+	
+
 
 	public int getIdProducto() {
 		return idProducto;

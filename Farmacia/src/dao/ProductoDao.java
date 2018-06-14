@@ -103,7 +103,7 @@ public class ProductoDao {
 			List<Producto> lista= null ;
 			try {
 				iniciaOperacion();
-				lista= session.createQuery( "from Producto p order by p.producto asc ").list();
+				lista= session.createQuery( "from Producto p ").list();
 			} 	finally {
 				session.close();
 				}
