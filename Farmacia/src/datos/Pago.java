@@ -4,7 +4,7 @@ public class Pago {
 
 	private long idPago;
 	private  double monto;
-	private Cliente cliente;
+	private Persona cliente;
 	private String tpoPago;
 	private Venta venta;
 	public Pago() {
@@ -15,7 +15,7 @@ public class Pago {
 	 * @param cliente
 	 * @param tpoPago
 	 */
-	public Pago(double monto, Cliente cliente, String tpoPago,Venta venta) {
+	public Pago(double monto, Persona cliente, String tpoPago,Venta venta) {
 		super();
 		this.monto = monto;
 		this.cliente = cliente;
@@ -50,13 +50,13 @@ public class Pago {
 	/**
 	 * @return the cliente
 	 */
-	public Cliente getCliente() {
+	public Persona getCliente() {
 		return cliente;
 	}
 	/**
 	 * @param cliente the cliente to set
 	 */
-	public void setCliente(Cliente cliente) {
+	public void setCliente(Persona cliente) {
 		this.cliente = cliente;
 	}
 	/**

@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Set;
 
 import datos.Empleado;
-import datos.Cliente;
+ 
 import datos.Domicilio;
 import datos.Persona;
 import datos.Sucursal;
-import negocio.ClienteABM;
+
 import negocio.DomicilioABM;
 import negocio.EmpleadoABM;
 import negocio.PersonaABM;
@@ -22,25 +22,26 @@ public class TestPersona {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		DomicilioABM abm = new DomicilioABM();
-		abm.agregar("San ignacio", 2069, "Buenos Aires", "Banfield");
-		abm.agregar("Azara", 2069, "Buenos Aires", "Banfield");
-		abm.agregar("Alsina", 2069, "Buenos Aires", "Banfield");
-		Domicilio dom1 = abm.traerDomicilio(2);
-		Domicilio dom2 = abm.traerDomicilio(1);
-		Domicilio dom3 = abm.traerDomicilio(3);
 		
+		Domicilio dom1 = new Domicilio("San ignacio", 2069, "Buenos Aires", "Banfield");
+		Domicilio dom2 = new Domicilio("San ignacio", 2069, "Buenos Aires", "Banfield");
+		Domicilio dom3 =new Domicilio("Alsina", 2069, "Buenos Aires", "Banfield");
+		abm.agregar(dom1);
+		abm.agregar(dom2);
+		abm.agregar(dom3);
 		SucursalABM sucAbm=new SucursalABM();
 		SucursalABM sucAbm2=new SucursalABM();
 		DomicilioABM domSuc = new DomicilioABM();
-		abm.agregar("Azara", 2069, "Buenos Aires", "Banfield");
 		
-		sucAbm.agregar("baradero", abm.traerDomicilio(1));
-		sucAbm2.agregar("marmol", abm.traerDomicilio(2));
-		Sucursal suc=sucAbm.traerSucursal(1);	
+		Sucursal suc=new Sucursal("baradero", abm.traerDomicilio(1));
+		Sucursal suc2=new Sucursal("marmol", abm.traerDomicilio(2));
+		sucAbm.agregar(suc);
+		sucAbm2.agregar(suc2);
+			
 	
 		
 		PersonaABM.getInstance().agregar(39666566, "juju", "yoyo", dom1);
-		ClienteABM.getInstance().agregar(3333333, "lulu", "hh", dom2, 222222, null);
+		PersonaABM.getInstance().agregar(3333333, "lulu", "hh", dom2);
 		EmpleadoABM.getInstance().agregar(4444, "eee", "Son", dom3, 1111111, 111, null, suc,"Encargado");
 		EmpleadoABM.getInstance().agregar(4444, "eaa", "Sun", dom1, 2222222, 222, null, suc,"Empleado");
 		EmpleadoABM.getInstance().agregar(4444, "eii", "Sin", dom2, 3333333, 333, null, suc,"Empleado");
@@ -62,7 +63,9 @@ public class TestPersona {
 		System.out.println("traer all=\n");
 		System.out.println(PersonaABM.getInstance().traer());
 		System.out.println("traer all clientes=\n");
-		System.out.println(ClienteABM.getInstance().traerClientes());
+		System.out.println("lalallalalalal"+PersonaABM.getInstance().traerClientes());
+		
+		
 		System.out.println("traer all empleados=\n");
 		System.out.println(EmpleadoABM.getInstance().traerEmpleados());
 		EmpleadoABM abmEmp=new EmpleadoABM();

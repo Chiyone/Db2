@@ -11,8 +11,9 @@ public class Persona {
 	private String apellido;
 	private Domicilio domicilio;
 //	private ObraSocial obraSocial;
-	
+	private Set<Pago> pagos;
 	private Set<Venta> cobros;
+	
 	/**
 	 * 
 	 */
@@ -44,7 +45,14 @@ public class Persona {
 	public long getIdPersona() {
 		return idPersona;
 	}
-	
+	public Set<Pago> getPagos() {
+		return pagos;
+	}
+
+	public void setPagos(Set<Pago> pagos) {
+		this.pagos = pagos;
+	}
+
 	public void setIdPersona(long idPersona) {
 		this.idPersona = idPersona;
 	}

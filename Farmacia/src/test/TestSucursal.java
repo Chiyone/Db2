@@ -21,22 +21,22 @@ public class TestSucursal {
 		
 		SucursalABM suc=new SucursalABM();
 		DomicilioABM abm = new DomicilioABM();
-		abm.agregar("Azara", 2069, "Buenos Aires", "Banfield");
+		//abm.agregar("Azara", 2069, "Buenos Aires", "Banfield");
 		
 		
 		
 		//System.out.println(suc.traerSucursal(1));
 		//System.out.println(EmpleadoABM.getInstance().traer(1));
 		
-		
-		suc.agregar("baradero", abm.traerDomicilio(1));
+		Sucursal s=new Sucursal("baradero", abm.traerDomicilio(1));
+		suc.agregar(s);
 		suc.traerSucursal(1);
-		EmpleadoABM.getInstance().agregar(4444, "eee", "San", abm.traerDomicilio(1), 1111111, 222111, null, suc.traerSucursal(1),"Encargado");
+		/*EmpleadoABM.getInstance().agregar(4444, "eee", "San", abm.traerDomicilio(1), 1111111, 222111, null, suc.traerSucursal(1),"Encargado");
 		EmpleadoABM abmEmp=new EmpleadoABM();
 		
 		System.out.println(abmEmp.traerEmpleadosSucursal(1));
 		
-		
+		*/
 		
 	}
 

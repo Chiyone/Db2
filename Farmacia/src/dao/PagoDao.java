@@ -31,7 +31,7 @@ public class PagoDao {
 		Pago objeto = null ;
 		try {
 			iniciaOperacion();
-			objeto = (Pago) session .createQuery( "from Pago c  join fetch c.Venta join fetch c.Cliente where c.idPago =" + idPago ).uniqueResult();
+			objeto = (Pago) session .createQuery( "from Pago c  join fetch c.Venta join fetch c.cliente where c.idPago =" + idPago ).uniqueResult();
 		} finally {
 			session .close();
 		}
@@ -42,7 +42,7 @@ public class PagoDao {
 		List<Pago> lista = null ;
 		try {
 			iniciaOperacion();
-			lista = session .createQuery( "from Pago p join fetch p.Cliente" ).list();
+			lista = session .createQuery( "from Pago p join fetch p.cliente" ).list();
 		} finally {
 			session .close();
 		}

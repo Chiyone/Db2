@@ -1,7 +1,7 @@
 package negocio;
 import java.util.List;
 import dao.PersonaDao;
-import datos.Cliente;
+ 
 import datos.Domicilio;
 import datos.Pago;
 import datos.Persona;
@@ -39,5 +39,9 @@ public class PersonaABM {
 		PersonaDao.getInstance().eliminar(c);
 		}else throw new Exception ("persona no existe para eliminar");
 	}
-	
+	public List<Persona> traerClientes() throws Exception{
+		if(PersonaDao.getInstance().traerClientes()!=null){
+		return PersonaDao.getInstance().traerClientes();
+		}else throw new Exception ("No hay Clientes en la base de datos");
+	}
 }

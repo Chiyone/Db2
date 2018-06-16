@@ -4,7 +4,7 @@ import java.util.List;
 
 import dao.PagoDao;
 import dao.PersonaDao;
-import datos.Cliente;
+ 
 import datos.Pago;
 import datos.PagoCheque;
 import datos.Persona;
@@ -21,7 +21,7 @@ public class PagoChequeABM {
 
 	
 
-	public int agregar(double monto, Cliente cliente, String tpoPago,Venta venta ,long numCuenta, String banco) {
+	public int agregar(double monto, Persona cliente, String tpoPago,Venta venta ,long numCuenta, String banco) {
 		PagoCheque d=new PagoCheque( monto,  cliente, tpoPago,venta,  numCuenta, banco);
 		return PagoDao.getInstance().agregar(d);
 		

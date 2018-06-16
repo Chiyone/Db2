@@ -18,7 +18,7 @@ public class PagoEfectivo extends Pago{
 	 * @param tpoPago
 	 * @param vuelto
 	 */
-	public PagoEfectivo(double monto, Cliente cliente, String tpoPago,Venta venta, double vuelto) {
+	public PagoEfectivo(double monto, Persona cliente, String tpoPago,Venta venta, double vuelto) {
 		super(monto, cliente, tpoPago,venta);
 		this.vuelto = vuelto;
 	}

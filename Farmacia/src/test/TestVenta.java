@@ -2,7 +2,7 @@ package test;
 
 import datos.Domicilio;
 import datos.Sucursal;
-import negocio.ClienteABM;
+
 import negocio.DomicilioABM;
 import negocio.EmpleadoABM;
 import negocio.PagoABM;

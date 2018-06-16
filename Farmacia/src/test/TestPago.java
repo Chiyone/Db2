@@ -1,11 +1,13 @@
 package test;
 
 
+import datos.Domicilio;
 import datos.Empleado;
 import datos.Persona;
 import datos.Producto;
+import datos.Sucursal;
 import datos.Venta;
-import negocio.ClienteABM;
+ 
 import negocio.DomicilioABM;
 import negocio.EmpleadoABM;
 import negocio.ItemVentaABM;
@@ -21,11 +23,13 @@ import negocio.VentaABM;
 public class TestPago {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		/*SucursalABM sucAbm=new SucursalABM();
+		SucursalABM sucAbm=new SucursalABM();
 		
 		DomicilioABM abmdom = new DomicilioABM();
-		abmdom.agregar("Azara", 2069, "Buenos Aires", "Banfield");
-		sucAbm.agregar("baradero", abmdom.traerDomicilio(1));
+		Domicilio d=new Domicilio("Azara", 2069, "Buenos Aires", "Banfield");
+		abmdom.agregar(d);
+		Sucursal s=new Sucursal("baradero", abmdom.traerDomicilio(1));
+		sucAbm.agregar(s);
 		VentaABM abm=new VentaABM();
 		EmpleadoABM.getInstance().agregar(4444, "eee", "Son",abmdom.traerDomicilio(1), 1111111, 111, null, sucAbm.traerSucursal(1),"Encargado");
 		
@@ -61,16 +65,17 @@ public class TestPago {
 		
 		System.out.println(EmpleadoABM.getInstance().traer(1));
 		abm.agregar( 15.0, null, EmpleadoABM.getInstance().traer(1), PersonaABM.getInstance().traer(1), sucAbm.traerSucursal(1));
+		abm.agregar( 15.0, null, EmpleadoABM.getInstance().traer(1), PersonaABM.getInstance().traer(1), sucAbm.traerSucursal(1));
 		abm.traerVenta(1);
 		
 		System.out.println(abm.traerVenta(1));
-		ClienteABM.getInstance().agregar(3333, "juan", "yone", abmdom.traerDomicilio(1), 11111, null);
+		PersonaABM.getInstance().agregar(3333, "juan", "yone", abmdom.traerDomicilio(1));
 		
-		PagoABM.getInstance().agregar( ClienteABM.getInstance().traer(3), "qti",abm.traerVenta(1));
+		PagoABM.getInstance().agregar( PersonaABM.getInstance().traer(3), "qti",abm.traerVenta(1));
 		
-		PagoABM.getInstance().agregar( ClienteABM.getInstance().traer(3), "cheque",abm.traerVenta(2));
-		PagoABM.getInstance().agregar( ClienteABM.getInstance().traer(3), "efectivo",abm.traerVenta(3));
-		PagoABM.getInstance().agregar( ClienteABM.getInstance().traer(3), "tarjeta",abm.traerVenta(4));*/
+		PagoABM.getInstance().agregar( PersonaABM.getInstance().traer(1), "cheque",abm.traerVenta(2));
+		PagoABM.getInstance().agregar( PersonaABM.getInstance().traer(3), "efectivo",abm.traerVenta(3));
+		PagoABM.getInstance().agregar( PersonaABM.getInstance().traer(3), "tarjeta",abm.traerVenta(4));
 		System.out.println("traer1=\n");
 		System.out.println(PagoABM.getInstance().traer(1));
 		
@@ -95,7 +100,9 @@ public class TestPago {
 		System.out.println("traer all pagosTarjeta=\n");
 		System.out.println(PagoTarjetaABM.getInstance().traerPagosTarjeta());
 		
-		
+		System.out.println("traer all clientes=\n");
+		System.out.println("lalallalalalal"+PersonaABM.getInstance().traerClientes());
+
 	}
 
 }

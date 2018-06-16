@@ -16,23 +16,20 @@
 		 <many-to-one name="Domicilio" class="datos.Domicilio" 
 		column="idDomicilio" not-null="true" />  
 		
+		
+		<set name="pagos" table="Pago" 
+				inverse="true" lazy="false" fetch="select">
+				<key column="idPersona" not-null="false" />
+				<one-to-many class="datos.Pago" />
+			</set>
+		
 		<!--  --><set name="cobros" table="Venta" order-by="idVenta asc"
 			inverse="true" lazy="false" fetch="select">
 			<key column="idPersona" not-null="false" />
 			<one-to-many class="datos.Venta" />
 		</set>
 
-		<joined-subclass name="datos.Cliente" table="cliente">
-			<key column="idCliente" />
-			<property column="numAfiliado" name="numAfiliado" type="long" />
-			
-			<set name="pagos" table="Pago" 
-				inverse="true" lazy="false" fetch="select">
-				<key column="idCliente" not-null="false" />
-				<one-to-many class="datos.Pago" />
-			</set>
-			
-		</joined-subclass>
+		
 
 		<joined-subclass name="datos.Empleado" table="empleado">
 			<key column="idEmpleado" />

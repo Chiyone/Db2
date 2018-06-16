@@ -4,10 +4,11 @@ import java.util.List;
 
 import dao.PagoDao;
 import dao.PersonaDao;
-import datos.Cliente;
+ 
 import datos.Pago;
 import datos.PagoCheque;
 import datos.PagoEfectivo;
+import datos.Persona;
 import datos.Venta;
 
 
@@ -22,7 +23,7 @@ public class PagoEfectivoABM {
 
 	
 
-	public int agregar(double monto, Cliente cliente, String tpoPago,Venta venta, double vuelto) {
+	public int agregar(double monto, Persona cliente, String tpoPago,Venta venta, double vuelto) {
 		PagoEfectivo d=new PagoEfectivo( monto,  cliente, tpoPago,venta, vuelto);
 		return PagoDao.getInstance().agregar(d);
 		

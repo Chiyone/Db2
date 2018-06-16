@@ -5,7 +5,7 @@ import java.util.Set;
 
 import dao.PagoDao;
 import dao.PersonaDao;
-import datos.Cliente;
+
 import datos.Domicilio;
 import datos.ItemVenta;
 import datos.Pago;
@@ -30,7 +30,7 @@ public class PagoABM {
 	public List<Pago> traer(){
 		return PagoDao.getInstance().traer();
 	}
-	public int agregar( Cliente cliente, String tpoPago,Venta venta) {
+	public int agregar( Persona cliente, String tpoPago,Venta venta) {
 		double monto=calcularMonto(venta);
 		
 		Pago s=new Pago( monto, cliente, tpoPago,venta);

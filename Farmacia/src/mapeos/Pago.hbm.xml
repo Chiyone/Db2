@@ -17,7 +17,7 @@
 
  <one-to-one name="Venta" class="datos.Venta" ></one-to-one>
  
-  <many-to-one name="Cliente" class="datos.Cliente" column="idCliente"
+  <many-to-one name="cliente" class="datos.Persona" column="idPersona"
 			not-null="false" />
  
 <joined-subclass name="datos.PagoCheque" table="PagoCheque">

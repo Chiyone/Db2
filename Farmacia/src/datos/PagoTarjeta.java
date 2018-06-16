@@ -23,7 +23,7 @@ public class PagoTarjeta extends Pago{
 	 * @param cantCuotas
 	 * @param precioCuota
 	 */
-	public PagoTarjeta(double monto, Cliente cliente, String tpoPago,Venta venta, long tarjeta, int cantCuotas,
+	public PagoTarjeta(double monto, Persona cliente, String tpoPago,Venta venta, long tarjeta, int cantCuotas,
 			double precioCuota) {
 		super(monto, cliente, tpoPago,venta);
 		this.tarjeta = tarjeta;

@@ -1,10 +1,12 @@
 package dao;
 import java.util.List;
+
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import datos.Cliente;
+
 import datos.Empleado;
 import datos.Pago;
 import datos.Persona;
@@ -115,20 +117,8 @@ public class PersonaDao {
 			session.close();
 		}
 	}
-	public void eliminar(Cliente objeto) throws HibernateException {
-		try {
-			iniciaOperacion();
-			session.delete(objeto);
-			tx.commit();
-		} 
-		catch (HibernateException he) {
-			manejaExcepcion(he);
-			throw he;
-		} 
-		finally {
-			session.close();
-		}
-	}
+	
+		
 	public void eliminar(Empleado objeto) throws HibernateException {
 		try {
 			iniciaOperacion();
@@ -148,7 +138,8 @@ public class PersonaDao {
 		List<Persona> lista = null ;
 		try {
 			iniciaOperacion();
-			lista = session .createQuery( "from  Cliente  " ).list();
+			lista = session .createQuery( "from  Persona as p inner join fetch p.pagos group by p.idPersona  " ).list();
+			
 		} finally {
 			session .close();
 		}
@@ -176,18 +167,6 @@ public class PersonaDao {
 		}
 		return lista ;
 	}
-	public Cliente traerCliente( long idCliente ){
-		Cliente objeto = null ;
-		try {
-			iniciaOperacion();
-			objeto = (Cliente) session.createQuery( " from Cliente e "+
-													"where e.idPersona = "+(idCliente)).uniqueResult();
-		} finally {
-			session .close();
-		}
-		//objeto1=objeto.
-		return objeto ;
-	}
-	}
+}
 	
 	
