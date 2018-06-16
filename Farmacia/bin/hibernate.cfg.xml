@@ -23,6 +23,6 @@
 	<mapping resource="mapeos/ItemVenta.hbm.xml"/>
 	<mapping resource="mapeos/Venta.hbm.xml"/>
 	<mapping resource="mapeos/Pago.hbm.xml"/>
-	
+	<mapping resource="mapeos/Afiliado.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

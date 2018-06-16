@@ -1,9 +1,12 @@
 package datos;
 
+import java.util.Set;
+
 public class ObraSocial {
 	
 	private long idObraSoc;
 	private String nombre;
+	private Set<Afiliado> afiliados;
 	public ObraSocial() {
 		super();
 	}
@@ -14,6 +17,12 @@ public class ObraSocial {
 	}
 	
 	
+	public Set<Afiliado> getAfiliados() {
+		return afiliados;
+	}
+	public void setAfiliados(Set<Afiliado> afiliados) {
+		this.afiliados = afiliados;
+	}
 	/**
 	 * @return the idObraSoc
 	 */

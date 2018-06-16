@@ -7,7 +7,11 @@
 <generator class = "identity" />
 </id >
 <property column = "nombre" name = "nombre" type = "string" />
-
+<set name="afiliados" table="Afiliado" 
+				inverse="true" lazy="false" fetch="select">
+				<key column="idObraSocial" not-null="false" />
+				<one-to-many class="datos.Afiliado" />
+			</set>
 </class >
 
 </hibernate-mapping>

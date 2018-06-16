@@ -13,6 +13,7 @@ public class Persona {
 //	private ObraSocial obraSocial;
 	private Set<Pago> pagos;
 	private Set<Venta> cobros;
+	private Afiliado afiliado;
 	
 	/**
 	 * 
@@ -120,6 +121,15 @@ public class Persona {
 	public void setCobros(Set<Venta> cobros) {
 		this.cobros = cobros;
 	}
+
+	public Afiliado getAfiliado() {
+		return afiliado;
+	}
+
+	public void setAfiliado(Afiliado afiliado) {
+		this.afiliado = afiliado;
+	}
+	
 
 	
 	
