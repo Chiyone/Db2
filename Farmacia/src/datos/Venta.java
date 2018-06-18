@@ -1,6 +1,8 @@
 package datos;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Set;
+import datos.Funciones;
 
 public class Venta {
 	protected long idVenta;
@@ -43,11 +45,11 @@ public class Venta {
 		super();
 	}
 	
-	public Venta(String numTicket, double totalVenta, GregorianCalendar fecha, Empleado eAtendio, Persona eCobro,
+	public Venta(String numTicket,  GregorianCalendar fecha, Empleado eAtendio, Persona eCobro,
 			Sucursal sucursal) {
 		super();
 		this.numTicket = numTicket;
-		this.totalVenta = totalVenta;
+		this.totalVenta = 0;
 		this.fecha = fecha;
 		this.eAtendio = eAtendio;
 		this.eCobro = eCobro;
@@ -78,8 +80,10 @@ public class Venta {
 	 * @return the totalVenta
 	 */
 	public double getTotalVenta() {
+		
 		return totalVenta;
 	}
+	
 	/**
 	 * @param totalVenta the totalVenta to set
 	 */
@@ -163,13 +167,37 @@ public class Venta {
 	 */
 	@Override
 	public String toString() {
-		return "Venta [\nnumTicket=" + numTicket + "\ntotalVenta=" + totalVenta + "\nfecha=" + fecha + "\neAtendio="
+		return "Venta [\nnumTicket=" + numTicket + "\ntotalVenta=" + totalVenta + "\nfecha=" + Funciones.traerFechaCorta(fecha) + "\neAtendio="
 				+ eAtendio + "\neCobro=" + eCobro+ "\nsucursal=" + sucursal + "]";
 	}
 	
-	public String toString2() {
-		return "Venta [\nnumTicket=" + numTicket + "\ntotalVenta=" + totalVenta + "\nfecha=" + fecha + "\neAtendio="
-				+ eAtendio.idPersona + "\neCobro=" + eCobro.idPersona+ "\nsucursal=" + sucursal.idSucursal + "]";
+	public String ventaYdetalle(String detalles) {
+		/*String detalles="";
+		Set<ItemVenta>lst = itemsVenta;
+		for(ItemVenta i:lst) {
+			 detalles=detalles+" "+i+"\n";
+		}
+		 detalles=detalles+" "+it+"\n";*/
+		
+		
+		return "\nVenta:\nnumTicket=" + numTicket + 
+				"\nFecha=" + Funciones.traerFechaCorta(fecha) + 
+				"\nDetalles:\n"+detalles+
+				"\nTotal Venta=" + totalVenta + 
+				"\nAtendio="+ eAtendio.getNombre()+" "+eAtendio.getApellido() +
+				"\nCobro=" + eCobro.getNombre()+" "+eCobro.getApellido() + 
+				"\nSucursal=" + sucursal.getSucursal() + "\n";
+	}
+	public String ventasGenerales() {
+		
+		
+		return "Venta=" + idVenta + 
+				"\tTotal Venta=" + totalVenta + 
+				"\tAtendio="+ eAtendio.getNombre()+" "+eAtendio.getApellido() +
+				"\tCobro=" + eCobro.getNombre()+" "+eCobro.getApellido() +
+				"\tFecha=" + Funciones.traerFechaCorta(fecha)
+				;
+				
 	}
 	
 
@@ -184,7 +212,17 @@ public class Venta {
 	public Sucursal getSucursal() {
 		return sucursal;
 	}
-	
+	public double calcularTotalVenta() {
+		double total=0;
+		
+		Set<ItemVenta>lst = itemsVenta;
+		for(ItemVenta i:lst) {
+			 total=total+i.getPrecioTotal();
+		}
+		return total;
+		
+		
+	}
 	
 	
 }

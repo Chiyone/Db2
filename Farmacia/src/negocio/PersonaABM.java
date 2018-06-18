@@ -21,6 +21,10 @@ public class PersonaABM {
 	public List<Persona> traer(){
 		return PersonaDao.getInstance().traer();
 	}
+	public List<Persona> traerO(){
+		return PersonaDao.getInstance().traerO();
+	}
+	
 	public int agregar(long dni, String nombre, String apellido, Domicilio domicilio) {
 		Persona s=new Persona( dni, nombre,apellido, domicilio);
 		return PersonaDao.getInstance().agregar(s);

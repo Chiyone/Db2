@@ -1,5 +1,6 @@
-/test/
+/dao/
 /datos/
 /mapeos/
-/dao/
 /negocio/
+/test/
+/AfiliadoABM.class

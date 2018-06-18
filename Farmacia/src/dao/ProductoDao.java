@@ -109,5 +109,15 @@ public class ProductoDao {
 				}
 			return lista;
 		}
-	
+		@SuppressWarnings ( "unchecked" )
+		public List<Producto> traerProductos(String tipo) throws HibernateException {
+			List<Producto> lista= null ;
+			try {
+				iniciaOperacion();
+				lista= session.createQuery( "from Producto p where p.tipo=:tipo ").setString("tipo", tipo).list();
+			} 	finally {
+				session.close();
+				}
+			return lista;
+		}
 }

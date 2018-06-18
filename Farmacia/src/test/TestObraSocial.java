@@ -29,8 +29,8 @@ public class TestObraSocial {
 	sSoc.agregar("FATSA");
 	Afiliado afi=new Afiliado(1123,sSoc.traerObraSocial(1),PersonaABM.getInstance().traer(1));
 	Afiliado afi2=new Afiliado(1123,sSoc.traerObraSocial(1),PersonaABM.getInstance().traer(3));
-	abm.agregar(afi);
-	abm.agregar(afi2);
+	/*abm.agregar(afi);
+	abm.agregar(afi2);*/
 	
 	
 	

@@ -1,5 +1,7 @@
 package test;
 
+import java.util.GregorianCalendar;
+
 import datos.Domicilio;
 import datos.Sucursal;
 
@@ -38,10 +40,11 @@ public class TestVenta {
 		EmpleadoABM.getInstance().agregar(4444, "eee", "Son",abmdom.traerDomicilio(1), 1111111, 111, null, sucAbm.traerSucursal(1),"Encargado");
 		
 		System.out.println(EmpleadoABM.getInstance().traer(1));
-		abm.agregar( 15.0, null, EmpleadoABM.getInstance().traer(1), PersonaABM.getInstance().traer(1), sucAbm.traerSucursal(1));
+		GregorianCalendar fecha = new GregorianCalendar ();
+		abm.agregar( 15.0, fecha, EmpleadoABM.getInstance().traer(1), PersonaABM.getInstance().traer(1), sucAbm.traerSucursal(1));
 		abm.traerVenta(1);
 		System.out.println(abm.traerVenta(1));
-		abm.agregar( 15.0, null, EmpleadoABM.getInstance().traer(1), PersonaABM.getInstance().traer(1), sucAbm.traerSucursal(1));
+		//abm.agregar( 15.0, null, EmpleadoABM.getInstance().traer(1), PersonaABM.getInstance().traer(1), sucAbm.traerSucursal(1));
 		
 	//+traer ventas cuando pago= null
 		

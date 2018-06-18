@@ -56,7 +56,11 @@ public class ProductoABM {
 		return dao.traerProducto();
 		}else throw new Exception ("No hay Productos en la base de datos");
 	}
-	
+	public List<Producto> traerProductos(String tipo) throws Exception{
+		if(dao.traerProductos(tipo)!=null){
+		return dao.traerProductos(tipo);
+		}else throw new Exception ("No hay Productos en la base de datos");
+	}
 	public long agregarCodNum(){
 		long cod =traerIdProd();
 		

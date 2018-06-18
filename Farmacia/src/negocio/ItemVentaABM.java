@@ -24,13 +24,18 @@ public class ItemVentaABM {
 		
 	}*/
 	
-	public int agregar(Producto producto, int cantidad,Venta venta) {
-		
+	public int agregar(Producto producto, int cantidad,Venta venta) throws Exception {
+		VentaABM venabm=new VentaABM();
+		Venta ven1=venabm.traerVenta(venta.getIdVenta());
 		double precioUnitario=calcularPreciounitario(producto);
 		double precioTotal=calcularPrecioTotal(cantidad,precioUnitario);
-		
+		double total=0;
+		total=venta.getTotalVenta()+precioTotal;
+		ven1.setTotalVenta(total);
+		venabm.modificar(ven1);
 		
 		ItemVenta s=new ItemVenta(producto,cantidad, precioTotal,precioUnitario,venta);
+		
 		return dao.agregar(s);
 		
 	}

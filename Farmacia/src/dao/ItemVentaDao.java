@@ -106,7 +106,7 @@ public class ItemVentaDao {
 			List<ItemVenta> lista= null ;
 			try {
 				iniciaOperacion();
-				lista= session.createQuery( "from ItemVenta i order by i.itemVenta asc ").list();
+				lista= session.createQuery( "from ItemVenta i join fetch i.Venta left join fetch i.Producto order by i.idItemVenta asc ").list();
 			} 	finally {
 				session.close();
 				}

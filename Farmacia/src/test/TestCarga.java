@@ -1,0 +1,634 @@
+/*  	<mapping resource="mapeos/Domicilio.hbm.xml"/>
+	<mapping resource="mapeos/Sucursal.hbm.xml"/>
+	<mapping resource="mapeos/Persona.hbm.xml"/> 
+	<mapping resource="mapeos/ObraSocial.hbm.xml"/>
+	<mapping resource="mapeos/Producto.hbm.xml"/>
+	<mapping resource="mapeos/ItemVenta.hbm.xml"/>
+	<mapping resource="mapeos/Venta.hbm.xml"/>
+	<mapping resource="mapeos/Pago.hbm.xml"/>
+	<mapping resource="mapeos/Afiliado.hbm.xml"/> 
+	3 sucursales, 10 clientes, 3 vendedores por sucursal, uno de ellos con
+categoría encargado; 10 productos (7 medicamentos y 3 perfumerìa), y un promedio de 30
+ventas por sucursal. Es deseable que haya variación en las cantidades de venta por
+sucursal (+/- 20%). Las ventas deben tener un promedio mínimo de 1,5
+	
+	*/
+
+
+
+package test;
+
+import java.util.GregorianCalendar;
+import java.util.Set;
+
+import datos.Domicilio;
+import datos.Producto;
+import datos.Sucursal;
+import negocio.AfiliadoABM;
+import negocio.DomicilioABM;
+import negocio.EmpleadoABM;
+import negocio.ItemVentaABM;
+import negocio.ObraSocialABM;
+import negocio.PagoABM;
+import negocio.PersonaABM;
+import negocio.ProductoABM;
+import negocio.SucursalABM;
+import negocio.VentaABM;
+import negocio.PagoChequeABM;
+import negocio.PagoEfectivoABM;
+import negocio.PagoTarjetaABM;
+
+
+
+public class TestCarga {
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+
+		// Carga domicilios
+		DomicilioABM domABM1=new DomicilioABM();
+		Domicilio dom1=new Domicilio("San Ignacio", 390, "Buenos Aires", "Longchamps");
+		Domicilio dom2=new Domicilio("Azara", 2000, "Buenos Aires", "Banfield");
+		Domicilio dom3=new Domicilio("Pasco", 350, "Buenos Aires", "Temperley");
+		Domicilio dom4=new Domicilio("Uriarte", 30, "Buenos Aires", "Banfield");
+		Domicilio dom5=new Domicilio("Berutti", 3290, "Buenos Aires", "Banfield");
+		Domicilio dom6=new Domicilio("Vieytes", 310, "Buenos Aires", "Banfield");
+		Domicilio dom7=new Domicilio("Alsina", 490, "Buenos Aires", "Banfield");
+		Domicilio dom8=new Domicilio("Pavon", 923, "Buenos Aires", "Banfield");
+		Domicilio dom9=new Domicilio("Acevedo", 420, "Buenos Aires", "Banfield");
+		Domicilio dom10=new Domicilio("Araoz", 1504, "Buenos Aires", "Banfield");
+		Domicilio dom11=new Domicilio("Araoz", 392, "Buenos Aires", "Banfield");
+		Domicilio dom12=new Domicilio("Alem", 12, "Buenos Aires", "Banfield");
+		Domicilio dom13=new Domicilio("Malabia", 1190, "Buenos Aires", "Banfield");
+		Domicilio dom14=new Domicilio("9 de julio", 1120, "Buenos Aires", "Capital Federal");
+		Domicilio dom15=new Domicilio("Araoz", 1505, "Buenos Aires", "Banfield");
+		Domicilio dom16=new Domicilio("Araoz", 3923, "Buenos Aires", "Banfield");
+		Domicilio dom17=new Domicilio("Alem", 123, "Buenos Aires", "Banfield");
+		Domicilio dom18=new Domicilio("Malabia", 1290, "Buenos Aires", "Banfield");
+		Domicilio dom19=new Domicilio("9 de julio", 120, "Buenos Aires", "Capital Federal");
+		Domicilio dom20=new Domicilio("Araoz", 1404, "Buenos Aires", "Banfield");
+		Domicilio dom21=new Domicilio("Araoz", 1332, "Buenos Aires", "Banfield");
+		Domicilio dom22=new Domicilio("Alem", 1204, "Buenos Aires", "Banfield");
+		Domicilio dom23=new Domicilio("Malabia", 1000, "Buenos Aires", "Banfield");
+		Domicilio dom24=new Domicilio("9 de julio", 2120, "Buenos Aires", "Capital Federal");
+		domABM1.agregar(dom1);
+		domABM1.agregar(dom2);
+		domABM1.agregar(dom3);
+		domABM1.agregar(dom4);
+		domABM1.agregar(dom5);
+		domABM1.agregar(dom6);
+		domABM1.agregar(dom7);
+		domABM1.agregar(dom8);
+		domABM1.agregar(dom9);
+		domABM1.agregar(dom10);
+		domABM1.agregar(dom11);
+		domABM1.agregar(dom12);
+		domABM1.agregar(dom13);
+		domABM1.agregar(dom14);
+		domABM1.agregar(dom15);
+		domABM1.agregar(dom16);
+		domABM1.agregar(dom17);
+		domABM1.agregar(dom18);
+		domABM1.agregar(dom19);
+		domABM1.agregar(dom20);
+		domABM1.agregar(dom21);
+		domABM1.agregar(dom22);
+		domABM1.agregar(dom23);
+		domABM1.agregar(dom24);
+
+		// Carga sucursales
+		SucursalABM sucABM1=new SucursalABM();
+		Sucursal suc1=new Sucursal("Baradero", domABM1.traerDomicilio(1));
+		Sucursal suc2=new Sucursal("Banfield", domABM1.traerDomicilio(2));
+		Sucursal suc3=new Sucursal("Temperley", domABM1.traerDomicilio(3));
+		sucABM1.agregar(suc1);
+		sucABM1.agregar(suc2);
+		sucABM1.agregar(suc3);
+		
+		// Carga personas
+		PersonaABM.getInstance().agregar(27555231, "Carlos", "Perez", dom4);
+		PersonaABM.getInstance().agregar(21030102, "Jose", "Gimenez", dom5);
+		PersonaABM.getInstance().agregar(27555233, "Martin", "Patrioro", dom6);
+		PersonaABM.getInstance().agregar(21030104, "Manuel", "Feracio", dom7);
+		PersonaABM.getInstance().agregar(27555235, "Lucio", "Querio", dom8);
+		PersonaABM.getInstance().agregar(21030106, "Claudia", "Vazquez", dom9);
+		PersonaABM.getInstance().agregar(27555237, "Matias", "Perez", dom10);
+		PersonaABM.getInstance().agregar(21030108, "Martin", "Iriola", dom11);
+		PersonaABM.getInstance().agregar(27555239, "Carlos", "Musiccar", dom12);
+		PersonaABM.getInstance().agregar(21030133, "Jose", "Peraso", dom13);
+		EmpleadoABM.getInstance().agregar(20001002, "Pedro", "Martinez", dom14, 20000000, 11, null, suc1,"Encargado");
+		EmpleadoABM.getInstance().agregar(39487213, "Martin", "Tiradio", dom15, 39000000, 12, null, suc1,"Empleado");
+		EmpleadoABM.getInstance().agregar(35723102, "Juan", "Soria", dom16, 35000000, 13, null, suc1,"Empleado");
+		EmpleadoABM.getInstance().agregar(32111333, "Federico", "Soto", dom17, 32000000, 21, null, suc2,"Encargado");
+		EmpleadoABM.getInstance().agregar(34000002, "Santiago", "Patiro", dom18, 34000000, 22, null, suc2,"Empleado");
+		EmpleadoABM.getInstance().agregar(29001949, "Roberto", "Maton", dom19, 29000000, 23, null, suc2,"Empleado");
+		EmpleadoABM.getInstance().agregar(20001001, "Pedro", "Juazi", dom20, 20000000, 11, null, suc3,"Encargado");
+		EmpleadoABM.getInstance().agregar(39487215, "Martin", "Zerpa", dom21, 39000000, 12, null, suc3,"Empleado");
+		EmpleadoABM.getInstance().agregar(35723107, "Juan", "Qekio", dom22, 35000000, 13, null, suc3,"Empleado");
+		
+		// Carga Obra social
+		
+		ObraSocialABM obraSocialABM=new ObraSocialABM();
+		obraSocialABM.agregar("Osmecon");
+		obraSocialABM.agregar("Osde");
+		obraSocialABM.agregar("Medlife");
+		obraSocialABM.agregar("Galeno");
+		obraSocialABM.agregar("Swiss Medical");
+
+		
+		// Carga productos
+		ProductoABM abm=new ProductoABM();
+		Producto prod1=new Producto("Amoxicilina", "Farmacia", 120, "Bayer");
+		Producto prod2=new Producto( "Paracetamol", "Farmacia", 50, "Eurolab");
+		Producto prod3=new Producto("Ibuprofeno", "Farmacia", 30, "Bayer");
+		Producto prod4=new Producto("Crema Hidratante", "Perfumeria", 40, "Rospaw");
+		Producto prod5=new Producto( "Diclofenac sodico", "Farmacia", 60, "Vanier");
+		Producto prod6=new Producto( "Aspirinetas", "Farmacia", 40, "Bayer");
+		Producto prod7=new Producto( "Paco Rabanne", "Perfumeria", 2410, "Vanier");
+		Producto prod8=new Producto( "Invictus", "Perfumeria", 3400, "Bayer");
+		Producto prod9=new Producto( "Channel", "Perfumeria", 2000, "Rospaw");
+		Producto prod10=new Producto( "Calvin Klein", "Perfumeria", 4000, "Vanier");
+		Producto prod11=new Producto( "Oralsone", "Farmacia", 150, "Rospaw");
+		Producto prod12=new Producto( "Cicatricure", "Farmacia", 100, "Eurolab");
+		abm.agregar(prod1);
+		abm.agregar(prod2);
+		abm.agregar(prod3);
+		abm.agregar(prod4);
+		abm.agregar(prod5);
+		abm.agregar(prod6);
+		abm.agregar(prod7);
+		abm.agregar(prod8);
+		abm.agregar(prod9);
+		abm.agregar(prod10);
+		abm.agregar(prod11);
+		abm.agregar(prod12);
+		
+		// Carga ventas
+		
+		VentaABM ventaABM = new VentaABM();
+		GregorianCalendar fecha1= new GregorianCalendar(2018,5,1,10,1);
+		GregorianCalendar fecha2= new GregorianCalendar(2018,5,1,10,2);
+		GregorianCalendar fecha3= new GregorianCalendar(2018,5,1,10,3);
+		GregorianCalendar fecha4= new GregorianCalendar(2018,5,1,10,4);
+		GregorianCalendar fecha5= new GregorianCalendar(2018,5,4,10,5);
+		GregorianCalendar fecha6= new GregorianCalendar(2018,5,4,10,6);
+		GregorianCalendar fecha7= new GregorianCalendar(2018,5,4,10,7);
+		GregorianCalendar fecha8= new GregorianCalendar(2018,5,4,10,8);
+		GregorianCalendar fecha9= new GregorianCalendar(2018,3,4,10,9);
+		GregorianCalendar fecha10= new GregorianCalendar(2018,3,4,10,10);
+		GregorianCalendar fecha11= new GregorianCalendar(2018,3,4,10,11);
+		GregorianCalendar fecha12= new GregorianCalendar(2018,3,4,10,12);
+		GregorianCalendar fecha13= new GregorianCalendar(2018,3,4,10,13);
+		GregorianCalendar fecha14= new GregorianCalendar(2018,5,4,10,14);
+		GregorianCalendar fecha15= new GregorianCalendar(2018,5,4,10,15);
+		GregorianCalendar fecha16= new GregorianCalendar(2018,5,2,10,16);
+		GregorianCalendar fecha17= new GregorianCalendar(2018,5,2,10,17);
+		GregorianCalendar fecha18= new GregorianCalendar(2018,5,2,10,18);
+		GregorianCalendar fecha19= new GregorianCalendar(2018,5,4,10,19);
+		GregorianCalendar fecha20= new GregorianCalendar(2018,5,10,10,20);
+		GregorianCalendar fecha21= new GregorianCalendar(2018,5,10,10,21);
+		GregorianCalendar fecha22= new GregorianCalendar(2018,5,10,10,22);
+		GregorianCalendar fecha23= new GregorianCalendar(2018,5,9,10,23);
+		GregorianCalendar fecha24= new GregorianCalendar(2018,5,9,10,24);
+		GregorianCalendar fecha25= new GregorianCalendar(2018,5,9,10,25);
+		GregorianCalendar fecha26= new GregorianCalendar(2018,5,9,10,26);
+		GregorianCalendar fecha27= new GregorianCalendar(2018,5,9,10,27);
+		GregorianCalendar fecha28= new GregorianCalendar(2018,5,8,10,28);
+		GregorianCalendar fecha29= new GregorianCalendar(2018,5,8,10,29);
+		GregorianCalendar fecha30= new GregorianCalendar(2018,5,8,10,30);
+		GregorianCalendar fecha31= new GregorianCalendar(2018,5,8,10,31);
+		GregorianCalendar fecha32= new GregorianCalendar(2018,5,8,10,32);
+		GregorianCalendar fecha33= new GregorianCalendar(2018,5,8,10,33);
+		GregorianCalendar fecha34= new GregorianCalendar(2018,5,3,10,1);
+		GregorianCalendar fecha35= new GregorianCalendar(2018,5,3,10,2);
+		GregorianCalendar fecha36= new GregorianCalendar(2018,5,3,10,3);
+		GregorianCalendar fecha37= new GregorianCalendar(2018,5,3,10,4);
+		GregorianCalendar fecha38= new GregorianCalendar(2018,5,3,10,5);
+		GregorianCalendar fecha39= new GregorianCalendar(2018,5,3,10,6);
+		GregorianCalendar fecha40= new GregorianCalendar(2018,5,3,10,7);
+		GregorianCalendar fecha41= new GregorianCalendar(2018,5,3,10,8);
+		GregorianCalendar fecha42= new GregorianCalendar(2018,5,3,10,9);
+		GregorianCalendar fecha43= new GregorianCalendar(2018,5,3,10,10);
+		GregorianCalendar fecha44= new GregorianCalendar(2018,5,3,10,11);
+		GregorianCalendar fecha45= new GregorianCalendar(2018,5,3,10,12);
+		GregorianCalendar fecha46= new GregorianCalendar(2018,5,3,10,13);
+		GregorianCalendar fecha47= new GregorianCalendar(2018,5,3,10,14);
+		GregorianCalendar fecha48= new GregorianCalendar(2018,5,3,10,15);
+		GregorianCalendar fecha49= new GregorianCalendar(2018,5,3,10,16);
+		GregorianCalendar fecha50= new GregorianCalendar(2018,5,3,10,17);
+		GregorianCalendar fecha51= new GregorianCalendar(2018,5,3,10,18);
+		GregorianCalendar fecha52= new GregorianCalendar(2018,5,3,10,19);
+		GregorianCalendar fecha53= new GregorianCalendar(2018,5,3,10,20);
+		GregorianCalendar fecha54= new GregorianCalendar(2018,5,3,10,21);
+		GregorianCalendar fecha55= new GregorianCalendar(2018,5,3,10,22);
+		GregorianCalendar fecha56= new GregorianCalendar(2018,5,3,10,23);
+		GregorianCalendar fecha57= new GregorianCalendar(2018,5,3,10,24);
+		GregorianCalendar fecha58= new GregorianCalendar(2018,5,3,10,25);
+		GregorianCalendar fecha59= new GregorianCalendar(2018,5,3,10,26);
+		GregorianCalendar fecha60= new GregorianCalendar(2018,5,3,10,27);
+		GregorianCalendar fecha61= new GregorianCalendar(2018,5,3,10,28);
+		GregorianCalendar fecha62= new GregorianCalendar(2018,5,3,10,29);
+		GregorianCalendar fecha63= new GregorianCalendar(2018,5,3,10,30);
+		GregorianCalendar fecha64= new GregorianCalendar(2018,5,3,10,31);
+		GregorianCalendar fecha65= new GregorianCalendar(2018,5,3,10,32);
+		GregorianCalendar fecha66= new GregorianCalendar(2018,5,3,10,33);
+	
+	
+		ventaABM.agregar(0, fecha1, EmpleadoABM.getInstance().traer(11), PersonaABM.getInstance().traer(12), suc1);
+		ventaABM.agregar(0, fecha2, EmpleadoABM.getInstance().traer(12), PersonaABM.getInstance().traer(13), suc1);
+		ventaABM.agregar(0, fecha3, EmpleadoABM.getInstance().traer(12), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha4, EmpleadoABM.getInstance().traer(12), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha5, EmpleadoABM.getInstance().traer(12), PersonaABM.getInstance().traer(13), suc1);
+		ventaABM.agregar(0, fecha6, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(12), suc1);
+		ventaABM.agregar(0, fecha7, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(12), suc1);
+		ventaABM.agregar(0, fecha8, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(12), suc1);
+		ventaABM.agregar(0, fecha9, EmpleadoABM.getInstance().traer(12), PersonaABM.getInstance().traer(12), suc1);
+		ventaABM.agregar(0, fecha10, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(12), suc1);
+		ventaABM.agregar(0, fecha11, EmpleadoABM.getInstance().traer(12), PersonaABM.getInstance().traer(13), suc1);
+		ventaABM.agregar(0, fecha12, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha13, EmpleadoABM.getInstance().traer(12), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha14, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha15, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha16, EmpleadoABM.getInstance().traer(12), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha17, EmpleadoABM.getInstance().traer(11), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha18, EmpleadoABM.getInstance().traer(11), PersonaABM.getInstance().traer(12), suc1);
+		ventaABM.agregar(0, fecha19, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha20, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha21, EmpleadoABM.getInstance().traer(12), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha22, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(12), suc1);
+		ventaABM.agregar(0, fecha23, EmpleadoABM.getInstance().traer(11), PersonaABM.getInstance().traer(13), suc1);
+		ventaABM.agregar(0, fecha24, EmpleadoABM.getInstance().traer(11), PersonaABM.getInstance().traer(12), suc1);
+		ventaABM.agregar(0, fecha25, EmpleadoABM.getInstance().traer(12), PersonaABM.getInstance().traer(13), suc1);
+		ventaABM.agregar(0, fecha26, EmpleadoABM.getInstance().traer(12), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha27, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha28, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha29, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(11), suc1);
+		ventaABM.agregar(0, fecha30, EmpleadoABM.getInstance().traer(13), PersonaABM.getInstance().traer(12), suc1);
+		ventaABM.agregar(0, fecha31, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha32, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha33, EmpleadoABM.getInstance().traer(15), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha33, EmpleadoABM.getInstance().traer(15), PersonaABM.getInstance().traer(16), suc2);
+		ventaABM.agregar(0, fecha34, EmpleadoABM.getInstance().traer(16), PersonaABM.getInstance().traer(16), suc2);
+		ventaABM.agregar(0, fecha35, EmpleadoABM.getInstance().traer(16), PersonaABM.getInstance().traer(14), suc2);
+		ventaABM.agregar(0, fecha36, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(14), suc2);
+		ventaABM.agregar(0, fecha37, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(14), suc2);
+		ventaABM.agregar(0, fecha38, EmpleadoABM.getInstance().traer(15), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha39, EmpleadoABM.getInstance().traer(15), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha40, EmpleadoABM.getInstance().traer(15), PersonaABM.getInstance().traer(14), suc2);
+		ventaABM.agregar(0, fecha41, EmpleadoABM.getInstance().traer(16), PersonaABM.getInstance().traer(14), suc2);
+		ventaABM.agregar(0, fecha42, EmpleadoABM.getInstance().traer(16), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha43, EmpleadoABM.getInstance().traer(15), PersonaABM.getInstance().traer(14), suc2);
+		ventaABM.agregar(0, fecha44, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha45, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(16), suc2);
+		ventaABM.agregar(0, fecha46, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha47, EmpleadoABM.getInstance().traer(15), PersonaABM.getInstance().traer(16), suc2);
+		ventaABM.agregar(0, fecha48, EmpleadoABM.getInstance().traer(16), PersonaABM.getInstance().traer(14), suc2);
+		ventaABM.agregar(0, fecha49, EmpleadoABM.getInstance().traer(16), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha50, EmpleadoABM.getInstance().traer(15), PersonaABM.getInstance().traer(14), suc2);
+		ventaABM.agregar(0, fecha51, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha52, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha53, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(16), suc2);
+		ventaABM.agregar(0, fecha54, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(16), suc2);
+		ventaABM.agregar(0, fecha55, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(14), suc2);
+		ventaABM.agregar(0, fecha56, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha57, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(16), suc2);
+		ventaABM.agregar(0, fecha58, EmpleadoABM.getInstance().traer(15), PersonaABM.getInstance().traer(14), suc2);
+		ventaABM.agregar(0, fecha59, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha60, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha61, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha62, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha63, EmpleadoABM.getInstance().traer(15), PersonaABM.getInstance().traer(16), suc2);
+		ventaABM.agregar(0, fecha64, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha65, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha66, EmpleadoABM.getInstance().traer(14), PersonaABM.getInstance().traer(15), suc2);
+		ventaABM.agregar(0, fecha17, EmpleadoABM.getInstance().traer(17), PersonaABM.getInstance().traer(19), suc3);
+		ventaABM.agregar(0, fecha18, EmpleadoABM.getInstance().traer(18), PersonaABM.getInstance().traer(19), suc3);
+		ventaABM.agregar(0, fecha19, EmpleadoABM.getInstance().traer(18), PersonaABM.getInstance().traer(19), suc3);
+		ventaABM.agregar(0, fecha10, EmpleadoABM.getInstance().traer(18), PersonaABM.getInstance().traer(17), suc3);
+		ventaABM.agregar(0, fecha11, EmpleadoABM.getInstance().traer(18), PersonaABM.getInstance().traer(19), suc3);
+		ventaABM.agregar(0, fecha12, EmpleadoABM.getInstance().traer(19), PersonaABM.getInstance().traer(18), suc3);
+		ventaABM.agregar(0, fecha13, EmpleadoABM.getInstance().traer(19), PersonaABM.getInstance().traer(18), suc3);
+		ventaABM.agregar(0, fecha14, EmpleadoABM.getInstance().traer(19), PersonaABM.getInstance().traer(19), suc3);
+		ventaABM.agregar(0, fecha15, EmpleadoABM.getInstance().traer(19), PersonaABM.getInstance().traer(17), suc3);
+		ventaABM.agregar(0, fecha16, EmpleadoABM.getInstance().traer(17), PersonaABM.getInstance().traer(18), suc3);
+		ventaABM.agregar(0, fecha17, EmpleadoABM.getInstance().traer(18), PersonaABM.getInstance().traer(17), suc3);
+		ventaABM.agregar(0, fecha18, EmpleadoABM.getInstance().traer(18), PersonaABM.getInstance().traer(17), suc3);
+		ventaABM.agregar(0, fecha19, EmpleadoABM.getInstance().traer(19), PersonaABM.getInstance().traer(18), suc3);
+		ventaABM.agregar(0, fecha20, EmpleadoABM.getInstance().traer(19), PersonaABM.getInstance().traer(18), suc3);
+		ventaABM.agregar(0, fecha21, EmpleadoABM.getInstance().traer(19), PersonaABM.getInstance().traer(17), suc3);
+		ventaABM.agregar(0, fecha22, EmpleadoABM.getInstance().traer(18), PersonaABM.getInstance().traer(17), suc3);
+		ventaABM.agregar(0, fecha23, EmpleadoABM.getInstance().traer(19), PersonaABM.getInstance().traer(18), suc3);
+		ventaABM.agregar(0, fecha24, EmpleadoABM.getInstance().traer(19), PersonaABM.getInstance().traer(18), suc3);
+		ventaABM.agregar(0, fecha25, EmpleadoABM.getInstance().traer(18), PersonaABM.getInstance().traer(17), suc3);
+		ventaABM.agregar(0, fecha26, EmpleadoABM.getInstance().traer(17), PersonaABM.getInstance().traer(19), suc3);
+		ventaABM.agregar(0, fecha27, EmpleadoABM.getInstance().traer(18), PersonaABM.getInstance().traer(19), suc3);
+		ventaABM.agregar(0, fecha28, EmpleadoABM.getInstance().traer(18), PersonaABM.getInstance().traer(19), suc3);
+		ventaABM.agregar(0, fecha29, EmpleadoABM.getInstance().traer(18), PersonaABM.getInstance().traer(19), suc3);
+		ventaABM.agregar(0, fecha30, EmpleadoABM.getInstance().traer(18), PersonaABM.getInstance().traer(17), suc3);
+		ventaABM.agregar(0, fecha31, EmpleadoABM.getInstance().traer(18), PersonaABM.getInstance().traer(17), suc3);
+
+		// Carga ItemVenta
+		
+		ItemVentaABM itemVentaABM=new ItemVentaABM();
+		itemVentaABM.agregar(prod1, 1 , ventaABM.traerVenta(1));
+		itemVentaABM.agregar(prod1, 2 , ventaABM.traerVenta(2));
+		itemVentaABM.agregar(prod1, 1 , ventaABM.traerVenta(3));
+		itemVentaABM.agregar(prod1, 2 , ventaABM.traerVenta(4));
+		itemVentaABM.agregar(prod1, 1 , ventaABM.traerVenta(5));
+		itemVentaABM.agregar(prod1, 1 , ventaABM.traerVenta(6));
+		itemVentaABM.agregar(prod2, 1 , ventaABM.traerVenta(7));
+		itemVentaABM.agregar(prod2, 1 , ventaABM.traerVenta(8));
+		itemVentaABM.agregar(prod2, 1 , ventaABM.traerVenta(9));
+		itemVentaABM.agregar(prod2, 1 , ventaABM.traerVenta(10));
+		itemVentaABM.agregar(prod2, 1 , ventaABM.traerVenta(11));
+		itemVentaABM.agregar(prod2, 1 , ventaABM.traerVenta(12));
+		itemVentaABM.agregar(prod2, 1 , ventaABM.traerVenta(13));
+		itemVentaABM.agregar(prod2, 1 , ventaABM.traerVenta(14));
+		itemVentaABM.agregar(prod2, 1 , ventaABM.traerVenta(15));
+		itemVentaABM.agregar(prod3, 1 , ventaABM.traerVenta(16));
+		itemVentaABM.agregar(prod3, 1 , ventaABM.traerVenta(17));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(18));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(19));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(20));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(21));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(22));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(23));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(24));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(25));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(26));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(27));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(28));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(29));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(30));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(31));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(32));
+		itemVentaABM.agregar(prod3, 7 , ventaABM.traerVenta(33));
+		itemVentaABM.agregar(prod3, 6 , ventaABM.traerVenta(34));
+		itemVentaABM.agregar(prod3, 5 , ventaABM.traerVenta(35));
+		itemVentaABM.agregar(prod3, 1 , ventaABM.traerVenta(36));
+		itemVentaABM.agregar(prod4, 3 , ventaABM.traerVenta(37));
+		itemVentaABM.agregar(prod4, 6 , ventaABM.traerVenta(38));
+		itemVentaABM.agregar(prod4, 8 , ventaABM.traerVenta(39));
+		itemVentaABM.agregar(prod4, 3 , ventaABM.traerVenta(40));
+		itemVentaABM.agregar(prod4, 4 , ventaABM.traerVenta(41));
+		itemVentaABM.agregar(prod4, 6 , ventaABM.traerVenta(42));
+		itemVentaABM.agregar(prod4, 1 , ventaABM.traerVenta(43));
+		itemVentaABM.agregar(prod4, 3 , ventaABM.traerVenta(44));
+		itemVentaABM.agregar(prod4, 5 , ventaABM.traerVenta(45));
+		itemVentaABM.agregar(prod4, 12 ,ventaABM.traerVenta(46));
+		itemVentaABM.agregar(prod4, 6 , ventaABM.traerVenta(47));
+		itemVentaABM.agregar(prod4, 6 , ventaABM.traerVenta(48));
+		itemVentaABM.agregar(prod4, 5 , ventaABM.traerVenta(49));
+		itemVentaABM.agregar(prod5, 11 ,ventaABM.traerVenta(50));
+		itemVentaABM.agregar(prod5, 3 , ventaABM.traerVenta(51));
+		itemVentaABM.agregar(prod5, 4 , ventaABM.traerVenta(52));
+		itemVentaABM.agregar(prod5, 5 , ventaABM.traerVenta(53));
+		itemVentaABM.agregar(prod5, 6 , ventaABM.traerVenta(54));
+		itemVentaABM.agregar(prod5, 1 , ventaABM.traerVenta(55));
+		itemVentaABM.agregar(prod5, 2 , ventaABM.traerVenta(56));
+		itemVentaABM.agregar(prod5, 3 , ventaABM.traerVenta(57));
+		itemVentaABM.agregar(prod5, 1 , ventaABM.traerVenta(58));
+		itemVentaABM.agregar(prod5, 1 , ventaABM.traerVenta(59));
+		itemVentaABM.agregar(prod5, 1 , ventaABM.traerVenta(60));
+		itemVentaABM.agregar(prod5, 1 , ventaABM.traerVenta(61));
+		itemVentaABM.agregar(prod5, 1 , ventaABM.traerVenta(62));
+		itemVentaABM.agregar(prod5, 1 , ventaABM.traerVenta(63));
+		itemVentaABM.agregar(prod5, 3 , ventaABM.traerVenta(64));
+		itemVentaABM.agregar(prod5, 3 , ventaABM.traerVenta(65));
+		itemVentaABM.agregar(prod5, 3 , ventaABM.traerVenta(66));
+		itemVentaABM.agregar(prod5, 1 , ventaABM.traerVenta(67));
+		itemVentaABM.agregar(prod6, 1 , ventaABM.traerVenta(68));
+		itemVentaABM.agregar(prod1, 3 , ventaABM.traerVenta(69));
+		itemVentaABM.agregar(prod1, 3 , ventaABM.traerVenta(70));
+		itemVentaABM.agregar(prod1, 3 , ventaABM.traerVenta(71));
+		itemVentaABM.agregar(prod1, 4 , ventaABM.traerVenta(72));
+		itemVentaABM.agregar(prod1, 6 , ventaABM.traerVenta(73));
+		itemVentaABM.agregar(prod1, 7 , ventaABM.traerVenta(74));
+		itemVentaABM.agregar(prod1, 8 , ventaABM.traerVenta(75));
+		itemVentaABM.agregar(prod1, 1 , ventaABM.traerVenta(76));
+		itemVentaABM.agregar(prod1, 3 , ventaABM.traerVenta(77));
+		itemVentaABM.agregar(prod1, 4 , ventaABM.traerVenta(78));
+		itemVentaABM.agregar(prod9, 5 , ventaABM.traerVenta(79));
+		itemVentaABM.agregar(prod1, 6 , ventaABM.traerVenta(80));
+		itemVentaABM.agregar(prod9, 7 , ventaABM.traerVenta(81));
+		itemVentaABM.agregar(prod9, 18 ,ventaABM.traerVenta(82));
+		itemVentaABM.agregar(prod9, 1 , ventaABM.traerVenta(83));
+		itemVentaABM.agregar(prod9, 1 , ventaABM.traerVenta(84));
+		itemVentaABM.agregar(prod9, 1 , ventaABM.traerVenta(85));
+		itemVentaABM.agregar(prod9, 1 , ventaABM.traerVenta(86));
+		itemVentaABM.agregar(prod9, 1 , ventaABM.traerVenta(87));
+		itemVentaABM.agregar(prod9, 3 , ventaABM.traerVenta(88));
+		itemVentaABM.agregar(prod9, 3 , ventaABM.traerVenta(89));
+		itemVentaABM.agregar(prod9, 1 , ventaABM.traerVenta(90));
+		itemVentaABM.agregar(prod2, 1 , ventaABM.traerVenta(1));
+		itemVentaABM.agregar(prod7, 1 , ventaABM.traerVenta(2));
+		itemVentaABM.agregar(prod7, 1 , ventaABM.traerVenta(3));
+		itemVentaABM.agregar(prod6, 4 , ventaABM.traerVenta(4));
+		itemVentaABM.agregar(prod5, 2 , ventaABM.traerVenta(5));
+		itemVentaABM.agregar(prod5, 1 , ventaABM.traerVenta(6));
+		itemVentaABM.agregar(prod4, 3 , ventaABM.traerVenta(7));
+		itemVentaABM.agregar(prod1, 1 , ventaABM.traerVenta(8));
+		itemVentaABM.agregar(prod1, 1 , ventaABM.traerVenta(9));
+		itemVentaABM.agregar(prod7, 1 , ventaABM.traerVenta(10));
+		itemVentaABM.agregar(prod3, 2 , ventaABM.traerVenta(11));
+		itemVentaABM.agregar(prod4, 6 , ventaABM.traerVenta(12));
+		itemVentaABM.agregar(prod4, 2 , ventaABM.traerVenta(13));
+		itemVentaABM.agregar(prod3, 1 , ventaABM.traerVenta(14));
+		itemVentaABM.agregar(prod5, 1 , ventaABM.traerVenta(15));
+		itemVentaABM.agregar(prod7, 1 , ventaABM.traerVenta(16));
+		itemVentaABM.agregar(prod6, 1 , ventaABM.traerVenta(17));
+		itemVentaABM.agregar(prod1, 2 , ventaABM.traerVenta(18));
+		itemVentaABM.agregar(prod2, 2 , ventaABM.traerVenta(19));
+		itemVentaABM.agregar(prod8, 2 , ventaABM.traerVenta(20));
+		itemVentaABM.agregar(prod7, 2 , ventaABM.traerVenta(21));
+		itemVentaABM.agregar(prod7, 2 , ventaABM.traerVenta(22));
+		itemVentaABM.agregar(prod6, 2 , ventaABM.traerVenta(23));
+		itemVentaABM.agregar(prod6, 2 , ventaABM.traerVenta(24));
+		itemVentaABM.agregar(prod6, 2 , ventaABM.traerVenta(25));
+		itemVentaABM.agregar(prod5, 2 , ventaABM.traerVenta(26));
+		itemVentaABM.agregar(prod4, 2 , ventaABM.traerVenta(27));
+		itemVentaABM.agregar(prod9, 2 , ventaABM.traerVenta(28));
+		itemVentaABM.agregar(prod8, 2 , ventaABM.traerVenta(29));
+		itemVentaABM.agregar(prod7, 2 , ventaABM.traerVenta(30));
+		itemVentaABM.agregar(prod6, 2 , ventaABM.traerVenta(31));
+		itemVentaABM.agregar(prod2, 2 , ventaABM.traerVenta(32));
+		itemVentaABM.agregar(prod2, 7 , ventaABM.traerVenta(33));
+		itemVentaABM.agregar(prod1, 1 , ventaABM.traerVenta(34));
+		itemVentaABM.agregar(prod1, 2 , ventaABM.traerVenta(35));
+		itemVentaABM.agregar(prod4, 7 , ventaABM.traerVenta(36));
+		itemVentaABM.agregar(prod2, 4 , ventaABM.traerVenta(37));
+		itemVentaABM.agregar(prod2, 3 , ventaABM.traerVenta(38));
+		itemVentaABM.agregar(prod2, 2 , ventaABM.traerVenta(39));
+		itemVentaABM.agregar(prod2, 1 , ventaABM.traerVenta(40));
+		itemVentaABM.agregar(prod3, 4 , ventaABM.traerVenta(41));
+		itemVentaABM.agregar(prod9, 6 , ventaABM.traerVenta(42));
+		itemVentaABM.agregar(prod8, 1 , ventaABM.traerVenta(43));
+		itemVentaABM.agregar(prod7, 3 , ventaABM.traerVenta(44));
+		itemVentaABM.agregar(prod3, 5 , ventaABM.traerVenta(45));
+		itemVentaABM.agregar(prod8, 12 ,ventaABM.traerVenta(46));
+		itemVentaABM.agregar(prod8, 6 , ventaABM.traerVenta(47));
+		itemVentaABM.agregar(prod9, 6 , ventaABM.traerVenta(48));
+		itemVentaABM.agregar(prod9, 5 , ventaABM.traerVenta(49));
+		itemVentaABM.agregar(prod8, 11 ,ventaABM.traerVenta(50));
+		itemVentaABM.agregar(prod8, 3 , ventaABM.traerVenta(51));
+		itemVentaABM.agregar(prod7, 4 , ventaABM.traerVenta(52));
+		itemVentaABM.agregar(prod7, 5 , ventaABM.traerVenta(53));
+		itemVentaABM.agregar(prod7, 6 , ventaABM.traerVenta(54));
+		itemVentaABM.agregar(prod4, 1 , ventaABM.traerVenta(55));
+		itemVentaABM.agregar(prod4, 2 , ventaABM.traerVenta(56));
+		itemVentaABM.agregar(prod2, 3 , ventaABM.traerVenta(57));
+		itemVentaABM.agregar(prod1, 1 , ventaABM.traerVenta(58));
+		itemVentaABM.agregar(prod3, 1 , ventaABM.traerVenta(59));
+		itemVentaABM.agregar(prod3, 1 , ventaABM.traerVenta(60));
+		itemVentaABM.agregar(prod3, 1 , ventaABM.traerVenta(61));
+		itemVentaABM.agregar(prod4, 1 , ventaABM.traerVenta(62));
+		itemVentaABM.agregar(prod4, 1 , ventaABM.traerVenta(63));
+		itemVentaABM.agregar(prod1, 3 , ventaABM.traerVenta(64));
+		itemVentaABM.agregar(prod4, 3 , ventaABM.traerVenta(65));
+		itemVentaABM.agregar(prod4, 1 , ventaABM.traerVenta(66));
+		itemVentaABM.agregar(prod2, 1 , ventaABM.traerVenta(67));
+		itemVentaABM.agregar(prod2, 1 , ventaABM.traerVenta(68));
+		itemVentaABM.agregar(prod3, 3 , ventaABM.traerVenta(69));
+		itemVentaABM.agregar(prod3, 1 , ventaABM.traerVenta(70));
+		itemVentaABM.agregar(prod3, 3 , ventaABM.traerVenta(71));
+		itemVentaABM.agregar(prod3, 4 , ventaABM.traerVenta(72));
+		itemVentaABM.agregar(prod3, 1 , ventaABM.traerVenta(73));
+		itemVentaABM.agregar(prod3, 7 , ventaABM.traerVenta(74));
+		itemVentaABM.agregar(prod3, 8 , ventaABM.traerVenta(75));
+		itemVentaABM.agregar(prod4, 1 , ventaABM.traerVenta(76));
+		itemVentaABM.agregar(prod5, 1 , ventaABM.traerVenta(77));
+		itemVentaABM.agregar(prod7, 4 , ventaABM.traerVenta(78));
+		itemVentaABM.agregar(prod7, 5 , ventaABM.traerVenta(79));
+		itemVentaABM.agregar(prod7, 6 , ventaABM.traerVenta(80));
+		itemVentaABM.agregar(prod6, 7 , ventaABM.traerVenta(81));
+		itemVentaABM.agregar(prod8, 8 ,ventaABM.traerVenta(82));
+		itemVentaABM.agregar(prod8, 1 , ventaABM.traerVenta(83));
+		itemVentaABM.agregar(prod8, 1 , ventaABM.traerVenta(84));
+		itemVentaABM.agregar(prod8, 2 , ventaABM.traerVenta(85));
+		itemVentaABM.agregar(prod8, 2 , ventaABM.traerVenta(86));
+		itemVentaABM.agregar(prod3, 3 , ventaABM.traerVenta(87));
+		itemVentaABM.agregar(prod3, 3 , ventaABM.traerVenta(88));
+		itemVentaABM.agregar(prod1, 3 , ventaABM.traerVenta(89));
+		itemVentaABM.agregar(prod1, 1 , ventaABM.traerVenta(90));
+
+		// Carga pagos
+		
+		PagoChequeABM chequeABM = new PagoChequeABM();
+		
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(1), "Cheque", ventaABM.traerVenta(1), 20430103, "Banco nacion");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(1), "Cheque", ventaABM.traerVenta(2), 20430103, "Banco nacion");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(1), "Cheque", ventaABM.traerVenta(3), 20430103, "Banco nacion");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(1), "Cheque", ventaABM.traerVenta(4), 20430103, "Banco nacion");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(1), "Cheque", ventaABM.traerVenta(5), 20430103, "Banco nacion");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(1), "Cheque", ventaABM.traerVenta(6), 20430103, "Banco nacion");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(1), "Cheque", ventaABM.traerVenta(7), 20430103, "Banco nacion");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(1), "Cheque", ventaABM.traerVenta(8), 20430103, "Banco nacion");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(1), "Cheque", ventaABM.traerVenta(9), 20430103, "Banco nacion");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(1), "Cheque", ventaABM.traerVenta(10), 20430103, "Banco nacion");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(1), "Cheque", ventaABM.traerVenta(11), 20430103, "Banco nacion");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(12), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(13), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(14), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(15), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(16), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(17), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(18), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(19), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(20), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(21), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(22), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(23), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(24), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(2), "Cheque", ventaABM.traerVenta(25), 24031233, "Banco Galicia");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(26), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(27), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(28), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(29), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(30), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(31), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(32), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(33), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(34), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(35), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(36), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(37), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(38), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(39), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(40), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(41), 43332221, "Banco Santander");
+		chequeABM.agregar(0, PersonaABM.getInstance().traer(3), "Cheque", ventaABM.traerVenta(42), 43332221, "Banco Santander");
+		
+		PagoEfectivoABM efectivoABM = new PagoEfectivoABM();
+		
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(4), "Efectivo", ventaABM.traerVenta(43), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(4), "Efectivo", ventaABM.traerVenta(44), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(4), "Efectivo", ventaABM.traerVenta(45), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(4), "Efectivo", ventaABM.traerVenta(46), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(4), "Efectivo", ventaABM.traerVenta(47), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(4), "Efectivo", ventaABM.traerVenta(48), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(4), "Efectivo", ventaABM.traerVenta(49), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(4), "Efectivo", ventaABM.traerVenta(50), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(4), "Efectivo", ventaABM.traerVenta(51), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(4), "Efectivo", ventaABM.traerVenta(52), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(4), "Efectivo", ventaABM.traerVenta(53), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(4), "Efectivo", ventaABM.traerVenta(54), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(4), "Efectivo", ventaABM.traerVenta(55), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(5), "Efectivo", ventaABM.traerVenta(56), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(5), "Efectivo", ventaABM.traerVenta(57), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(5), "Efectivo", ventaABM.traerVenta(58), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(5), "Efectivo", ventaABM.traerVenta(59), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(5), "Efectivo", ventaABM.traerVenta(60), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(6), "Efectivo", ventaABM.traerVenta(61), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(6), "Efectivo", ventaABM.traerVenta(62), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(6), "Efectivo", ventaABM.traerVenta(63), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(6), "Efectivo", ventaABM.traerVenta(64), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(6), "Efectivo", ventaABM.traerVenta(65), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(6), "Efectivo", ventaABM.traerVenta(66), 0);
+		efectivoABM.agregar(0, PersonaABM.getInstance().traer(6), "Efectivo", ventaABM.traerVenta(67), 0);
+		
+		PagoTarjetaABM tarjetaABM = new PagoTarjetaABM();
+		
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(68), 40524442, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(69), 40524442, 2, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(70), 40524442, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(71), 40524442, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(72), 40524442, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(73), 40524442, 2, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(74), 40524442, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(75), 40524442, 3, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(76), 40524442, 3, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(77), 40524442, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(78), 40524442, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(79), 40524442, 6, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(80), 40524442, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(81), 40524442, 6, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(82), 40524442, 6, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(6), "Tarjeta", ventaABM.traerVenta(83), 40524442, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(7), "Tarjeta", ventaABM.traerVenta(84), 12012012, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(7), "Tarjeta", ventaABM.traerVenta(85), 12012012, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(7), "Tarjeta", ventaABM.traerVenta(86), 12012012, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(7), "Tarjeta", ventaABM.traerVenta(87), 12012012, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(7), "Tarjeta", ventaABM.traerVenta(88), 12012012, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(7), "Tarjeta", ventaABM.traerVenta(89), 12012012, 12, 0);
+		tarjetaABM.agregar(0, PersonaABM.getInstance().traer(7), "Tarjeta", ventaABM.traerVenta(90), 12012012, 12, 0);
+
+		//Carga Afiliados
+		
+		AfiliadoABM afiliadoABM = new AfiliadoABM();
+		afiliadoABM.agregar(111, obraSocialABM.traerObraSocial(4), PersonaABM.getInstance().traer(11));
+		afiliadoABM.agregar(112, obraSocialABM.traerObraSocial(1), PersonaABM.getInstance().traer(12));
+		afiliadoABM.agregar(113, obraSocialABM.traerObraSocial(2), PersonaABM.getInstance().traer(13));
+		afiliadoABM.agregar(114, obraSocialABM.traerObraSocial(1), PersonaABM.getInstance().traer(14));
+		afiliadoABM.agregar(115, obraSocialABM.traerObraSocial(3), PersonaABM.getInstance().traer(15));
+		afiliadoABM.agregar(116, obraSocialABM.traerObraSocial(2), PersonaABM.getInstance().traer(16));
+		afiliadoABM.agregar(117, obraSocialABM.traerObraSocial(4), PersonaABM.getInstance().traer(17));
+		afiliadoABM.agregar(118, obraSocialABM.traerObraSocial(3), PersonaABM.getInstance().traer(18));
+		afiliadoABM.agregar(119, obraSocialABM.traerObraSocial(2), PersonaABM.getInstance().traer(19));
+		afiliadoABM.agregar(102, obraSocialABM.traerObraSocial(2), PersonaABM.getInstance().traer(2));
+		afiliadoABM.agregar(103, obraSocialABM.traerObraSocial(2), PersonaABM.getInstance().traer(3));
+		afiliadoABM.agregar(104, obraSocialABM.traerObraSocial(4), PersonaABM.getInstance().traer(4));
+		
+		System.out.println(ventaABM.traerVenta().size());
+	
+	}
+
+}

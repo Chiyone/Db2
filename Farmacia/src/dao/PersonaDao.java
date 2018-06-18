@@ -40,7 +40,7 @@ public class PersonaDao {
 		}
 		return objeto ;
 	}
-	
+	@SuppressWarnings("unchecked")
 	public Empleado traerEmpleado( long idEmpleado ){
 		Empleado objeto = null ;
 		try {
@@ -65,7 +65,17 @@ public class PersonaDao {
 		}
 		return lista ;
 	}
-	
+	@SuppressWarnings ( "unchecked" )
+	public List<Persona> traerO() throws HibernateException {
+		List<Persona> lista = null ;
+		try {
+			iniciaOperacion();
+			lista = session .createQuery( "from Persona p left join fetch p.Afiliado as a left join fetch a.ObraSocial  " ).list();
+		} finally {
+			session .close();
+		}
+		return lista ;
+	}
 	public int agregar(Persona objeto) {
 		int id = 0;
 		try {
@@ -138,7 +148,7 @@ public class PersonaDao {
 		List<Persona> lista = null ;
 		try {
 			iniciaOperacion();
-			lista = session .createQuery( "from  Persona as p inner join fetch p.pagos group by p.idPersona  " ).list();
+			lista = session .createQuery( "from  Persona as p inner join fetch  p.pagos left join fetch p.Afiliado as a left join fetch a.ObraSocial group by p.idPersona  " ).list();
 			
 		} finally {
 			session .close();

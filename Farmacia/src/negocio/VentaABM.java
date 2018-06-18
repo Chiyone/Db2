@@ -38,7 +38,7 @@ public class VentaABM {
 		String numTicket=agregarNumTicket(sucursal);
 		
 		
-		Venta s=new Venta( numTicket, totalVenta, fecha,eAtendio, eCobro,sucursal);
+		Venta s=new Venta( numTicket, fecha,eAtendio, eCobro,sucursal);
 		return dao.agregar(s);
 		
 	}
@@ -55,7 +55,7 @@ public class VentaABM {
 	}
 
 	public void modificar(Venta s) throws Exception{
-		if((dao.traerVenta(s.getIdVenta()))==null){
+		if((dao.traerVenta(s.getIdVenta()))!=null){
 			dao.actualizar(s);
 		}else throw new Exception ("ID repetido en la actualización");
 	}
@@ -69,24 +69,30 @@ public class VentaABM {
 	
 	
 	public List<Venta> traerVenta() throws Exception{
-		if(dao.traerVenta()!=null){
+		
 		return dao.traerVenta();
+		
+	}
+
+	public List<Venta> traerVentaF() throws Exception{
+		if(dao.traerVentaF()!=null){
+		return dao.traerVentaF();
 		}else throw new Exception ("No hay Ventas en la base de datos");
 	}
 	public long traerIdVenta() {
 		List <Venta> ventas =dao.traerVenta();
-		System.out.println(ventas.isEmpty());
+		
 		long c=0;
 		if(ventas.isEmpty())
 			c=0;
 		else {
 		for(Venta v :ventas) {
-			System.out.println(v.getIdVenta());
+			
 			if(v.getIdVenta()>=c)
 				c=v.getIdVenta();
 			}
 		}
-		System.out.println(c);
+		
 		return c+1;
 	}
 	static String ochoDigitos(String string) {
@@ -123,4 +129,10 @@ public class VentaABM {
 		return string;
 	}
 
-}
+	public List<Venta> traerVenta(GregorianCalendar fecha1, GregorianCalendar fecha2) throws Exception {
+		if(dao.traerVenta(fecha1,fecha2)!=null){
+			return dao.traerVenta(fecha1,fecha2);
+			}else throw new Exception ("En estas fechas no hay Ventas en la base de datos");
+		}
+	}
+

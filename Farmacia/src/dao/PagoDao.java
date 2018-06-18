@@ -42,7 +42,7 @@ public class PagoDao {
 		List<Pago> lista = null ;
 		try {
 			iniciaOperacion();
-			lista = session .createQuery( "from Pago p join fetch p.cliente" ).list();
+			lista = session .createQuery( "from Pago p join fetch p.cliente join fetch p.Venta as v join fetch v.eCobro join fetch v.eAtendio join fetch v.Sucursal" ).list();
 		} finally {
 			session .close();
 		}

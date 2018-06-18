@@ -115,7 +115,7 @@ public class SucursalDao {
 			List<Sucursal> lista= null ;
 			try {
 				iniciaOperacion();
-				lista= session.createQuery( "from Sucursal s order by s.sucursal asc ").list();
+				lista= session.createQuery( "from Sucursal s order by s.idSucursal asc ").list();
 			} 	finally {
 				session.close();
 				}

@@ -1,4 +1,5 @@
 package dao;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.hibernate.Hibernate;
@@ -105,7 +106,43 @@ public class VentaDao {
 			List<Venta> lista= null ;
 			try {
 				iniciaOperacion();
-				lista= session.createQuery( "from Venta v  ").list();
+				lista= session.createQuery( "from Venta v join fetch v.Sucursal s join fetch s.Domicilio join fetch v.eCobro   ").list();
+			
+				
+			} 	finally {
+				session.close();
+				}
+			return lista;
+		}
+		@SuppressWarnings ( "unchecked" )
+		public List<Venta> traerVentaF() throws HibernateException {
+			List<Venta> lista= null ;
+			try {
+				iniciaOperacion();
+				lista= session.createQuery( "from Venta v join fetch v.Sucursal   join fetch v.eCobro  order by v.idVenta ").list();
+			} 	finally {
+				session.close();
+				}
+			return lista;
+		}
+		
+		@SuppressWarnings ( "unchecked" )
+		public List<Venta> traerVentaimp() throws HibernateException {
+			List<Venta> lista= null ;
+			try {
+				iniciaOperacion();
+				lista= session.createQuery( "from Venta v join fetch v.Sucursal   join fetch v.eCobro left join fetch v.itemsVenta i inner join fetch i.Producto p group by v.idVenta ").list();
+			} 	finally {
+				session.close();
+				}
+			return lista;
+		}
+		@SuppressWarnings ( "unchecked" )
+		public List<Venta> traerVenta(GregorianCalendar fecha1,GregorianCalendar fecha2) throws HibernateException {
+			List<Venta> lista= null ;
+			try {
+				iniciaOperacion();
+				lista= session.createQuery( "from Venta v join fetch v.Sucursal join fetch v.Sucursal.Domicilio join fetch v.eCobro join fetch v.eAtendio  where v.fecha>:fecha1 and v.fecha<=:fecha2 group by v.idVenta").setCalendar("fecha1",fecha1).setCalendar("fecha2", fecha2).list();
 			} 	finally {
 				session.close();
 				}

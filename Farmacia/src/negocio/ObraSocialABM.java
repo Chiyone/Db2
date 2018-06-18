@@ -39,7 +39,7 @@ public class ObraSocialABM {
 	}
 	
 	
-	public List<ObraSocial> traerSucursal() throws Exception{
+	public List<ObraSocial> traerObraSocial() throws Exception{
 		if(dao.traerObraSocial()!=null){
 		return dao.traerObraSocial();
 		}else throw new Exception ("No hay ObraSociales en la base de datos");

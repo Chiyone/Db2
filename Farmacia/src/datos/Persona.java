@@ -132,6 +132,12 @@ public class Persona {
 	
 
 	
+	public String afiliados() {
+		return "Persona [ nombre=" + nombre + ", apellido=" + apellido + "obraSoc="+afiliado.getObraSocial().getNombre()+ "]";
+	}
+	public String noAfiliados() {
+		return "Persona [ nombre=" + nombre + ", apellido=" + apellido + "obraSoc= Privado ]";
+	}
 	
 	
 }

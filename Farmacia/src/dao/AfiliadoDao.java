@@ -94,7 +94,7 @@ public class AfiliadoDao {
 		List<Afiliado> lista= null ;
 		try {
 			iniciaOperacion();
-			lista= session.createQuery( "from Afiliado a order by a.idAfiliado asc ").list();
+			lista= session.createQuery( "from Afiliado a join fetch a.Persona join fetch a.ObraSocial order by a.idAfiliado asc ").list();
 		} 	finally {
 			session.close();
 			}

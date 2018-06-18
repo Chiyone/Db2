@@ -4,6 +4,11 @@ import java.util.List;
 
 import dao.AfiliadoDao;
 import datos.Afiliado;
+import datos.ItemVenta;
+import datos.ObraSocial;
+import datos.Persona;
+import datos.Producto;
+import datos.Venta;
 
 public class AfiliadoABM {
 	AfiliadoDao dao = new AfiliadoDao();
@@ -11,14 +16,14 @@ public class AfiliadoABM {
 	public Afiliado traerDomicilio(long idAfiliado) throws Exception {
 		Afiliado c = dao.traerAfiliado(idAfiliado);
 			if(c==null)
-				throw new Exception ("Id incorrecto: el Domicilio no existe");
+				throw new Exception ("Id incorrecto: el afiliado no existe");
 		return c;
 	}
 
 
-	public int agregar(Afiliado a) {
-		//Domicilio d=new Domicilio( calle, numero, provincia, localidad);
-		return dao.agregar(a);
+public int agregar(int n, ObraSocial o ,Persona p) {
+		Afiliado s=new Afiliado(n,o,p);
+		return dao.agregar(s);
 		
 	}
 
@@ -36,7 +41,7 @@ public class AfiliadoABM {
 	}
 
 
-	public List<Afiliado> traerDomicilio() throws Exception{
+	public List<Afiliado> traerAfiliado() throws Exception{
 		if(dao.traerAfiliado()!=null){
 		return dao.traerAfiliado();
 		}else throw new Exception ("No hay Afiliados en la base de datos");

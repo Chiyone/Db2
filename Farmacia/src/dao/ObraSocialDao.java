@@ -103,7 +103,7 @@ public class ObraSocialDao {
 			List<ObraSocial> lista= null ;
 			try {
 				iniciaOperacion();
-				lista= session.createQuery( "from ObraSocial o order by o.obraSocial asc ").list();
+				lista= session.createQuery( "from ObraSocial o order by o.idObraSoc asc ").list();
 			} 	finally {
 				session.close();
 				}
