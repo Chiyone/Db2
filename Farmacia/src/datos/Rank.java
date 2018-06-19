@@ -7,6 +7,7 @@ public class Rank {
 		private int cantidad;
 		private double totalVendido;
 		private String tipo;
+		private RankSucursal suc;
 		
 		public Rank(String producto, int cantidad, double totalVendido, String tipo) {
 			super();
@@ -46,8 +47,16 @@ public class Rank {
 		}
 		@Override
 		public String toString() {
-			return "Rank [\nproducto=" + producto + ", cantidad=" + cantidad + ", totalVendido=" + totalVendido
+			return "\nRank [producto=" + producto + ", cantidad=" + cantidad + ", totalVendido=" + totalVendido
 					+ ", tipo=" + tipo + "]";
+		}
+
+		public RankSucursal getSuc() {
+			return suc;
+		}
+
+		public void setSuc(RankSucursal suc) {
+			this.suc = suc;
 		}
 		
 	

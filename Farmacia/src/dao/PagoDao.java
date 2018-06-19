@@ -7,6 +7,8 @@ import org.hibernate.Transaction;
 
 import datos.ItemVenta;
 import datos.Pago;
+import datos.PagoCheque;
+import datos.PagoTarjeta;
 import datos.Persona;
 import datos.Venta;
 public class PagoDao {
@@ -139,11 +141,11 @@ public class PagoDao {
 			return lista;
 		}
 		@SuppressWarnings ( "unchecked" )
-		public List<Pago> traerPagosCheque() throws HibernateException {
-			List<Pago> lista= null ;
+		public List<PagoCheque> traerPagosCheque() throws HibernateException {
+			List<PagoCheque> lista= null ;
 			try {
 				iniciaOperacion();
-				lista= session.createQuery( "from PagoCheque ").list();
+				lista= session.createQuery( "from PagoCheque p join fetch p.cliente").list();
 			} 	finally {
 				session.close();
 				}
@@ -151,11 +153,11 @@ public class PagoDao {
 		}
 	
 		@SuppressWarnings ( "unchecked" )
-		public List<Pago> traerPagosTarjeta() throws HibernateException {
-			List<Pago> lista= null ;
+		public List<PagoTarjeta> traerPagosTarjeta() throws HibernateException {
+			List<PagoTarjeta> lista= null ;
 			try {
 				iniciaOperacion();
-				lista= session.createQuery( "from PagoTarjeta ").list();
+				lista= session.createQuery( "from PagoTarjeta p join fetch p.cliente").list();
 			} 	finally {
 				session.close();
 				}
@@ -166,7 +168,8 @@ public class PagoDao {
 			List<Pago> lista= null ;
 			try {
 				iniciaOperacion();
-				lista= session.createQuery( "from PagoEfectivo ").list();
+				lista= session.createQuery( "from Pago p join fetch p.cliente where p.tpoPago=:tipo ").setString("tipo", "Efectivo").list();
+				
 			} 	finally {
 				session.close();
 				}

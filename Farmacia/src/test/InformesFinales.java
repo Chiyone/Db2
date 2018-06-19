@@ -21,7 +21,7 @@ public class InformesFinales {
 		//info.ventasFechasImpresas(fecha1, fecha2);
 		
 		
-		//Detalle y totales de ventas para la cadena completa y por sucursal, entre fechas.
+		//1-Detalle y totales de ventas para la cadena completa y por sucursal, entre fechas.
 		
 		//info.totalVentas();
 		//info.totalVentas(fecha1,fecha2);
@@ -29,30 +29,39 @@ public class InformesFinales {
 		//	info.totalVentasSuc();
 		//info.totalVentasSuc(fecha1, fecha2);
 	
-		 //Detalle y totales de ventas para la cadena completa y por sucursal, por obra social o privados entre fechas. 
+		 //2-Detalle y totales de ventas para la cadena completa y por sucursal, por obra social o privados entre fechas. 
 		
-		
+		//info.totalVentasSocial(fecha1,fecha2);
 		//info.totalVentasSocialSuc(fecha1,fecha2);
 		//info.totalVentasSocialSuc();
 		//info.totalVentasSocial();
-		//info.totalVentasSocial(fecha1,fecha2);
 		
-		//Detalle y totales de cobranza para la cadena completa y por sucursal, por medio de  pago y entre fechas
+		
+		//3-Detalle y totales de cobranza para la cadena completa y por sucursal, por medio de  pago y entre fechas
+		
+		//info.detalleCobranza(fecha3,fecha2);
+		//info.detalleCobranzaSuc(fecha3, fecha2);
+		//4-Detalle y totales de ventas de productos, total de la cadena y por sucursal, entre fechas, diferenciados entre farmacia y perfumería. 
 		
 		//info.totalVentasProductoSuc(fecha1,fecha2);
 		//info.totalVentasProducto(fecha1,fecha2);
 		
-		// Ranking de ventas de productos, total de la cadena y por sucursal, entre fechas, por monto
+		//5-Ranking de ventas de productos, total de la cadena y por sucursal, entre fechas, por monto
 		
-		//info.rankingMonto(fecha3,fecha2);
-		//info.rankingValorSuc(fecha3, fecha2);
-		 
 		
-		//Ranking de ventas de productos, total de la cadena y por sucursal, entre fechas, por cantidad vendida
 		
 		//info.rankingValor(fecha3, fecha2);
-		info.rankingMontoSuc(fecha3,fecha2);
+		//info.rankingValorSuc(fecha3, fecha2);
+		//6-Ranking de ventas de productos, total de la cadena y por sucursal, entre fechas, por cantidad vendida
 		
+		//info.rankingCantidad(fecha3,fecha2);
+		//info.rankingCantidadSuc(fecha3,fecha2);
+		// 7-Ranking de clientes por compras, total de la cadena y por sucursal, entre fechas, por monto
+		//info.rankingClienteMonto(fecha3,fecha2);
+		//info.rankingClienteMontoSuc(fecha3, fecha2);
+		// 8-Ranking de clientes por compras, total de la cadena y por sucursal, entre fechas, porcantidad vendida. 
+		//info.rankingClienteCantidadSuc(fecha3, fecha2);
+		//info.rankingClienteCantidad(fecha3, fecha2);
 	}
 	
 }

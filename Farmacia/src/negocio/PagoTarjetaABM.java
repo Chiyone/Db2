@@ -29,7 +29,7 @@ public class PagoTarjetaABM {
 		return PagoDao.getInstance().agregar(d);
 		
 	}
-	public List<Pago> traerPagosTarjeta() throws Exception{
+	public List<PagoTarjeta> traerPagosTarjeta() throws Exception{
 		if(PagoDao.getInstance().traerPagosTarjeta()!=null){
 		return PagoDao.getInstance().traerPagosTarjeta();
 		}else throw new Exception ("No hay Pagos en la base de datos");

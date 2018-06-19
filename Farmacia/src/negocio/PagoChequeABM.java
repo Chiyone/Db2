@@ -27,7 +27,7 @@ public class PagoChequeABM {
 		
 	}
 	
-	public List<Pago> traerPagosCheque() throws Exception{
+	public List<PagoCheque> traerPagosCheque() throws Exception{
 		if(PagoDao.getInstance().traerPagosCheque()!=null){
 		return PagoDao.getInstance().traerPagosCheque();
 		}else throw new Exception ("No hay Clientes en la base de datos");

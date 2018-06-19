@@ -13,9 +13,14 @@ import datos.Funciones;
 import datos.ItemVenta;
 import datos.ObraSocial;
 import datos.Pago;
+import datos.PagoCheque;
+import datos.PagoTarjeta;
 import datos.Persona;
 import datos.Producto;
 import datos.Rank;
+import datos.RankCliente;
+import datos.RankSucursal;
+import datos.RankSucursalCliente;
 import datos.Sucursal;
 import datos.Venta;
 import negocio.VentaABM;
@@ -571,34 +576,21 @@ public void totalVentasProductoSuc(GregorianCalendar fecha1, GregorianCalendar f
 	}
 }
 
-@SuppressWarnings("unchecked")
-public void rankingMonto(GregorianCalendar fecha1, GregorianCalendar fecha2) throws Exception {
-	// TODO Auto-generated method stub
-	VentaABM ventaABM = new VentaABM();
-	ObraSocialABM osabm=new ObraSocialABM();
-	SucursalABM sucabm=new SucursalABM();
+
+public void rankingCantidad(GregorianCalendar fecha1, GregorianCalendar fecha2) throws Exception {
 	
-	List<Persona> clientes=PersonaABM.getInstance().traerClientes();
-	List<Venta> ventas=ventaABM.traerVenta();
-	
-	List<Pago> pagos=PagoABM.getInstance().traer();
-	List<ObraSocial> obras=osabm.traerObraSocial();
 	ItemVentaABM itemabm=new ItemVentaABM();
-	
 	List<ItemVenta>  items=itemabm.traerItemVenta();
 	ProductoABM prodabm=new ProductoABM();
 	List<Producto> productos=prodabm.traerProducto();
 	
- 	//System.out.println("Ventas Totales entre  "+Funciones.traerFechaCorta(fecha1) +" y "+Funciones.traerFechaCorta(fecha2));
-	//boolean flag=false;
 	double sum=0;
 	int count=0;
-	int itr=0;
+	;
 	Rank rank=null;
 	List<Rank>ranks=new ArrayList<Rank>();
-	//System.out.println("Productos Farmacia ");
+	
 		for(Producto pr:productos) {
-			//System.out.println("\nProducto= "+pr.getDescripcion()+" Laboratorio= "+pr.getLaboratorio()+" Tipo= "+pr.getTipo());
 			for(ItemVenta i:items) {
 				if(fecha1.before(i.getVenta().getFecha())&&fecha2.after(i.getVenta().getFecha())) {
 					if(i.getProducto().getIdProducto()==pr.getIdProducto()) {
@@ -607,21 +599,11 @@ public void rankingMonto(GregorianCalendar fecha1, GregorianCalendar fecha2) thr
 					}	
 				 }
 			}
-			 rank=new Rank(pr.getDescripcion(),count,sum,pr.getTipo().toString());
-			//System.out.println("Cantidad vendidos= "+count+" Total vendido= $"+sum+" Precio Unitario= $"+pr.getPrecio());
-			
-			// System.out.println(rank);
-			// System.out.println(ranks.add(rank));
-			 ranks.add(rank);
-			
-			
-			sum=0;
-			count=0;
+				rank=new Rank(pr.getDescripcion(),count,sum,pr.getTipo().toString());
+				ranks.add(rank);
+				sum=0;
+				count=0;
 		}
-		int i=1;
-		Rank aux=null;
-		//ranks=ordenar(ranks);
-		System.out.println(ranks);
 		
 	    Collections.sort(ranks, new Comparator<Rank>() {
 	    	 
@@ -642,31 +624,18 @@ public void rankingValor(GregorianCalendar fecha1, GregorianCalendar fecha2) thr
 	ObraSocialABM osabm=new ObraSocialABM();
 	SucursalABM sucabm=new SucursalABM();
 	List<Sucursal> sucursales=sucabm.traerSucursal();
-	List<Persona> clientes=PersonaABM.getInstance().traerClientes();
-	List<Venta> ventas=ventaABM.traerVenta();
 	
-	List<Pago> pagos=PagoABM.getInstance().traer();
-	List<ObraSocial> obras=osabm.traerObraSocial();
 	ItemVentaABM itemabm=new ItemVentaABM();
 	
 	List<ItemVenta>  items=itemabm.traerItemVenta();
 	ProductoABM prodabm=new ProductoABM();
 	List<Producto> productos=prodabm.traerProducto();
-	
- 	//System.out.println("Ventas Totales entre  "+Funciones.traerFechaCorta(fecha1) +" y "+Funciones.traerFechaCorta(fecha2));
-	//boolean flag=false;
 	double sum=0;
 	int count=0;
-	int itr=0;
+
 	Rank rank=null;
 	List<Rank>ranks=new ArrayList<Rank>();
-	//System.out.println("Productos Farmacia ");
-	
-		
 		for(Producto pr:productos) {
-			
-			
-			//System.out.println("\nProducto= "+pr.getDescripcion()+" Laboratorio= "+pr.getLaboratorio()+" Tipo= "+pr.getTipo());
 			for(ItemVenta i:items) {
 				if(fecha1.before(i.getVenta().getFecha())&&fecha2.after(i.getVenta().getFecha())) {
 					if(i.getProducto().getIdProducto()==pr.getIdProducto()) {
@@ -675,29 +644,16 @@ public void rankingValor(GregorianCalendar fecha1, GregorianCalendar fecha2) thr
 					}	
 				 }
 			}
-			 rank=new Rank(pr.getDescripcion(),count,sum,pr.getTipo().toString());
-			//System.out.println("Cantidad vendidos= "+count+" Total vendido= $"+sum+" Precio Unitario= $"+pr.getPrecio());
-			
-			// System.out.println(rank);
-			// System.out.println(ranks.add(rank));
-			 ranks.add(rank);
-			
-			
-			sum=0;
-			count=0;
+		rank=new Rank(pr.getDescripcion(),count,sum,pr.getTipo().toString());
+		ranks.add(rank);
+		sum=0;
+		count=0;
 		}
-		int i=1;
-		Rank aux=null;
-		//ranks=ordenar(ranks);
-		//System.out.println(ranks);
-		
-	    Collections.sort(ranks, new Comparator<Rank>() {
-	    	 
+	    Collections.sort(ranks, new Comparator<Rank>() {	 
 	        @Override
 	        public int compare(Rank p1, Rank p2) {
 	            return (int) (p2.getTotalVendido()-p1.getTotalVendido());
-	        }
-	    });	
+	        }});	
 			
 		
 		System.out.println(ranks);
@@ -730,9 +686,11 @@ public void rankingValorSuc(GregorianCalendar fecha1, GregorianCalendar fecha2) 
 	int itr=0;
 	Rank rank=null;
 	List<Rank>ranks=new ArrayList<Rank>();
+	RankSucursal rankSuc=null;
+	List<RankSucursal>ranksSuc=new ArrayList<RankSucursal>();
 	//System.out.println("Productos Farmacia ");
 	for(Sucursal s:sucursales) {
-		System.out.println("Sucursal= "+ s.getIdSucursal()+ "  "+s.getSucursal());
+		//System.out.println("Sucursal= "+ s.getIdSucursal()+ "  "+s.getSucursal());
 		
 		for(Producto pr:productos) {
 			
@@ -771,18 +729,23 @@ public void rankingValorSuc(GregorianCalendar fecha1, GregorianCalendar fecha2) 
 	            return (int) (p2.getTotalVendido()-p1.getTotalVendido());
 	        }
 	    });	
-			
+	    rankSuc=new RankSucursal(s,ranks);
+		ranksSuc.add(rankSuc);
+		//System.out.println(ranks);
 		
-		System.out.println(ranks);
-		ranks.clear();
-		}
+		//ranks.clear();
+		ranks=null;
+		ranks=new ArrayList<Rank>();
+		//System.out.println(ranks);
+	
+		}System.out.println(ranksSuc);
 	}
 			
 
 
 
 @SuppressWarnings("unchecked")
-public void rankingMontoSuc(GregorianCalendar fecha1, GregorianCalendar fecha2) throws Exception {
+public void rankingCantidadSuc(GregorianCalendar fecha1, GregorianCalendar fecha2) throws Exception {
 	// TODO Auto-generated method stub
 	VentaABM ventaABM = new VentaABM();
 	ObraSocialABM osabm=new ObraSocialABM();
@@ -806,8 +769,13 @@ public void rankingMontoSuc(GregorianCalendar fecha1, GregorianCalendar fecha2) 
 	int itr=0;
 	Rank rank=null;
 	List<Rank>ranks=new ArrayList<Rank>();
+	RankSucursal rankSuc=null;
+	List<RankSucursal>ranksSuc=new ArrayList<RankSucursal>();
+	
 	for(Sucursal s:sucursales) {
-		System.out.println("Sucursal= "+ s.getIdSucursal()+ "  "+s.getSucursal());
+		
+		//ranksSuc.add(rankSuc);
+		//System.out.println("Sucursal= "+ s.getIdSucursal()+ "  "+s.getSucursal());
 	//System.out.println("Productos Farmacia ");
 		for(Producto pr:productos) {
 			//System.out.println("\nProducto= "+pr.getDescripcion()+" Laboratorio= "+pr.getLaboratorio()+" Tipo= "+pr.getTipo());
@@ -826,7 +794,10 @@ public void rankingMontoSuc(GregorianCalendar fecha1, GregorianCalendar fecha2) 
 			
 			// System.out.println(rank);
 			// System.out.println(ranks.add(rank));
+			 
+			 
 			 ranks.add(rank);
+			 
 			
 			
 			sum=0;
@@ -835,7 +806,7 @@ public void rankingMontoSuc(GregorianCalendar fecha1, GregorianCalendar fecha2) 
 		int i=1;
 		Rank aux=null;
 		//ranks=ordenar(ranks);
-		System.out.println(ranks);
+		//System.out.println(ranks);
 		
 	    Collections.sort(ranks, new Comparator<Rank>() {
 	    	 
@@ -845,11 +816,500 @@ public void rankingMontoSuc(GregorianCalendar fecha1, GregorianCalendar fecha2) 
 	        }
 	    });	
 			
+	   rankSuc=new RankSucursal();
+	    rankSuc.setRanks(ranks);
+	    rankSuc.setS(s);
+	    ranksSuc.add(rankSuc);
+		//System.out.println(ranks);
 		
-		System.out.println(ranks);
-		ranks.clear();
-}
+		ranks=null;
+		ranks=new ArrayList<Rank>();
+		//ranks.clear();
+		}System.out.println(ranksSuc);
+	
 	}
+
+public void rankingClienteMonto(GregorianCalendar fecha1, GregorianCalendar fecha2) throws Exception {
+	// TODO Auto-generated method stub
+		VentaABM ventaABM = new VentaABM();
+		ObraSocialABM osabm=new ObraSocialABM();
+		SucursalABM sucabm=new SucursalABM();
+		
+		List<Persona> clientes=PersonaABM.getInstance().traer();
+		List<Venta> ventas=ventaABM.traerVenta();
+		
+		List<Pago> pagos=PagoABM.getInstance().traer();
+		List<ObraSocial> obras=osabm.traerObraSocial();
+		ItemVentaABM itemabm=new ItemVentaABM();
+		
+		List<ItemVenta>  items=itemabm.traerItemVenta();
+		ProductoABM prodabm=new ProductoABM();
+		List<Producto> productos=prodabm.traerProducto();
+		List<Sucursal> sucursales=sucabm.traerSucursal();
+	 	//System.out.println("Ventas Totales entre  "+Funciones.traerFechaCorta(fecha1) +" y "+Funciones.traerFechaCorta(fecha2));
+		//boolean flag=false;
+		double sum=0;
+		int count=0;
+		
+		RankCliente rank=null;
+		List<RankCliente>ranks=new ArrayList<RankCliente>();
+		//RankSucursal rankSuc=null;
+		//List<RankSucursal>ranksSuc=new ArrayList<RankSucursal>();
+		
+		for(Persona c:clientes) {
+			
+			for(Pago p:pagos) {
+				for(ItemVenta i:items) {
+					if(i.getVenta().getIdVenta()==p.getVenta().getIdVenta()) {
+						if(p.getCliente().getIdPersona()==c.getIdPersona()){
+							if(fecha1.before(i.getVenta().getFecha())&&fecha2.after(i.getVenta().getFecha())) {
+								sum=sum+i.getPrecioTotal();
+								count=count+i.getCantidad();
+								
+							}
+						
+						}
+					}
+				}	
+				
+				
+			}if(sum!=0) {rank=new RankCliente(c.getNombre(),c.getApellido(),sum,count);
+				ranks.add(rank); }
+			
+			sum=0;
+			count=0;
+			
+			
+		}
+			
+		
+		
+		
+			//ranks=ordenar(ranks);
+			//System.out.println(ranks);
+			
+		    Collections.sort(ranks, new Comparator<RankCliente>() {
+		    	 
+		        @Override
+		        public int compare(RankCliente p1, RankCliente p2) {
+		            return (int) (p2.getMonto()-p1.getMonto());
+		        }
+		    });	
+				
+		    //rankSuc=new RankSucursal(s,ranks);
+			//ranksSuc.add(rankSuc);
+			System.out.println(ranks);
+			//System.out.println(ranksSuc);
+			ranks.clear();
+			
+			}
+		
+		
+public void rankingClienteCantidad(GregorianCalendar fecha1, GregorianCalendar fecha2) throws Exception {
+	// TODO Auto-generated method stub
+		VentaABM ventaABM = new VentaABM();
+		ObraSocialABM osabm=new ObraSocialABM();
+		SucursalABM sucabm=new SucursalABM();
+		
+		List<Persona> clientes=PersonaABM.getInstance().traer();
+		List<Venta> ventas=ventaABM.traerVenta();
+		
+		List<Pago> pagos=PagoABM.getInstance().traer();
+		List<ObraSocial> obras=osabm.traerObraSocial();
+		ItemVentaABM itemabm=new ItemVentaABM();
+		
+		List<ItemVenta>  items=itemabm.traerItemVenta();
+		ProductoABM prodabm=new ProductoABM();
+		List<Producto> productos=prodabm.traerProducto();
+		List<Sucursal> sucursales=sucabm.traerSucursal();
+	 	//System.out.println("Ventas Totales entre  "+Funciones.traerFechaCorta(fecha1) +" y "+Funciones.traerFechaCorta(fecha2));
+		//boolean flag=false;
+		double sum=0;
+		int count=0;
+		
+		RankCliente rank=null;
+		List<RankCliente>ranks=new ArrayList<RankCliente>();
+		//RankSucursal rankSuc=null;
+		//List<RankSucursal>ranksSuc=new ArrayList<RankSucursal>();
+		
+		for(Persona c:clientes) {
+			
+			for(Pago p:pagos) {
+				for(ItemVenta i:items) {
+					if(i.getVenta().getIdVenta()==p.getVenta().getIdVenta()) {
+						if(p.getCliente().getIdPersona()==c.getIdPersona()){
+							if(fecha1.before(i.getVenta().getFecha())&&fecha2.after(i.getVenta().getFecha())) {
+								sum=sum+i.getPrecioTotal();
+								count=count+i.getCantidad();
+								
+							}
+						
+						}
+					}
+				}	
+				
+				
+			}if(sum!=0) {rank=new RankCliente(c.getNombre(),c.getApellido(),sum,count);
+				ranks.add(rank);}
+			sum=0;
+			count=0;
+			
+			
+			
+		}
+			
+		
+		
+		
+			//ranks=ordenar(ranks);
+			//System.out.println(ranks);
+			
+		    Collections.sort(ranks, new Comparator<RankCliente>() {
+		    	 
+		        @Override
+		        public int compare(RankCliente p1, RankCliente p2) {
+		            return (int) (p2.getCantidad()-p1.getCantidad());
+		        }
+		    });	
+				
+		    //rankSuc=new RankSucursal(s,ranks);
+			//ranksSuc.add(rankSuc);
+			System.out.println(ranks);
+			//System.out.println(ranksSuc);
+			ranks.clear();
+			
+			}
+
+public void rankingClienteCantidadSuc(GregorianCalendar fecha1, GregorianCalendar fecha2) throws Exception {
+	// TODO Auto-generated method stub
+			VentaABM ventaABM = new VentaABM();
+			ObraSocialABM osabm=new ObraSocialABM();
+			SucursalABM sucabm=new SucursalABM();
+			
+			List<Persona> clientes=PersonaABM.getInstance().traer();
+			List<Venta> ventas=ventaABM.traerVenta();
+			
+			List<Pago> pagos=PagoABM.getInstance().traer();
+			List<ObraSocial> obras=osabm.traerObraSocial();
+			ItemVentaABM itemabm=new ItemVentaABM();
+			
+			List<ItemVenta>  items=itemabm.traerItemVenta();
+			ProductoABM prodabm=new ProductoABM();
+			List<Producto> productos=prodabm.traerProducto();
+			List<Sucursal> sucursales=sucabm.traerSucursal();
+		 	//System.out.println("Ventas Totales entre  "+Funciones.traerFechaCorta(fecha1) +" y "+Funciones.traerFechaCorta(fecha2));
+			//boolean flag=false;
+			double sum=0;
+			int count=0;
+			boolean flag=false;
+			RankSucursalCliente rankSuc=null;
+			RankCliente rank=null;
+			//List<RankCliente>ranks=new ArrayList<RankCliente>();
+			
+			List<RankSucursalCliente>ranksSuc=new ArrayList<RankSucursalCliente>();
+			for(Sucursal s: sucursales){
+				
+				List<RankCliente>ranks=new ArrayList<RankCliente>();
+					for(Persona c:clientes) {
+						
+						for(Pago p:pagos) {
+							for(ItemVenta i:items) {
+								if(i.getVenta().getIdVenta()==p.getVenta().getIdVenta()) {
+									if(p.getCliente().getIdPersona()==c.getIdPersona()){
+										if(fecha1.before(i.getVenta().getFecha())&&fecha2.after(i.getVenta().getFecha())) {
+											if(s.getIdSucursal()==i.getVenta().getSucursal().getIdSucursal()) {
+											sum=sum+i.getPrecioTotal();
+											
+											count=count+i.getCantidad();
+											flag=true;
+											
+											}
+											
+										}
+									
+									}
+								}
+							}	
+							
+							
+						}
+				
+					if(flag=true&&sum!=0)	{rank=new RankCliente(c.getNombre(),c.getApellido(),sum,count);
+							ranks.add(rank);}
+				sum=0;
+				count=0;
+			
+				}
+			
+			
+				//ranks=ordenar(ranks);
+				//System.out.println(ranks);
+				
+			    Collections.sort(ranks, new Comparator<RankCliente>() {
+			    	 
+			        @Override
+			        public int compare(RankCliente p1, RankCliente p2) {
+			            return (int) (p2.getCantidad()-p1.getCantidad());
+			        }
+			    });	
+			   /* System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+			    List<RankCliente>lst=new ArrayList<RankCliente>();
+			    lst=ranks;;*/
+			    rankSuc=new RankSucursalCliente();
+			    rankSuc.setS(s);
+			    rankSuc.setRanks(ranks);
+				ranksSuc.add(rankSuc);
+				//System.out.println(ranks);
+				
+				
+				//ranks.clear();
+				 ranks=null;
+				}
+				System.out.println(ranksSuc);
+
+}
+
+public void rankingClienteMontoSuc(GregorianCalendar fecha1, GregorianCalendar fecha2) throws Exception {
+	// TODO Auto-generated method stub
+			VentaABM ventaABM = new VentaABM();
+			ObraSocialABM osabm=new ObraSocialABM();
+			SucursalABM sucabm=new SucursalABM();
+			
+			List<Persona> clientes=PersonaABM.getInstance().traer();
+			List<Venta> ventas=ventaABM.traerVenta();
+			
+			List<Pago> pagos=PagoABM.getInstance().traer();
+			List<ObraSocial> obras=osabm.traerObraSocial();
+			ItemVentaABM itemabm=new ItemVentaABM();
+			
+			List<ItemVenta>  items=itemabm.traerItemVenta();
+			ProductoABM prodabm=new ProductoABM();
+			List<Producto> productos=prodabm.traerProducto();
+			List<Sucursal> sucursales=sucabm.traerSucursal();
+		 	//System.out.println("Ventas Totales entre  "+Funciones.traerFechaCorta(fecha1) +" y "+Funciones.traerFechaCorta(fecha2));
+			//boolean flag=false;
+			double sum=0;
+			int count=0;
+			boolean flag=false;
+			RankSucursalCliente rankSuc=null;
+			RankCliente rank=null;
+			//List<RankCliente>ranks=new ArrayList<RankCliente>();
+			
+			List<RankSucursalCliente>ranksSuc=new ArrayList<RankSucursalCliente>();
+			for(Sucursal s: sucursales){
+				
+				List<RankCliente>ranks=new ArrayList<RankCliente>();
+					for(Persona c:clientes) {
+						
+						for(Pago p:pagos) {
+							for(ItemVenta i:items) {
+								if(i.getVenta().getIdVenta()==p.getVenta().getIdVenta()) {
+									if(p.getCliente().getIdPersona()==c.getIdPersona()){
+										if(fecha1.before(i.getVenta().getFecha())&&fecha2.after(i.getVenta().getFecha())) {
+											if(s.getIdSucursal()==i.getVenta().getSucursal().getIdSucursal()) {
+											sum=sum+i.getPrecioTotal();
+											
+											count=count+i.getCantidad();
+											flag=true;
+											
+											}
+											
+										}
+									
+									}
+								}
+							}	
+							
+							
+						}
+				
+					if(flag=true&&sum!=0)	{rank=new RankCliente(c.getNombre(),c.getApellido(),sum,count);
+							ranks.add(rank);}
+				sum=0;
+				count=0;
+			
+				}
+			
+			
+				//ranks=ordenar(ranks);
+				//System.out.println(ranks);
+				
+			    Collections.sort(ranks, new Comparator<RankCliente>() {
+			    	 
+			        @Override
+			        public int compare(RankCliente p1, RankCliente p2) {
+			            return (int) (p2.getMonto()-p1.getMonto());
+			        }
+			    });	
+			   /* System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+			    List<RankCliente>lst=new ArrayList<RankCliente>();
+			    lst=ranks;;*/
+			    rankSuc=new RankSucursalCliente();
+			    rankSuc.setS(s);
+			    rankSuc.setRanks(ranks);
+				ranksSuc.add(rankSuc);
+				//System.out.println(ranks);
+				
+				
+				//ranks.clear();
+				 ranks=null;
+				}
+				System.out.println(ranksSuc);
+
+}
+
+public void detalleCobranza(GregorianCalendar fecha1, GregorianCalendar fecha2) throws Exception {
+	VentaABM ventaABM = new VentaABM();
+	ObraSocialABM osabm=new ObraSocialABM();
+	SucursalABM sucabm=new SucursalABM();
+	
+	List<Persona> clientes=PersonaABM.getInstance().traer();
+	List<Venta> ventas=ventaABM.traerVenta();
+	
+	
+	List<ObraSocial> obras=osabm.traerObraSocial();
+	ItemVentaABM itemabm=new ItemVentaABM();
+	
+	List<ItemVenta>  items=itemabm.traerItemVenta();
+	ProductoABM prodabm=new ProductoABM();
+	List<Producto> productos=prodabm.traerProducto();
+	List<Sucursal> sucursales=sucabm.traerSucursal();
+ 	//System.out.println("Ventas Totales entre  "+Funciones.traerFechaCorta(fecha1) +" y "+Funciones.traerFechaCorta(fecha2));
+	//boolean flag=false;
+	
+	List<Pago> pagosE=PagoEfectivoABM.getInstance().traerPagosEfectivo();
+	List<PagoTarjeta> pagosT=PagoTarjetaABM.getInstance().traerPagosTarjeta();
+	List<PagoCheque> pagosC=PagoChequeABM.getInstance().traerPagosCheque();
+	double sum=0;
+	int count=0;
+	boolean flag=false;
+	System.out.println("\nEfectivo=\n");
+	for(Pago p:pagosE) {
+			if(fecha1.before(p.getVenta().getFecha())&&fecha2.after(p.getVenta().getFecha())) {
+				sum=sum+p.getVenta().getTotalVenta();
+				count=count+1;
+				System.out.println("IDpago:"+p.getIdPago()+" $"+p.getVenta().getTotalVenta()+"  Cliente: "+p.getCliente().getNombre()+" "+p.getCliente().getApellido() );
+			}
+	
+	}
+	System.out.println("Cantidad de Pagos: "+count+" Total de cobranza:"+sum+"\n");
+	sum=0;
+	count=0;
+	System.out.println("\nTarjeta=\n");
+	for(PagoTarjeta p:pagosT) {
+			if(fecha1.before(p.getVenta().getFecha())&&fecha2.after(p.getVenta().getFecha())) {
+				sum=sum+p.getVenta().getTotalVenta();
+				count=count+1;
+				System.out.println("Pago:"+p.getIdPago()+" $"+p.getVenta().getTotalVenta()+ " Cantidad de cuotas:"
+				+p.getCantCuotas()+"  Cliente: "+p.getCliente().getNombre()+" "+p.getCliente().getApellido() );
+			}
+	
+	}
+	System.out.println("Cantidad de Pagos: "+count+" Total de cobranza:"+sum+"\n");
+	sum=0;
+	count=0;
+	System.out.println("\nCheque=\n");
+	for(PagoCheque p:pagosC) {
+			if(fecha1.before(p.getVenta().getFecha())&&fecha2.after(p.getVenta().getFecha())) {
+				sum=sum+p.getVenta().getTotalVenta();
+				count=count+1;
+				System.out.println("Pago:"+p.getIdPago()+" $"+p.getVenta().getTotalVenta()+"  "+p.getBanco()+"  Cliente: "+p.getCliente().getNombre()+" "+p.getCliente().getApellido() );
+			}
+	
+	}
+	System.out.println("Cantidad de Pagos: "+count+" Total de cobranza:"+sum+"\n");
+	sum=0;
+	count=0;
+	
+}
+
+
+
+public void detalleCobranzaSuc(GregorianCalendar fecha1, GregorianCalendar fecha2) throws Exception {
+	VentaABM ventaABM = new VentaABM();
+	ObraSocialABM osabm=new ObraSocialABM();
+	SucursalABM sucabm=new SucursalABM();
+	
+	List<Persona> clientes=PersonaABM.getInstance().traer();
+	List<Venta> ventas=ventaABM.traerVenta();
+	
+	
+	List<ObraSocial> obras=osabm.traerObraSocial();
+	ItemVentaABM itemabm=new ItemVentaABM();
+	
+	List<ItemVenta>  items=itemabm.traerItemVenta();
+	ProductoABM prodabm=new ProductoABM();
+	List<Producto> productos=prodabm.traerProducto();
+	List<Sucursal> sucursales=sucabm.traerSucursal();
+ 	//System.out.println("Ventas Totales entre  "+Funciones.traerFechaCorta(fecha1) +" y "+Funciones.traerFechaCorta(fecha2));
+	//boolean flag=false;
+	
+	
+	List<Pago> pagosE=PagoEfectivoABM.getInstance().traerPagosEfectivo();
+	List<PagoTarjeta> pagosT=PagoTarjetaABM.getInstance().traerPagosTarjeta();
+	List<PagoCheque> pagosC=PagoChequeABM.getInstance().traerPagosCheque();
+	double sum=0;
+	int count=0;
+	boolean flag=false;
+	for(Sucursal s:sucursales) {
+	System.out.println("\nSucursal="+s.getIdSucursal()+" "+s.getSucursal()+"\n");	
+	System.out.println("\nEfectivo=\n");
+	for(Pago p:pagosE) {
+		if(s.getIdSucursal()==p.getVenta().getSucursal().getIdSucursal()) {
+			if(fecha1.before(p.getVenta().getFecha())&&fecha2.after(p.getVenta().getFecha())) {
+				sum=sum+p.getVenta().getTotalVenta();
+				count=count+1;
+				System.out.println("IDpago:"+p.getIdPago()+" $"+p.getVenta().getTotalVenta()+"  Cliente: "+p.getCliente().getNombre()+" "+p.getCliente().getApellido() );
+			}
+		}
+	}
+	System.out.println(s.getSucursal()+": Cantidad de Pagos: "+count+" Total de cobranza:"+sum+"\n");
+	sum=0;
+	count=0;
+	System.out.println("\nTarjeta=\n");
+	for(PagoTarjeta p:pagosT) {
+		if(s.getIdSucursal()==p.getVenta().getSucursal().getIdSucursal()) {
+			if(fecha1.before(p.getVenta().getFecha())&&fecha2.after(p.getVenta().getFecha())) {
+				sum=sum+p.getVenta().getTotalVenta();
+				count=count+1;
+				System.out.println("Pago:"+p.getIdPago()+" $"+p.getVenta().getTotalVenta()+ " Cantidad de cuotas:"
+				+p.getCantCuotas()+"  Cliente: "+p.getCliente().getNombre()+" "+p.getCliente().getApellido() );
+			}
+		}
+	}
+	System.out.println(s.getSucursal()+": Cantidad de Pagos: "+count+" Total de cobranza:"+sum+"\n");
+	sum=0;
+	count=0;
+	System.out.println("\nCheque=\n");
+	for(PagoCheque p:pagosC) {
+		if(s.getIdSucursal()==p.getVenta().getSucursal().getIdSucursal()) {
+			if(fecha1.before(p.getVenta().getFecha())&&fecha2.after(p.getVenta().getFecha())) {
+				sum=sum+p.getVenta().getTotalVenta();
+				count=count+1;
+				System.out.println("Pago:"+p.getIdPago()+" $"+p.getVenta().getTotalVenta()+"  "+p.getBanco()+"  Cliente: "+p.getCliente().getNombre()+" "+p.getCliente().getApellido() );
+			}
+		}
+	}
+	System.out.println(s.getSucursal()+": Cantidad de Pagos: "+count+" Total de cobranza:"+sum+"\n");
+	sum=0;
+	count=0;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 	
