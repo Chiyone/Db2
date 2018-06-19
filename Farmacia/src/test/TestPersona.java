@@ -42,13 +42,13 @@ public class TestPersona {
 		
 		PersonaABM.getInstance().agregar(39666566, "juju", "yoyo", dom1);
 		PersonaABM.getInstance().agregar(3333333, "lulu", "hh", dom2);
-		EmpleadoABM.getInstance().agregar(4444, "eee", "Son", dom3, 1111111, 111, null, suc,"Encargado");
-		EmpleadoABM.getInstance().agregar(4444, "eaa", "Sun", dom1, 2222222, 222, null, suc,"Empleado");
-		EmpleadoABM.getInstance().agregar(4444, "eii", "Sin", dom2, 3333333, 333, null, suc,"Empleado");
-		EmpleadoABM.getInstance().agregar(4444, "euu", "Sen", dom3, 4444444, 444, null, sucAbm2.traerSucursal(2),"Empleado");
-		EmpleadoABM.getInstance().agregar(4444, "eoo", "San", dom3, 5555555, 555, null, suc,"Empleado");
-		EmpleadoABM.getInstance().agregar(4444, "eea", "Saon", dom3, 6666666, 666, null, suc,"Empleado");
-		
+//		EmpleadoABM.getInstance().agregar(4444, "eee", "Son", dom3, 1111111, 111, null, suc,"Encargado");
+//		EmpleadoABM.getInstance().agregar(4444, "eaa", "Sun", dom1, 2222222, 222, null, suc,"Empleado");
+//		EmpleadoABM.getInstance().agregar(4444, "eii", "Sin", dom2, 3333333, 333, null, suc,"Empleado");
+//		EmpleadoABM.getInstance().agregar(4444, "euu", "Sen", dom3, 4444444, 444, null, sucAbm2.traerSucursal(2),"Empleado");
+//		EmpleadoABM.getInstance().agregar(4444, "eoo", "San", dom3, 5555555, 555, null, suc,"Empleado");
+//		EmpleadoABM.getInstance().agregar(4444, "eea", "Saon", dom3, 6666666, 666, null, suc,"Empleado");
+//		
 		
 		System.out.println("traer1=\n");
 		System.out.println(PersonaABM.getInstance().traer(1));

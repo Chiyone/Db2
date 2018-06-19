@@ -31,7 +31,7 @@ public class TestPago {
 		Sucursal s=new Sucursal("baradero", abmdom.traerDomicilio(1));
 		sucAbm.agregar(s);
 		VentaABM abm=new VentaABM();
-		EmpleadoABM.getInstance().agregar(4444, "eee", "Son",abmdom.traerDomicilio(1), 1111111, 111, null, sucAbm.traerSucursal(1),"Encargado");
+		//EmpleadoABM.getInstance().agregar(4444, "eee", "Son",abmdom.traerDomicilio(1), 1111111, 111, null, sucAbm.traerSucursal(1),"Encargado");
 		
 		Empleado e=EmpleadoABM.getInstance().traer(1);
 		Persona p=PersonaABM.getInstance().traer(1);
@@ -61,7 +61,7 @@ public class TestPago {
 		Venta ven=abm.traerVenta(1);
 		abm2.agregar(prod, 4,  ven);
 		
-		EmpleadoABM.getInstance().agregar(4444, "eee", "Son",abmdom.traerDomicilio(1), 1111111, 111, null, sucAbm.traerSucursal(1),"Encargado");
+		//EmpleadoABM.getInstance().agregar(4444, "eee", "Son",abmdom.traerDomicilio(1), 1111111, 111, null, sucAbm.traerSucursal(1),"Encargado");
 		
 		System.out.println(EmpleadoABM.getInstance().traer(1));
 		abm.agregar( 15.0, null, EmpleadoABM.getInstance().traer(1), PersonaABM.getInstance().traer(1), sucAbm.traerSucursal(1));

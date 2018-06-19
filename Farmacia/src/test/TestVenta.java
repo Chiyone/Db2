@@ -37,7 +37,7 @@ public class TestVenta {
 		Sucursal suc=new Sucursal("baradero", abmdom.traerDomicilio(1));
 		sucAbm.agregar(suc);
 	
-		EmpleadoABM.getInstance().agregar(4444, "eee", "Son",abmdom.traerDomicilio(1), 1111111, 111, null, sucAbm.traerSucursal(1),"Encargado");
+		//EmpleadoABM.getInstance().agregar(4444, "eee", "Son",abmdom.traerDomicilio(1), 1111111, 111, null, sucAbm.traerSucursal(1),"Encargado");
 		
 		System.out.println(EmpleadoABM.getInstance().traer(1));
 		GregorianCalendar fecha = new GregorianCalendar ();

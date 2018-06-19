@@ -23,8 +23,12 @@ public class PagoEfectivoABM {
 
 	
 
-	public int agregar(double monto, Persona cliente, String tpoPago,Venta venta, double vuelto) {
-		PagoEfectivo d=new PagoEfectivo( monto,  cliente, tpoPago,venta, vuelto);
+	public int agregar( Persona cliente,Venta venta) {
+		 String tpoPago="Efectivo";
+		
+			double monto=venta.getTotalVenta();
+			
+		Pago d=new Pago( monto,  cliente, tpoPago,venta);
 		return PagoDao.getInstance().agregar(d);
 		
 		

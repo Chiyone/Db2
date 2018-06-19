@@ -1,7 +1,6 @@
+/hibernate.cfg.xml
+/mapeos/
 /dao/
 /datos/
-/mapeos/
 /negocio/
 /test/
-/AfiliadoABM.class
-/RankSucursalCliente.class

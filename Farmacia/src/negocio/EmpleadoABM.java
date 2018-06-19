@@ -20,10 +20,8 @@ public class EmpleadoABM {
 
 	
 
-	public int agregar(long dni, String nombre, String apellido, Domicilio domicilio, long cuil, long numAfiliado,
-			ObraSocial obraSoc, Sucursal sucursal,String tipoEmpleado) {
-		Empleado d=new Empleado( dni, nombre, apellido,  domicilio, cuil, numAfiliado,
-				 obraSoc,  sucursal,tipoEmpleado);
+	public int agregar(long dni, String nombre, String apellido, Domicilio domicilio, long cuil, Sucursal sucursal,String tipoEmpleado) {
+		Empleado d=new Empleado( dni, nombre, apellido,  domicilio, cuil,sucursal,tipoEmpleado);
 		return PersonaDao.getInstance().agregar(d);
 		
 	}

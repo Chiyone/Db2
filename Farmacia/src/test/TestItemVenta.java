@@ -21,7 +21,7 @@ public class TestItemVenta {
 		VentaABM abm=new VentaABM();
 		DomicilioABM abmdom = new DomicilioABM();
 			
-		EmpleadoABM.getInstance().agregar(4444, "eee", "Son",abmdom.traerDomicilio(1), 1111111, 111, null, sucAbm.traerSucursal(1),"Encargado");
+		//EmpleadoABM.getInstance().agregar(4444, "eee", "Son",abmdom.traerDomicilio(1), 1111111, 111, null, sucAbm.traerSucursal(1),"Encargado");
 		
 		System.out.println(EmpleadoABM.getInstance().traer(1));
 		abm.agregar( 15.0, null, EmpleadoABM.getInstance().traer(1), PersonaABM.getInstance().traer(1), sucAbm.traerSucursal(1));

@@ -23,8 +23,11 @@ public class PagoTarjetaABM {
 
 	
 
-	public int agregar(double monto, Persona cliente, String tpoPago,Venta venta,  long tarjeta, int cantCuotas,
-			double precioCuota) {
+	public int agregar( Persona cliente,Venta venta,  long tarjeta, int cantCuotas
+			) {
+		String tpoPago="Tarjeta";
+		double monto=venta.getTotalVenta();
+		double precioCuota=monto/cantCuotas;
 		PagoTarjeta d=new PagoTarjeta( monto,  cliente, tpoPago, venta ,tarjeta, cantCuotas,precioCuota);
 		return PagoDao.getInstance().agregar(d);
 		

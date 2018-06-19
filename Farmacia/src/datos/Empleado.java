@@ -12,8 +12,7 @@ import java.util.Set;
 public class Empleado extends Persona {
 	private long idEmpleado;
 	private long cuil;
-	private long numAfiliado;
-	private ObraSocial obraSoc;
+	
 	private Sucursal sucursal;
 	private String tipoEmpleado;
 	private Set<Venta> cobros;
@@ -30,12 +29,10 @@ public class Empleado extends Persona {
 	 * @param obraSoc
 	 * @param sucursal
 	 */
-public Empleado(long dni, String nombre, String apellido, Domicilio domicilio, long cuil, long numAfiliado,
-			ObraSocial obraSoc, Sucursal sucursal,String tipoEmpleado) {
+public Empleado(long dni, String nombre, String apellido, Domicilio domicilio, long cuil, Sucursal sucursal,String tipoEmpleado) {
 		super(dni, nombre, apellido, domicilio);
 		this.cuil = cuil;
-		this.numAfiliado = numAfiliado;
-		this.obraSoc = obraSoc;
+		
 		this.sucursal = sucursal;
 		this.tipoEmpleado=tipoEmpleado;
 	}
@@ -92,33 +89,7 @@ public Empleado(long dni, String nombre, String apellido, Domicilio domicilio, l
 		this.cuil = cuil;
 	}
 
-	/**
-	 * @return the numAfiliado
-	 */
-	public long getNumAfiliado() {
-		return numAfiliado;
-	}
-
-	/**
-	 * @param numAfiliado the numAfiliado to set
-	 */
-	public void setNumAfiliado(long numAfiliado) {
-		this.numAfiliado = numAfiliado;
-	}
-
-	/**
-	 * @return the obraSoc
-	 */
-	public ObraSocial getObraSoc() {
-		return obraSoc;
-	}
-
-	/**
-	 * @param obraSoc the obraSoc to set
-	 */
-	public void setObraSoc(ObraSocial obraSoc) {
-		this.obraSoc = obraSoc;
-	}
+	
 
 	/**
 	 * @return the sucursal
@@ -136,8 +107,7 @@ public Empleado(long dni, String nombre, String apellido, Domicilio domicilio, l
 
 	@Override
 	public String toString() {
-		return "Empleado [cuil=" + cuil + ", numAfiliado=" + numAfiliado + ", obraSoc="
-				+ obraSoc + ", sucursal=" + sucursal.getIdSucursal() + ", tipoEmpleado=" + tipoEmpleado + "]";
+		return "Empleado [cuil=" + cuil + ", sucursal=" + sucursal.getIdSucursal() + ", tipoEmpleado=" + tipoEmpleado + "]";
 	}
 	
 

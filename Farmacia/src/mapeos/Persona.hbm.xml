@@ -35,7 +35,7 @@
 		<joined-subclass name="datos.Empleado" table="empleado">
 			<key column="idEmpleado" />
 			<property column="cuil" name="cuil" type="long" />
-			<property column="numAfiliado" name="numAfiliado" type="long" />
+			
 			<property column="tipoEmpleado" name="tipoEmpleado" type="string" />
 			
 			<many-to-one name="Sucursal" class="datos.Sucursal" column="idSucursal"

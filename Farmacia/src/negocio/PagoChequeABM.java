@@ -21,7 +21,10 @@ public class PagoChequeABM {
 
 	
 
-	public int agregar(double monto, Persona cliente, String tpoPago,Venta venta ,long numCuenta, String banco) {
+	public int agregar( Persona cliente,Venta venta ,long numCuenta, String banco) {
+		String tpoPago="Cheque";
+		double monto=venta.getTotalVenta();
+		
 		PagoCheque d=new PagoCheque( monto,  cliente, tpoPago,venta,  numCuenta, banco);
 		return PagoDao.getInstance().agregar(d);
 		
